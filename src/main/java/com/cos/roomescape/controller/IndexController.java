@@ -17,6 +17,13 @@ public class IndexController {
 		return "index";
 	}
 	
+
+	@GetMapping("/theme")
+	public String theme() {
+		return "theme";
+	}
+	
+	
 	
 
 	@GetMapping("/user")
