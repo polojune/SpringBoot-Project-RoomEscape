@@ -15,10 +15,10 @@ spring:
     password: room1234
 
        
-  mvc:
-    view:
-      prefix: /templates/
-      suffix: .mustache
+#  mvc:
+#    view:
+#      prefix: /templates/
+#      suffix: .mustache
       
   security:
     oauth2:

@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
 
 	@GetMapping({ "", "/" })
-	public @ResponseBody String index() {
+	public @ResponseBody String home() {
 		return "인덱스 페이지";
 	}
+	
+	@GetMapping("/index")
+	public String index() {
+		return "index";
+	}
+	
+	
 
 	@GetMapping("/user")
 	public @ResponseBody String user() {
