@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.cos.roomescape.config.oauth.PrincipalOauth2UserService;
+
 
 @Configuration //IoC 빈(bean)을 등록
 @EnableWebSecurity //필터 체인 관리 시작 어노테이션
@@ -24,16 +26,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
           
     	  http.csrf().disable(); //form 태그 시 post 요청시 csrf 토큰을 만들어야 서버에서 허가를 해준다.
     	  http.authorizeRequests()
-	          .antMatchers("/user/**","/admin/**")
-	          .authenticated()
-	          .anyRequest()
-	          .permitAll()
+	          .antMatchers("/user/**").authenticated()
+	          .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+	          .anyRequest().permitAll()
 	          
           .and()
           	  .formLogin()
           	  .loginPage("/login")
           	  .loginProcessingUrl("/loginProc")
-          	  .defaultSuccessUrl("/");
-    	      
+          	  .defaultSuccessUrl("/")
+    	  .and()
+    	      .oauth2Login()
+    	      .loginPage("/login")
+    	      .userInfoEndpoint()
+    	      .userService(new PrincipalOauth2UserService());
     }
 }
