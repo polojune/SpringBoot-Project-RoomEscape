@@ -1,10 +1,80 @@
-{{>include/header}}
+<html lang="ko"><head>
+<meta charset="utf-8">
 
-<div class="container">
-    <div class="sub_banner">
+<!-- 반응형 meta -->
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=yes">
+
+<!-- IE 대응 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<link href="/css/font.css?ver=" rel="stylesheet">
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link href="/css/reset.css?ver=171736" rel="stylesheet">
+<link href="/css/style.css?ver=171736" rel="stylesheet">
+
+<link href="/css/common.css?ver=171736" rel="stylesheet">
+
+<link href="/css/header.css?ver=171736" rel="stylesheet">
+<link href="/css/footer.css?ver=171736" rel="stylesheet">
+
+<link href="/css/sub_banner.css?ver=171736" rel="stylesheet">
+<!-- <link href="/css/sub_banner.css?ver=171736" rel="stylesheet" /> -->
+
+
+
+<link href="/css/board.css?ver=171736" rel="stylesheet">
+
+
+
+<link href="/css/login_layer.css?ver=171736" rel="stylesheet">
+
+<link href="/css/nonbootstrap.css?ver=171736" rel="stylesheet">
+
+
+
+<!-- include summernote css/js -->
+<link href="/css/summernote.css?ver=171736" rel="stylesheet">
+<script src="/js/summernote.js?ver=171736"></script>
+
+<!-- tweenmax libaray -->
+<script src="/js/TweenMax.min.js"></script>
+
+<!--jquery UI libaray -->
+
+<!-- safari browser css -->
+<script src="/js/safari.js"></script>
+
+<script type="/js/jquery.form.min.js"></script>
+<script>
+	var $assets_url = "https://www.roomescape.co.kr/_template/assets";
+	var $home_url = "https://www.roomescape.co.kr";
+</script>
+<title>전국방탈출 - 방탈출카페의 모든 것</title>
+</head>
+<body class="board list" cz-shortcut-listen="true">
+
+
+
+{{>include/nav}}
+
+
+
+	<div class="sub_banner">
 		<div class="banner_title" style="background-image:url('https://www.roomescape.co.kr/_template/assets/img/board/free_sub_banner_back.jpg?ver=');">
 			<a href="https://www.roomescape.co.kr/board/list.php?board=free">
-				<img src="https://www.roomescape.co.kr/_template/assets/img/board/free_sub_banner_text.png?ver=" alt="" />
+				<img src="https://www.roomescape.co.kr/_template/assets/img/board/free_sub_banner_text.png?ver=" alt="">
 			</a>
 		</div>
 
@@ -15,10 +85,16 @@
 		<div class="board_inner inner_1_depth">
 			<div class="board_inner inner_2_depth">
 				<div class="remote_navi">
-					<ul>	<!-- 게시판 바로가기 버튼 -->
-						<li class="active"><a href="https://www.roomescape.co.kr/board/list.php?board=free" />- 자유게시판</a></li>
+					<ul>
+						<li class="active"><a href="https://www.roomescape.co.kr/board/list.php?board=free">- 자유게시판</a></li>
+						
+						<li><a href="https://www.roomescape.co.kr/board/list.php?board=boardpan">- 보드판 갤러리</a></li>
 
-						<li><a href="https://www.roomescape.co.kr/board/list.php?board=notice" />- 공지사항</a></li>
+						<li><a href="https://www.roomescape.co.kr/board/list.php?board=party">- 일행구하기</a></li>
+
+						<li><a href="https://www.roomescape.co.kr/board/list.php?board=news">- 방탈출정보</a></li>
+
+						<li><a href="https://www.roomescape.co.kr/board/list.php?board=notice">- 공지사항</a></li>
 					</ul>
 				</div>
 
@@ -34,7 +110,7 @@
 							<div class="search">
 
 								<div class="keyword">
-										<input type="text" id="search_query" class="search_query" style="width:calc(100% - 66px)" />
+										<input type="text" id="search_query" class="search_query" style="width:calc(100% - 66px)">
 										<button id="search" type="button"><i class="fa fa-search"></i></button>
 								</div>
 							</div>
@@ -63,13 +139,13 @@
 									</td>
 
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=2" style="color:#121212;">자유게시판 이용 안내</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=2" style="color:#121212;">자유게시판 이용 안내</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
 										<span>전국방탈출</span>
 
-											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="" />
+											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 									</td>
 									<td class="value date">2019-07-24</td>
 									<td class="value view">422</td>
@@ -79,11 +155,11 @@
 									<td class="value numb">94</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=94">서현 넥스트 에디션 방탈출 카페!</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=94">서현 넥스트 에디션 방탈출 카페!</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>신영규</span>
 
@@ -91,17 +167,17 @@
 									
 									<td class="value date">2020-07-20</td>
 									
-									<td class="value view">53</td>
+									<td class="value view">56</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">92</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=92">넥스트에디션 건대2호점 커튼콜 후기</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=92">넥스트에디션 건대2호점 커튼콜 후기</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>phescape</span>
 
@@ -109,35 +185,35 @@
 									
 									<td class="value date">2020-07-12</td>
 									
-									<td class="value view">71</td>
+									<td class="value view">73</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">91</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=91">전방 인터뷰 : 방탈출 플레이어 팀 &lt;팀 ㅉㅉ&gt; 편</a><span class="comment_cnt">[2]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=91">전방 인터뷰 : 방탈출 플레이어 팀 &lt;팀 ㅉㅉ&gt; 편</a><span class="comment_cnt">[2]</span></td>
 
 									<td class="value name">
 
 
 										<span>전국방탈출</span>
 
-											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="" />
+											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 									</td>
 									
 									<td class="value date">2020-07-02</td>
 									
-									<td class="value view">441</td>
+									<td class="value view">444</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">87</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=87">서울이스케이프 아마존의 잃어버린 도시 후기</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=87">서울이스케이프 아마존의 잃어버린 도시 후기</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>phescape</span>
 
@@ -145,35 +221,35 @@
 									
 									<td class="value date">2020-05-23</td>
 									
-									<td class="value view">259</td>
+									<td class="value view">260</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">86</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=86">전방 인터뷰 : 리뷰어 &lt;방하&gt; 편</a><span class="comment_cnt">[1]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=86">전방 인터뷰 : 리뷰어 &lt;방하&gt; 편</a><span class="comment_cnt">[1]</span></td>
 
 									<td class="value name">
 
 
 										<span>전국방탈출</span>
 
-											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="" />
+											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 									</td>
 									
 									<td class="value date">2020-05-23</td>
 									
-									<td class="value view">875</td>
+									<td class="value view">880</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">85</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=85">잠실 넥스트에디션 데코연 후기용</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=85">잠실 넥스트에디션 데코연 후기용</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal2.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal2.png" alt="">
 
 										<span>락끼맘</span>
 
@@ -181,17 +257,17 @@
 									
 									<td class="value date">2020-05-11</td>
 									
-									<td class="value view">205</td>
+									<td class="value view">206</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">84</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=84">넥스트에디션 분당서현점 너에게 가는 길 후기</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=84">넥스트에디션 분당서현점 너에게 가는 길 후기</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>phescape</span>
 
@@ -205,11 +281,11 @@
 									<td class="value numb">83</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=83">방꼬마의 이방저방 이야기 [트로트 전성시대와 '후계자']</a><span class="comment_cnt">[1]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=83">방꼬마의 이방저방 이야기 [트로트 전성시대와 '후계자']</a><span class="comment_cnt">[1]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="">
 
 										<span>틴셀</span>
 
@@ -223,11 +299,11 @@
 									<td class="value numb">81</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=81">홍대 큐브이스케이프 전테마 후기</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=81">홍대 큐브이스케이프 전테마 후기</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="">
 
 										<span>JC</span>
 
@@ -235,17 +311,17 @@
 									
 									<td class="value date">2020-04-03</td>
 									
-									<td class="value view">322</td>
+									<td class="value view">323</td>
 								</tr>
 								<tr class="notice">
 									<td class="value numb">80</td>
 									
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&id=80">﻿ 생존의 기로에 떨어진 인간이 스스로 만들어가는 '선택의 설원' - 강남 넥스트에디션 5호점 &lt;SOS&gt; 리뷰</a><span class="comment_cnt">[0]</span></td>
+									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=80">﻿ 생존의 기로에 떨어진 인간이 스스로 만들어가는 '선택의 설원' - 강남 넥스트에디션 5호점 &lt;SOS&gt; 리뷰</a><span class="comment_cnt">[0]</span></td>
 
 									<td class="value name">
 
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="">
 
 										<span>JC</span>
 
@@ -269,14 +345,14 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=2" style="color:#121212;"><span class="subject_span">자유게시판 이용 안내</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=2" style="color:#121212;"><span class="subject_span">자유게시판 이용 안내</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
 
 										<span>
 											전국방탈출
-											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="" />
+											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 										</span>
 
 
@@ -288,6 +364,7 @@
 									<!-- <div class="date">
 										
 									</div>
+
 									<div class="view">
 										
 									</div> -->
@@ -301,11 +378,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=94"><span class="subject_span">서현 넥스트 에디션 방탈출 카페!</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=94"><span class="subject_span">서현 넥스트 에디션 방탈출 카페!</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>
 											<span>신영규</span>
@@ -314,7 +391,7 @@
 
 										<span>2020-07-20</span>
 
-										<span>53</span>
+										<span>56</span>
 									</div>
 								</div>
 							</div>
@@ -325,11 +402,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=92"><span class="subject_span">넥스트에디션 건대2호점 커튼콜 후기</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=92"><span class="subject_span">넥스트에디션 건대2호점 커튼콜 후기</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>
 											<span>phescape</span>
@@ -338,7 +415,7 @@
 
 										<span>2020-07-12</span>
 
-										<span>71</span>
+										<span>73</span>
 									</div>
 								</div>
 							</div>
@@ -349,7 +426,7 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=91"><span class="subject_span">전방 인터뷰 : 방탈출 플레이어 팀 &lt;팀 ㅉㅉ&gt; 편</span><span class="comment_cnt">[2]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=91"><span class="subject_span">전방 인터뷰 : 방탈출 플레이어 팀 &lt;팀 ㅉㅉ&gt; 편</span><span class="comment_cnt">[2]</span></a>
 									</div>
 
 									<div class="name">
@@ -357,12 +434,12 @@
 										<span>
 											<span>전국방탈출</span>
 
-												<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="" />
+												<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 										</span>
 
 										<span>2020-07-02</span>
 
-										<span>441</span>
+										<span>444</span>
 									</div>
 								</div>
 							</div>
@@ -373,11 +450,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=87"><span class="subject_span">서울이스케이프 아마존의 잃어버린 도시 후기</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=87"><span class="subject_span">서울이스케이프 아마존의 잃어버린 도시 후기</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>
 											<span>phescape</span>
@@ -386,7 +463,7 @@
 
 										<span>2020-05-23</span>
 
-										<span>259</span>
+										<span>260</span>
 									</div>
 								</div>
 							</div>
@@ -397,7 +474,7 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=86"><span class="subject_span">전방 인터뷰 : 리뷰어 &lt;방하&gt; 편</span><span class="comment_cnt">[1]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=86"><span class="subject_span">전방 인터뷰 : 리뷰어 &lt;방하&gt; 편</span><span class="comment_cnt">[1]</span></a>
 									</div>
 
 									<div class="name">
@@ -405,12 +482,12 @@
 										<span>
 											<span>전국방탈출</span>
 
-												<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="" />
+												<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 										</span>
 
 										<span>2020-05-23</span>
 
-										<span>875</span>
+										<span>880</span>
 									</div>
 								</div>
 							</div>
@@ -421,11 +498,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=85"><span class="subject_span">잠실 넥스트에디션 데코연 후기용</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=85"><span class="subject_span">잠실 넥스트에디션 데코연 후기용</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal2.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal2.png" alt="">
 
 										<span>
 											<span>락끼맘</span>
@@ -434,7 +511,7 @@
 
 										<span>2020-05-11</span>
 
-										<span>205</span>
+										<span>206</span>
 									</div>
 								</div>
 							</div>
@@ -445,11 +522,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=84"><span class="subject_span">넥스트에디션 분당서현점 너에게 가는 길 후기</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=84"><span class="subject_span">넥스트에디션 분당서현점 너에게 가는 길 후기</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png" alt="">
 
 										<span>
 											<span>phescape</span>
@@ -469,11 +546,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=83"><span class="subject_span">방꼬마의 이방저방 이야기 [트로트 전성시대와 '후계자']</span><span class="comment_cnt">[1]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=83"><span class="subject_span">방꼬마의 이방저방 이야기 [트로트 전성시대와 '후계자']</span><span class="comment_cnt">[1]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="">
 
 										<span>
 											<span>틴셀</span>
@@ -493,11 +570,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=81"><span class="subject_span">홍대 큐브이스케이프 전테마 후기</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=81"><span class="subject_span">홍대 큐브이스케이프 전테마 후기</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="">
 
 										<span>
 											<span>JC</span>
@@ -506,7 +583,7 @@
 
 										<span>2020-04-03</span>
 
-										<span>322</span>
+										<span>323</span>
 									</div>
 								</div>
 							</div>
@@ -517,11 +594,11 @@
 
 								<div class="right">
 									<div class="subject">
-										<a href="https://www.roomescape.co.kr/board/view.php?board=free&id=80"><span class="subject_span">﻿ 생존의 기로에 떨어진 인간이 스스로 만들어가는 '선택의 설원' - 강남 넥스트에디션 5호점 &lt;SOS&gt; 리뷰</span><span class="comment_cnt">[0]</span></a>
+										<a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=80"><span class="subject_span">﻿ 생존의 기로에 떨어진 인간이 스스로 만들어가는 '선택의 설원' - 강남 넥스트에디션 5호점 &lt;SOS&gt; 리뷰</span><span class="comment_cnt">[0]</span></a>
 									</div>
 
 									<div class="name">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="" />
+											<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal6.png" alt="">
 
 										<span>
 											<span>JC</span>
@@ -542,19 +619,19 @@
 							<!-- 이전 페이지 그룹 이동 버튼 -->
 		                    <li class="page_forward disabled">
 			                    <span aria-hidden="true">
-			                    	<img src="https://www.roomescape.co.kr/_template/assets/img/board/prev.png?ver=171736" alt="" />
+			                    	<img src="https://www.roomescape.co.kr/_template/assets/img/board/prev.png?ver=171736" alt="">
 			                    </span>
 			                </li>
 
 			                <!-- 페이지 번호 -->
 				            <li class="active"><a href="javascript:void(0);">1</a></li>
-	                		<li><a href="https://www.roomescape.co.kr/board/list.php?board=free&page=2">2</a></li>
-	                		<li><a href="https://www.roomescape.co.kr/board/list.php?board=free&page=3">3</a></li>
+	                		<li><a href="https://www.roomescape.co.kr/board/list.php?board=free&amp;page=2">2</a></li>
+	                		<li><a href="https://www.roomescape.co.kr/board/list.php?board=free&amp;page=3">3</a></li>
 
 	                		<!-- 다음 페이지 그룹 이동 버튼 -->
 		                     <li class="disabled">
 			                    <span aria-hidden="true">
-			                   		<img src="https://www.roomescape.co.kr/_template/assets/img/board/next.png?ver=171736" alt="" />
+			                   		<img src="https://www.roomescape.co.kr/_template/assets/img/board/next.png?ver=171736" alt="">
 			                    </span>
 			                </li>
 						</ul>	
@@ -563,10 +640,33 @@
 
 				<div class="board_btn">
 						<button type="button" id="login_layer_pop_event" class="btn_write">글쓰기</button>
-
+						<script>
+							$("#login_layer_pop_event").click(function() {
+								$("body").css("overflow","hidden");
+								$("#login_wrap_back").css("display","block");
+								$("#login_wrap").css("display","block");
+								
+								var agent = navigator.userAgent.toLowerCase();
+								if((navigator.appName == 'Netscape' && agent.indexOf('trident') != -1) || (agent.indexOf("msie") != -1)) {
+									//ie
+								    $("#login_wrap_back").addClass("ie");
+								} else {
+								     //not ie
+								    $(".container").addClass("not_ie");
+								    $("#login_wrap_back").addClass("not_ie");
+								}
+							});
+						</script>
 				</div>
 			</div>
 		</div>
-</div>    
 
+		
+		
 {{>include/footer}}
+
+
+
+
+</body>
+</html>

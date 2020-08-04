@@ -23,8 +23,17 @@ public class IndexController {
 		return "theme";
 	}
 	
+	@GetMapping("/book")
+	public String book() {
+		return "book";
+	}
 	
 	
+	@GetMapping("/map")
+	public String map() {
+		return "map";
+	}
+
 
 	@GetMapping("/user")
 	public @ResponseBody String user() {
