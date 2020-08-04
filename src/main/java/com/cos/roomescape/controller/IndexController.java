@@ -1,12 +1,26 @@
 package com.cos.roomescape.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.cos.roomescape.model.User;
+import com.cos.roomescape.repository.UserRepository;
 
 @Controller
 public class IndexController {
-
+    
+	@Autowired
+	private UserRepository userRepository;
+	
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	
 	@GetMapping({ "", "/" })
 	public @ResponseBody String home() {
 		return "인덱스 페이지";
@@ -23,15 +37,15 @@ public class IndexController {
 		return "theme";
 	}
 	
-<<<<<<< HEAD
+
 	@GetMapping("/book")
 	public String book() {
 		return "book";
-=======
+	}
 	@GetMapping("/theme2")
 	public String theme2() {
 		return "theme2";
->>>>>>> refs/remotes/origin/master
+
 	}
 	
 	
@@ -56,6 +70,11 @@ public class IndexController {
 		return "login";
 	}
 	
+	@GetMapping("/join")
+	public String join() {
+		return "join";
+	}
+	
 	@GetMapping("/board")
 	public String board() {
 		return "board";
@@ -70,4 +89,16 @@ public class IndexController {
 	public String store() {
 		return "store";
 	}
+	
+	@PostMapping("/joinProc")
+	public String joinProc(User user) {
+		System.out.println("회원가입 진행 : " + user);
+		String rawPassword = user.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+		user.setPassword(encPassword);
+		user.setRole("ROLE_USER");
+		userRepository.save(user);
+		return "redirect:/";
+	
+	}	
 }
