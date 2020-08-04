@@ -23,6 +23,10 @@ public class IndexController {
 		return "theme";
 	}
 	
+	@GetMapping("/theme2")
+	public String theme2() {
+		return "theme2";
+	}
 	
 	
 
