@@ -45,4 +45,14 @@ public class IndexController {
 	public String board() {
 		return "board";
 	}
+	
+	@GetMapping("/board2")
+	public String board2() {
+		return "board2";
+	}
+	
+	@GetMapping("/store")
+	public String store() {
+		return "store";
+	}
 }
