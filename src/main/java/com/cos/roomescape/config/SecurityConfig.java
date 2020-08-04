@@ -1,5 +1,6 @@
 package com.cos.roomescape.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -16,6 +17,9 @@ import com.cos.roomescape.config.oauth.PrincipalOauth2UserService;
 @EnableGlobalMethodSecurity(prePostEnabled = true) //특정 주소 접근시 권한 및 인증을 미리 체크 
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
+	@Autowired
+	private PrincipalOauth2UserService principalOauth2UserService;
+	
 	@Bean
 	public BCryptPasswordEncoder encodePwd() {
 		return new BCryptPasswordEncoder();
@@ -39,6 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	      .oauth2Login()
     	      .loginPage("/login")
     	      .userInfoEndpoint()
-    	      .userService(new PrincipalOauth2UserService());
+    	      .userService(principalOauth2UserService);
     }
 }
