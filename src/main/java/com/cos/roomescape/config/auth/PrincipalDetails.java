@@ -15,18 +15,32 @@ import com.cos.roomescape.model.User;
 import lombok.Data;
 
 //Authentiaction 객체에 저장할 수 있는 유일한 타입
-@Data
+
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
+	
 	private User user;
 	private String role;
 	private Map<String, Object> attributes;
-   
+	
+	public User getUser() {
+		return user;
+	}
+	public void setAttributes(Map<String, Object> attributes) {
+		this.attributes = attributes;
+	}		
+	
+	//일반 시큐리티 로그인시 사용
 	public PrincipalDetails(User user) {
 		super();
 		this.user = user;
 	}
-
+	 //OAuth2.0 로그인시 사용
+	 public PrincipalDetails(User user, Map<String, Object> attributes) {
+	   this.user = user; 
+	   this.attributes = attributes;
+	}
+		
 	@Override
 	public String getPassword() {
 
@@ -80,8 +94,8 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return user.getId()+"";
 	}
 
 }

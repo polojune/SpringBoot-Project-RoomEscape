@@ -23,9 +23,15 @@ public class IndexController {
 		return "theme";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/book")
 	public String book() {
 		return "book";
+=======
+	@GetMapping("/theme2")
+	public String theme2() {
+		return "theme2";
+>>>>>>> refs/remotes/origin/master
 	}
 	
 	
