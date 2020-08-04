@@ -15,8 +15,8 @@
   </select>
   
   <select id="findByProviderAndProviderId" resultType="com.cos.roomescape.model.User">
-      SELECT id,username,email,role,provider,providerId,createDate FROM user WHERE provider=#{provider}
-      AND providerId = #{providerId} AND password = #{password}
+      SELECT * FROM user WHERE provider=#{provider}
+      AND providerId = #{providerId} 
        
   </select>
    
