@@ -82,10 +82,7 @@ public class IndexController {
 		return "board";
 	}
 	
-	@GetMapping("/board2")
-	public String board2() {
-		return "board2";
-	}
+
 	
 	@GetMapping("/store")
 	public String store() {
