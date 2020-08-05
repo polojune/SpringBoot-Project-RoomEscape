@@ -1,5 +1,6 @@
 package com.cos.roomescape.config.oauth;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.cos.roomescape.config.auth.PrincipalDetails;
 import com.cos.roomescape.config.oauth.provider.FaceBookUserInfo;
 import com.cos.roomescape.config.oauth.provider.GoogleUserInfo;
+import com.cos.roomescape.config.oauth.provider.NaverUserInfo;
 import com.cos.roomescape.config.oauth.provider.OAuth2UserInfo;
 import com.cos.roomescape.model.User;
 import com.cos.roomescape.repository.UserRepository;
@@ -44,6 +46,10 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		   oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes()); 
 		}else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
 			oAuth2UserInfo = new FaceBookUserInfo(oAuth2User.getAttributes());
+		} else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")){
+			System.out.println("네이버 로그인 요청~~");
+			oAuth2UserInfo = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
+		
 		}else {
 			System.out.println("우리는 구글과 페이스북만 지원해요");
 		}

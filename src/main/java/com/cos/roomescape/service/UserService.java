@@ -22,9 +22,9 @@ public class UserService {
 
 	}
 
-	@Transactional(readOnly = true)
-	public User 로그인(User user) {
-
-		return userRepository.login(user);
-	}
+//	@Transactional(readOnly = true)
+//	public User 로그인(User user) {
+//
+//		return userRepository.login(user);
+//	}
 }
