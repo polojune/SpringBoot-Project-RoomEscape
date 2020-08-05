@@ -12,7 +12,7 @@ import com.cos.roomescape.repository.UserRepository;
 
 @Controller
 public class IndexController {
-    
+    //dsfa
 	@Autowired
 	private UserRepository userRepository;
 	
