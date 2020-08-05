@@ -4,12 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cos.roomescape.repository.UserRepository">
   <insert id="save">
-    INSERT INTO user(username,password,email,role,createDate)
-    VALUES(#{username},#{password},#{email},#{role},now())
+    INSERT INTO user(username,password,email,role,createDate,provider,providerId)
+    VALUES(#{username},#{password},#{email},#{role},now(),#{provider},#{providerId})
   </insert>
   
   <select id="login" resultType="com.cos.roomescape.model.User"> 
-     SELECT id,username,email,role,createDate FROM user WHERE username=#{username} 
+     SELECT id,username,email,role,createDate,provider,providerId FROM user WHERE username=#{username} 
       AND password = #{password} 
   
   </select>
