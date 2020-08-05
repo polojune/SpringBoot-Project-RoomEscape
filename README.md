@@ -15,7 +15,7 @@ use roomescape;
 CREATE TABLE user(
 	id int auto_increment primary key,
     username varchar(100) unique not null,
-    password varchar(100) not null,
+    password varchar(100),
     email varchar(100),
     profile varchar(200),
     provider varchar(100),
