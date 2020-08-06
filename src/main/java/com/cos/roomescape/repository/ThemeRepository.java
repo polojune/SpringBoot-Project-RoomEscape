@@ -1,5 +1,10 @@
 package com.cos.roomescape.repository;
 
-public interface ThemeRepository {
+import java.util.List;
 
+
+import com.cos.roomescape.model.Theme;
+
+public interface ThemeRepository {
+	public List<Theme> findAll();
 }

@@ -794,7 +794,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> 
 					</div>
 					<div class="col premium_border">
 						<div class="ratio">

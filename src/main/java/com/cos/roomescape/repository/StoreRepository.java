@@ -1,5 +1,9 @@
 package com.cos.roomescape.repository;
 
-public interface StoreRepository {
+import java.util.List;
 
+import com.cos.roomescape.model.Store;
+
+public interface StoreRepository {
+	 public List<Store> findAll();
 }
