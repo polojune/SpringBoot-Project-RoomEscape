@@ -15,7 +15,6 @@ public class Store {
       private int id; 
       private String intro;
       private String name;
-      private Theme[] themes; 
       private String info; 
       private String review;
       private Double mapLong;
