@@ -1,15 +1,34 @@
 package com.cos.roomescape.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.cos.roomescape.model.Store;
 
 @Controller
 public class StoreController {
     
 
 	@GetMapping("/store")
-	public String store() {
+	public String store(Model model) {
+		Store store1 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
+		Store store2 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
+		Store store3 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
+		Store store4 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
+		
+		List<Store> stores = new ArrayList<>();
+		stores.add(store1);
+		stores.add(store2);
+		stores.add(store3);
+		stores.add(store4);
+		
+		model.addAttribute("stores", stores);
+
+		
 		return "store";
 	}
 	
