@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,19 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-    <h1>로그인페이지입니다.</h1>
+    <h1>ë¡ê·¸ì¸íì´ì§ìëë¤.</h1>
   <hr/>
-<!-- 시큐리티는 x-www-form-url-encoded 타입만 인식 --> 
+<!-- ìíë¦¬í°ë x-www-form-url-encoded íìë§ ì¸ì --> 
 <form action="/loginProc" method="POST">
 	<input type="text" name="username" />
 	<input type="password" name="password" />
-	<button>로그인</button>
+	<button>ë¡ê·¸ì¸</button>
 </form>
    <br />
 
 	<h1>Social Login</h1>
 	<br />
-	<!-- javascript:; 는 클릭해도 반응을 없게 하는 키워드 -->
+	<!-- javascript:; ë í´ë¦­í´ë ë°ìì ìê² íë í¤ìë -->
 	<a href="/oauth2/authorization/google"> <img
 		src="https://pngimage.net/wp-content/uploads/2018/06/google-login-button-png-1.png"
 		alt="google" width="357px" height="117px">
