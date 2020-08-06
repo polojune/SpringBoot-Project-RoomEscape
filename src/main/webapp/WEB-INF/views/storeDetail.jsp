@@ -76,8 +76,7 @@
 
 
 
-
-{{>include/nav}}
+<%@ include file="include/nav.jsp"%>
 
 
 
@@ -801,8 +800,7 @@
 
 
 
-
-{{>include/footer}}
+<%@ include file="include/footer.jsp"%>
 
 
 

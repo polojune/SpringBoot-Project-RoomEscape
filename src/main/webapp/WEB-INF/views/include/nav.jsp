@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <div id="login_wrap_back" class="login_wrap_back" style="width:100%;"></div>
 <div id="login_wrap" class="login_wrap">
 	<div class="login_layer">
