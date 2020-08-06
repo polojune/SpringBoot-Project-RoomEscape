@@ -5,6 +5,5 @@
 <%@ include file="include/nav.jsp"%>
 
 <h1>인덱스 페이지입니다.</h1>
-<img src="images/Log in with NAVER_Official_Green.PNG">
 
 <%@ include file="include/footer.jsp"%>

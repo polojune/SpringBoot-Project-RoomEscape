@@ -20,5 +20,5 @@ public class Store {
       private Double mapLong;
       private Double mapLat;
       private Timestamp createDate;
-           
+      
 }

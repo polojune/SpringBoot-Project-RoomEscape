@@ -723,7 +723,6 @@
 								<li class="value">
 									<span class="loc_value" data-loc="제주">제주</span>
 								</li>
-<<<<<<< HEAD
 								<!-- <li class="pipe">
 										<span class="pipe"></span>
 									</li>
@@ -795,7 +794,7 @@
 									</div>
 								</div>
 							</div>
-						</div> 
+						</div>
 					</div>
 					<div class="col premium_border">
 						<div class="ratio">
@@ -1879,58 +1878,54 @@
 									</div>
 								</div>
 							</div>
-=======
-
-							</ul>
->>>>>>> eda051e9c8548dc5f27aa5d60688f6492e4878c8
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="clearfix"></div>
-
-		<div class="container_inner section section_result">
-			<div class="fixing_wid fixing_wid_960">
-				<div id="company_list_row" class="row">
-				
-				<c:forEach var="store" items="${stores}">
-				
 					<div class="col normal_border">
-					
 						<div class="ratio">
 							<div class="ratio_inner">
 								<div class="content">
-									
 									<div class="marign_top"></div>
 									<div class="info">
 										<div class="name"><span class="value font_fit_div"><a
-													href="/store/${store.id }">${store.name }</a></span></div>
-										<div class="desc"><span class="value">${store.intro }</span></div>
+													href="/store/detail.php?cafe=651">셜록홈즈 대전둔산점</a></span></div>
+										<div class="desc"><span class="value">셜록홈즈 대전둔산점</span></div>
 										<div class="star review"><span class="value"><img
-													src="/images/star/4star.png"
-													alt=""></span><span class="value">4.0</span><span
+													src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=171736"
+													alt=""></span><span class="value">5.0</span><span
 												class="pipe">|</span><span class="value">리뷰</span><span
-												class="value">50</span><span class="value">개</span></div>
-										
+												class="value">4</span><span class="value">개</span></div>
+										<div class="option"></div>
 										<div class="pic"
-											style="background-image:url(http://www.yologuys.com/Escape_img/company/321.jpg);">
-											<a href="/store/${store.id }"></a></div>
+											style="background-image:url(http://www.yologuys.com/Escape_img/company/651.jpg);">
+											<a href="/store/detail.php?cafe=651"></a></div>
 									</div>
 								</div>
 							</div>
 						</div>
-
-
+						<div class="m_ratio">
+							<div class="m_ratio_inner">
+								<div class="content">
+									<div class="info">
+										<div class="pic"
+											style="background-image:url(http://www.yologuys.com/Escape_img/company/651.jpg);">
+											<a href="/store/detail.php?cafe=651"></a></div>
+										<div class="margin"></div>
+										<div class="name"><span class="value m_font_fit_div"><a
+													href="/store/detail.php?cafe=651">셜록홈즈 대전둔산점</a></span></div>
+										<div class="desc"><span class="value">셜록홈즈 대전둔산점</span></div>
+										<div class="star review"><span class="value"><img
+													src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=171736"
+													alt=""></span><span class="value">5.0</span><span
+												class="pipe">|</span><span class="value">리뷰</span>4<span
+												class="value">개</span>
+											<div class="option"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					
-					</c:forEach>
-
-
 				</div>
-				
-				
 
 				<div id="company_list_more" class="company_list_more">
 					<div id="company_list_more_inner" class="company_list_more_inner">
@@ -1950,7 +1945,1263 @@
 
 
 	</div>
+	<script>
+		function isEmpty(value) {
+			if (value == "" || value == null || value == undefined || (value != null && typeof value == "object" && !Object.keys(value).length)) {
+				return true
+			} else {
+				return false
+			}
+		}
 
+		$('document').ready(function () {
+
+			//함수 deley 막기 변수
+			var $timer = null;
+
+			//more 버튼 시 현재 검색 타임 분별 변수
+			var $current_search_type = "";
+
+			//more 버튼 시 더 출력해야할(+24개) 테마(필터로 검색된)를 가져오기 위한 변수들 
+			var $company_list_typing = "";
+			var $company_list_typing_length = 0;
+
+			//more 버튼 시 더 출력해야할(+24개) 테마(타이핑으로 검색된)를 가져오기 위한 변수들 
+			var $company_list_filter = "";
+			var $company_list_filter_length = 0;
+
+			//more 버튼 시 $theme_list_xxx 변수에서 몇번째 부터 몇번째 까지 출력할지를 위한 변수 들
+			var $more_start_num = 0;
+			var $more_end_num = 24;
+
+
+			/***** 타이핑 검색 시 타이핑된 검색어를 넣을 변수 ****/
+			var $search_keyword = "";
+
+
+			/***** 필터 검색 시 필터값을 넣을 변수 ****/
+			var $search_select_type = "";
+			var $search_select_store_option = new Array();
+			var $search_select_loc = new Array();
+
+
+			//페이지가 로드 되었을 시 선택된 상태로 설정 - 검색 유형
+			$('.type_1 .type_click_event').addClass('active');
+			$('.type_click_event.active').each(function () {
+				$search_select_type = $(this).data('loc');
+			});
+
+			//페이지가 로드 되었을 시 선택된 상태로 설정 - 지역
+			$('.loc_value').each(function () {
+				if ($(this).data('loc') == "전국") {
+					$(this).addClass('active');
+				} else {
+					$(this).removeClass('active');
+				}
+
+				//이후 선택한 값만 배열에 담기
+				$search_select_loc.length = 0;
+				$('.loc_value.active').each(function () {
+					$search_select_loc.push($(this).data('loc'));
+				});
+			});
+
+
+			/* search_keyword */
+			$('#search_keyword_btn').click(function () {
+				$search_keyword = $('#search_keyword').val();
+			});
+
+
+			//검색 유형
+			$(".type_click_event").click(function () { //검색 유형 선택 버튼
+
+				if ($timer !== null) {
+					clearTimeout($timer);
+				}
+
+				if ($(this).hasClass("active") !== true) {
+					//한개 만 선택 가능(검색 유형만 '평점 높은 순, 리뷰 많은 순' 두개 중 한개만 선택 가능)
+					$('.type_click_event').removeClass("active");
+					$(this).addClass("active");
+
+				} else {
+					//모두 해제 막기
+					var $num_of_btn_click = 0;
+					$(".type_click_event.active").each(function () {
+						$num_of_btn_click++;
+					});
+
+					if ($num_of_btn_click == 1) {
+						return false;
+					} else {
+						$(this).removeClass("active");
+					}
+				}
+
+				//선택 이후 선택한 값만 배열에 담기
+				$(".type_click_event.active").each(function () {
+					$search_select_type = $(this).data('type');
+				});
+
+				//console.log($search_select_type);
+
+				//검색요청
+				$timer = setTimeout(function () {
+					company_filter_search();
+				}, 600);
+			});
+
+
+			//지역 검색
+			$("#loc_reveal").click(function () { //모바일 reveal버튼
+				if ($("#loc").hasClass("active") !== true) {
+
+					$("#loc").addClass("active");
+				} else {
+					$("#loc").removeClass("active");
+				}
+			});
+
+			$('.loc_value').click(function () { //지역 선택 버튼
+
+				if ($timer !== null) {
+					clearTimeout($timer);
+				}
+
+				if ($(this).hasClass("active") !== true) {
+
+					//한개 만 선택 가능
+					//$('.loc_value').removeClass("active");
+					$(this).addClass("active");
+
+					//전국 vs 서울~대전 버튼의 대한 버튼 이벤트 설정
+					if ($(this).data("loc") == "전국") {
+
+						//전국을 선택할 시에는 다른 지역들의 선택 해제
+						$('.loc_value').each(function () {
+							if ($(this).data("loc") != "전국") {
+								$(this).removeClass('active');
+							}
+						});
+					} else {
+
+						//전국을 선택되어 있는 상태에서 다른 지역들의 선택시 전국 버튼 해제
+						$('.loc_value').each(function () {
+							if ($(this).data('loc') == "전국") {
+								$(this).removeClass('active');
+							}
+						});
+					}
+
+				} else {
+
+					//모두 해제 막기
+					var $num_of_btn_click = 0;
+					$(".loc_value.active").each(function () {
+						$num_of_btn_click++;
+					});
+
+					if ($num_of_btn_click == 1) {
+						return false;
+					} else {
+						$(this).removeClass("active");
+					}
+				}
+
+				//선택 이후 선택한 값만 배열에 담기
+				$search_select_loc.length = 0;
+				$('.loc_value.active').each(function () {
+					$search_select_loc.push($(this).data('loc'));
+				});
+
+				//console.log($search_select_loc);
+
+				//검색요청
+				if (isEmpty($("#search_keyword").val()) !== true) {
+
+					//검색어 가져오기
+					var $search_keyword = $("#search_keyword").val();
+					//검색어 앞뒤 공백 제거
+					var $search_keyword = $search_keyword.trim();
+
+					$timer = setTimeout(function () {
+						company_typing_search($search_keyword);
+					}, 600);
+				} else {
+					$timer = setTimeout(function () {
+						company_filter_search();
+					}, 600);
+				}
+			});
+
+			//외국가능,1인가능 검색 
+			$(".store_option_click_event").click(function () {
+				if ($timer !== null) {
+					clearTimeout($timer);
+				}
+
+				if ($(this).hasClass("active") === true) {
+					$(this).removeClass("active");
+				} else {
+					$(this).addClass("active");
+				}
+
+				//선택 이후 선택한 값만 배열에 담기
+				$search_select_store_option.length = 0;
+				$('.store_option_click_event.active').each(function () {
+					$search_select_store_option.push($(this).data('store-option'));
+				});
+				//console.log($search_select_store_option);
+
+				//검색요청
+				$timer = setTimeout(function () {
+					company_filter_search();
+				}, 600);
+			});
+
+			//필터 검색시
+			var company_filter_search = function () {
+
+				var $preloader_tag = "<div class='preloader_box'><img src='" + "https://www.roomescape.co.kr/_template/assets" + "/img/preloading.gif?ver='" + "https://www.roomescape.co.kr/_template/assets" + " alt='' /></div>";
+
+				$("#company_list_row").html("");
+				$('#company_list_row').append($preloader_tag);
+
+				if ($('#company_list_more_btn').css('display') === 'none') {
+					$('#company_list_more_btn').show();
+				}
+
+				//ajax파일에서 검색종류(타이핑검색인지 필터검색인지) 분별하기 위한 값
+				var $search_type = "filter";
+
+				var $result = "";
+
+				$.ajax({
+					type: "POST",
+					url: "../bbs/ajax.search.company.list.v2.php",
+					data: {
+						"search_type": $search_type,
+						"search_select_type": $search_select_type,
+						"search_select_loc": JSON.stringify($search_select_loc),
+						"search_select_store_option": JSON.stringify($search_select_store_option)
+					},
+					dataType: "json",
+					cache: false,
+					success: function (data) {
+						$current_search_type = "filter";
+
+						$more_start_num = 0;
+						$more_end_num = 24;
+
+						$company_list_filter = JSON.parse(data);
+						$company_list_filter_length = 0;
+						$company_list_filter_length = $company_list_filter.List.length;
+
+						//console.log($company_list_filter);
+
+						//검색하기 전에 $('#company_list_row') 요소 내부의 콘텐츠 지우기
+						$('#company_list_row').html("");
+
+						if ($company_list_filter.List === 0) {
+							return false;
+						}
+
+						for (var $i = 0; $i < 24; $i++) {
+
+							var $detail_href = "/store/detail.php?cafe=" + $company_list_filter.List[$i]["msg1"];
+
+							var $tag = "";
+
+
+							if ($company_list_filter.List[$i]["msg16"] == "true") {
+								$tag += '<div class="col premium_border">';
+							} else {
+								$tag += '<div class="col normal_border">';
+							}
+
+
+							$tag += '<div class="ratio">';
+							$tag += '<div class="ratio_inner">';
+
+							$tag += '<div class="content">';
+
+
+							if ($company_list_filter.List[$i]["msg16"] == "true") {
+								$tag += '<div class="premium">';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/premium.png?ver=' + "171736" + '" alt="" />';
+								$tag += '</div>';
+							}
+
+
+							$tag += '<div class="marign_top"></div>';
+
+							$tag += '<div class="info">';
+
+							/* name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_filter.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* star */
+							$tag += '<div class="star review">';
+							$tag += '<span class="value">';
+
+							if ($company_list_filter.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+
+							/* review */
+							$tag += '<span class="value">리뷰</span>';
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg12"];
+							$tag += '</span>';
+							$tag += '<span class="value">개</span>';
+
+							$tag += '</div>';
+
+							/* option */
+							$tag += '<div class="option">';
+							if ($company_list_filter.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg15"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							/* pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_filter.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="';
+							$tag += $detail_href;
+							$tag += '"></a></div>';
+
+							$tag += '</div></div></div></div>';
+
+							$tag += '<div class="m_ratio">';
+							$tag += '<div class="m_ratio_inner">';
+							$tag += '<div class="content">';
+
+
+							if ($company_list_filter.List[$i]["msg16"] == "true") {
+								$tag += '<div class="premium">';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/premium.png?ver=' + "171736" + '" alt="" />';
+								$tag += '</div>';
+							}
+
+
+							$tag += '<div class="info">';
+
+							/* m pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_filter.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += '</a></div>';
+
+							$tag += '<div class="margin"></div>';
+
+							/* m name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value m_font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_filter.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m star review */
+							$tag += '<div class="star review">';
+
+							$tag += '<span class="value">';
+
+
+							if ($company_list_filter.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+							$tag += '<span class="value">리뷰</span>';
+							$tag += $company_list_filter.List[$i]["msg12"];
+							$tag += '<span class="value">개</span>';
+
+
+							/* option */
+							$tag += '<div class="option">';
+							if ($company_list_filter.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg15"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							$tag += '</div></div></div></div></div>';
+
+							$('#company_list_row').append($tag);
+						}
+					}
+				});
+			}
+
+			//타이핑 검색 시
+			var company_typing_search = function ($search_keyword) {
+
+				var $preloader_tag = "<div class='preloader_box'><img src='" + "https://www.roomescape.co.kr/_template/assets" + "/img/preloading.gif?ver='" + "https://www.roomescape.co.kr/_template/assets" + " alt='' /></div>";
+
+				$("#company_list_row").html("");
+				$('#company_list_row').append($preloader_tag);
+
+				if ($('#company_list_more_btn').css('display') === 'none') {
+					$('#company_list_more_btn').show();
+				}
+
+				//ajax파일에서 검색종류(타이핑검색인지 필터검색인지) 분별하기 위한 값
+				var $search_type = "typing";
+
+				var $result = "";
+
+				$.ajax({
+					type: "POST",
+					url: "../bbs/ajax.search.company.list.v2.php",
+					data: {
+						"search_type": $search_type,
+						"search_keyword": $search_keyword,
+						"search_select_loc": JSON.stringify($search_select_loc)
+					},
+					dataType: "json",
+					cache: false,
+					success: function (data) {
+
+						$current_search_type = "typing";
+
+						$more_start_num = 0;
+						$more_end_num = 24;
+
+						$company_list_typing = JSON.parse(data);
+
+						$company_list_typing_length = 0;
+						$company_list_typing_length = $company_list_typing.List.length;
+
+						//검색하기 전에 $('#company_list_row') 요소 내부의 콘텐츠 지우기
+						$('#company_list_row').html("");
+
+						for (var $i = 0; $i < 24; $i++) {
+
+							var $detail_href = "/store/detail.php?cafe=" + $company_list_typing.List[$i]["msg1"];
+
+							var $tag = "";
+
+
+
+							$tag += '<div class="col normal_border">';
+
+
+							$tag += '<div class="ratio">';
+							$tag += '<div class="ratio_inner">';
+							$tag += '<div class="content">';
+							$tag += '<div class="marign_top"></div>';
+
+							$tag += '<div class="info">';
+
+							/* name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_typing.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* star */
+							$tag += '<div class="star review">';
+							$tag += '<span class="value">';
+
+							if ($company_list_typing.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+
+							/* review */
+							$tag += '<span class="value">리뷰</span>';
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg6"];
+							$tag += '</span>';
+							$tag += '<span class="value">개</span>';
+							$tag += '</div>';
+
+							/* option */
+							$tag += '<div class="option">';
+							if ($company_list_typing.List[$i]["msg12"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							/* pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_typing.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="';
+							$tag += $detail_href;
+							$tag += '"></a></div>';
+
+							$tag += '</div></div></div></div>';
+
+							$tag += '<div class="m_ratio">';
+							$tag += '<div class="m_ratio_inner">';
+							$tag += '<div class="content">';
+							$tag += '<div class="info">';
+
+							/* m pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_typing.List[$i]["msg1"];
+							$tag += '.jpg);"></div>';
+
+							$tag += '<div class="margin"></div>';
+
+							/* m name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value m_font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_typing.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m star review */
+							$tag += '<div class="star review">';
+
+							$tag += '<span class="value">';
+
+							if ($company_list_typing.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+							$tag += '<span class="value">리뷰</span>';
+							$tag += $company_list_typing.List[$i]["msg6"];
+							$tag += '<span class="value">개</span>';
+
+
+							/* m option */
+							$tag += '<div class="option">';
+							if ($company_list_typing.List[$i]["msg12"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							$tag += '</div></div></div></div></div>';
+
+
+							$('#company_list_row').append($tag);
+						}
+
+					}
+				});
+			}
+
+
+			/***** 타이핑 검색 *****/
+			$('#search_keyword_btn').click(function () {
+
+				var $search_keyword = $("#search_keyword").val();
+
+				//검색어 앞뒤 공백 제거
+				var $search_keyword = $search_keyword.trim();
+
+				company_typing_search($search_keyword);
+			});
+
+			$("#search_keyword").keydown(function (key) {
+				if (key.keyCode == 13) {
+					company_typing_search($(this).val());
+				}
+			});
+
+			var company_list_more = function () {
+
+				$more_start_num += 24;
+				$more_end_num += 24;
+
+				if ($current_search_type == 'filter') {
+					if ($more_start_num <= $company_list_filter_length) {
+						if ($more_end_num >= $company_list_filter_length) {
+							$more_end_num = $company_list_filter_length;
+						}
+
+						for (var $i = $more_start_num; $i < $more_end_num; $i++) {
+
+							var $detail_href = "/store/detail.php?cafe=" + $company_list_filter.List[$i]['msg1'];
+
+							var $tag = "";
+
+
+							if ($company_list_filter.List[$i]["msg16"] == "true") {
+								$tag += '<div class="col premium_border">';
+							} else {
+								$tag += '<div class="col normal_border">';
+							}
+
+
+
+							$tag += '<div class="ratio">';
+							$tag += '<div class="ratio_inner">';
+							$tag += '<div class="content">';
+
+
+							if ($company_list_filter.List[$i]["msg16"] == "true") {
+								$tag += '<div class="premium">';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/premium.png?ver=' + "171736" + '" alt="" />';
+								$tag += '</div>';
+							}
+
+
+							$tag += '<div class="marign_top"></div>';
+
+							$tag += '<div class="info">';
+
+							/* name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_filter.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* star */
+							$tag += '<div class="star review">';
+							$tag += '<span class="value">';
+
+							if ($company_list_filter.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+
+							/* review */
+							$tag += '<span class="value">리뷰</span>';
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg12"];
+							$tag += '</span>';
+							$tag += '<span class="value">개</span>';
+
+							$tag += '</div>';
+
+							/* option */
+							$tag += '<div class="option">';
+							if ($company_list_filter.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg15"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							/* pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_filter.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="';
+							$tag += $detail_href;
+							$tag += '"></a></div>';
+
+							$tag += '</div></div></div></div>';
+
+							$tag += '<div class="m_ratio">';
+							$tag += '<div class="m_ratio_inner">';
+							$tag += '<div class="content">';
+
+							if ($company_list_filter.List[$i]["msg16"] == "true") {
+								$tag += '<div class="premium">';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/premium.png?ver=' + "171736" + '" alt="" />';
+								$tag += '</div>';
+							}
+
+
+							$tag += '<div class="info">';
+
+							/* m pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_filter.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="' + $detail_href + '"></a></div>';
+
+							$tag += '<div class="margin"></div>';
+
+							/* m name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value m_font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_filter.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m star review */
+							$tag += '<div class="star review">';
+
+							$tag += '<span class="value">';
+
+							if ($company_list_filter.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_filter.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_filter.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+							$tag += '<span class="value">리뷰</span>';
+							$tag += $company_list_filter.List[$i]["msg12"];
+							$tag += '<span class="value">개</span>';
+
+
+							/* m option */
+							$tag += '<div class="option">';
+							if ($company_list_filter.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_filter.List[$i]["msg15"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							$tag += '</div></div></div></div></div>';
+
+							$('#company_list_row').append($tag);
+
+						}
+
+					} else {
+
+						$("#company_list_more_btn").hide();
+
+					}
+
+
+				} else if ($current_search_type == 'typing') {
+
+					if ($more_start_num <= $company_list_typing_length) {
+
+						if ($more_end_num >= $company_list_typing_length) {
+							$more_end_num = $company_list_typing_length;
+						}
+
+						for (var $i = $more_start_num; $i < $more_end_num; $i++) {
+
+							var $detail_href = "/store/detail.php?cafe=" + $company_list_typing.List[$i]["msg1"];
+
+							var $tag = "";
+
+							$tag += '<div class="col normal_border">';
+
+							$tag += '<div class="ratio">';
+							$tag += '<div class="ratio_inner">';
+							$tag += '<div class="content">';
+							$tag += '<div class="marign_top"></div>';
+
+							$tag += '<div class="info">';
+
+							/* name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_typing.List[$i]["msg3"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg4"];
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* star */
+							$tag += '<div class="star review">';
+							$tag += '<span class="value">';
+
+							if ($company_list_typing.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+
+							/* review */
+							$tag += '<span class="value">리뷰</span>';
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg6"];
+							$tag += '</span>';
+							$tag += '<span class="value">개</span>';
+							$tag += '</div>';
+
+							/* option */
+							$tag += '<div class="option">';
+							if ($company_list_typing.List[$i]["msg12"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							/* pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_typing.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="';
+							$tag += $detail_href;
+							$tag += '"></a></div>';
+
+							$tag += '</div></div></div></div>';
+
+							$tag += '<div class="m_ratio">';
+							$tag += '<div class="m_ratio_inner">';
+							$tag += '<div class="content">';
+							$tag += '<div class="info">';
+
+							/* m pic */
+							$tag += '<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/company/'
+							$tag += $company_list_typing.List[$i]["msg1"];
+							$tag += '.jpg);"><a href="';
+							$tag += $detail_href;
+							$tag += '"></a></div>';
+
+							$tag += '<div class="margin"></div>';
+
+							/* m name */
+							$tag += '<div class="name">';
+							$tag += '<span class="value m_font_fit_div">';
+							$tag += '<a href="';
+							$tag += $detail_href;
+							$tag += '">';
+							$tag += $company_list_typing.List[$i]["msg3"];
+							$tag += '</a>'
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m desc */
+							$tag += '<div class="desc">';
+							$tag += '<span class="value">';
+							$tag += '<a href="#">';
+							$tag += $company_list_typing.List[$i]["msg4"];
+							$tag += '</a>';
+							$tag += '</span>';
+							$tag += '</div>';
+
+							/* m star review */
+							$tag += '<div class="star review">';
+
+							$tag += '<span class="value">';
+
+							if ($company_list_typing.List[$i]["rank"] == '0.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '0.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/0.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '1.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/1.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '2.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/2.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '3.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/3.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '4.5') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/4.5star.png?ver=' + "171736" + '" alt="" />';
+							} else if ($company_list_typing.List[$i]["rank"] == '5.0') {
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/5star.png?ver=' + "171736" + '" alt="" />';
+							}
+
+							$tag += '</span>';
+
+							$tag += '<span class="value">';
+							$tag += $company_list_typing.List[$i]["msg5"];
+							$tag += '</span>';
+
+							$tag += '<span class="pipe">|</span>';
+							$tag += '<span class="value">리뷰</span>';
+							$tag += $company_list_typing.List[$i]["msg6"];
+							$tag += '<span class="value">개</span>';
+
+
+							/* m option */
+							$tag += '<div class="option">';
+							if ($company_list_typing.List[$i]["msg12"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_1p.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg13"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_forgien.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							if ($company_list_typing.List[$i]["msg14"] == "true") {
+								$tag += '<span>';
+								$tag += '<img src="https://www.roomescape.co.kr/_template/assets/img/store/result/allow_allRoom.jpg?ver=' + "171736" + '" alt="" />';
+								$tag += '</span>';
+							}
+							$tag += '</div>';
+
+
+							$tag += '</div></div></div></div></div>';
+
+							$('#company_list_row').append($tag);
+						}
+
+					} else {
+
+						$("#company_list_more_btn").hide();
+
+					}
+
+				}
+			}
+
+			//처음 접속 시
+			company_filter_search();
+
+			$("#company_list_more_btn").click(function () {
+				company_list_more();
+			});
+		});
+	</script>
+
+	<script>
+		var filter = "win16|win32|win64|mac|macintel";
+		if (navigator.platform) {
+			if (filter.indexOf(navigator.platform.toLowerCase()) >= 0) {
+				$('.loc_value').hover(function () {
+					$(this).addClass("hover");
+				}, function () {
+					$(this).removeClass("hover");
+				});
+			}
+		}
+	</script>
 
 	<style>
 		.store.main .container .container_inner.section.section_result .row .col.normal_border {
