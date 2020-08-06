@@ -35,19 +35,6 @@ public class IndexController {
 		return "index";
 	}
 
-	@GetMapping("/theme")
-	public String theme() {
-		return "theme";
-	}
-
-	
-	
-	@GetMapping("/themeDetail")
-	public String themeDetail() {
-		return "themeDetail";
-
-	}
-	
 
 
 	@GetMapping("/book")
@@ -55,11 +42,6 @@ public class IndexController {
 		return "book";
 	}
 
-	@GetMapping("/storeDetail")
-	public String storeDetail() {
-		return "storeDetail";
-
-	}
 
 	@GetMapping("/map")
 	public String map() {
@@ -104,10 +86,6 @@ public class IndexController {
 		return "board";
 	}
 
-	@GetMapping("/store")
-	public String store() {
-		return "store";
-	}
 
 	@PostMapping("/joinProc")
 	public String joinProc(User user) {
