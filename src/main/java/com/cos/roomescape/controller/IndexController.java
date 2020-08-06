@@ -40,6 +40,16 @@ public class IndexController {
 		return "theme";
 	}
 
+	
+	
+	@GetMapping("/themeDetail")
+	public String themeDetail() {
+		return "themeDetail";
+
+	}
+	
+
+
 	@GetMapping("/book")
 	public String book() {
 		return "book";
