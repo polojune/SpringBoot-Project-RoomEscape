@@ -756,8 +756,8 @@
 												class="pipe">|</span><span class="value">리뷰</span><span
 												class="value">50</span><span class="value">개</span></div>
 										
-										<div class="pic"
-											style="background-image:url(http://www.yologuys.com/Escape_img/company/321.jpg);">
+										<div class="pic">
+										     <img src="/main/resources/static/images/store"/>${store.storeImg} />
 											<a href="/store/${store.id }"></a></div>
 									</div>
 								</div>
