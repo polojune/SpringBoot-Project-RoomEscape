@@ -19,6 +19,7 @@ public class Store {
       private String homepage;
       private Double mapLong;
       private Double mapLat;
+      private String storeImg;
       private Timestamp createDate;
       
 }

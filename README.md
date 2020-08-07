@@ -35,6 +35,7 @@ CREATE TABLE store(
     name varchar(50) not null , 
     info varchar(100), 
     homepage varchar(100),
+    storeImg varchar(200),
     mapLong double,
     mapLat double,
     createDate timestamp
@@ -55,10 +56,22 @@ CREATE TABLE theme(
     level int,
     rating int,
     storeId int,
+    themeImg varchar(200),
     timeLimit varchar(50),   
     createDate timestamp,
  foreign key (storeId) references store (id) on delete set null   
 ) engine=InnoDB default charset=utf8;
+
+
+```
+
+```sql
+
+insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('포인트나인','포인트나인','서울강남구역삼동','www.aa.co.kr',0.0,0.0,now());
+insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('더큐 이스케이프','더큐 이스케이프','대전 서구','www.b.co.kr',0.1,0.2,now());
+insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('코드네임블랙','코드네임블랙','부산 남포동','www.c.co.kr',0.3,0.3,now());
+insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('솔버','솔버','서울광진구','www.d.co.kr',0.4,0.4,now());
+insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('시그널헌터','시그널헌터','경기 화성시','www.e.co.kr',0.5,0.5,now());
 
 
 ```

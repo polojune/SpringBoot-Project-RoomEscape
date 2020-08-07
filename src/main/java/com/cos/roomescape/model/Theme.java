@@ -20,5 +20,6 @@ public class Theme {
       private String timeLimit;
       private int rating;
       private int storeId;
+      private String themeImg;
       private Timestamp createDate;
 }
