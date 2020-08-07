@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib  prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html lang="ko">
 
@@ -757,7 +758,7 @@
 												class="value">50</span><span class="value">개</span></div>
 										
 										<div class="pic">
-										     <img src="/main/resources/static${store.storeImg}"/>
+										     <img src="/resources/static/images${store.storeImg}"/>
 											<a href="/store/${store.id }"></a></div>
 									</div>
 								</div>
