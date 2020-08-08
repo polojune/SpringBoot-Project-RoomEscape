@@ -10,13 +10,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.roomescape.config.auth.PrincipalDetails;
 import com.cos.roomescape.model.User;
 import com.cos.roomescape.repository.UserRepository;
 
-@Controller
+@RestController
+@RequestMapping("api/v1")
 public class IndexController {
 
 	@Autowired
@@ -42,11 +46,18 @@ public class IndexController {
 		return "book";
 	}
 
-
 	@GetMapping("/map")
 	public String map() {
 		return "map";
 	}
+	
+	
+	    //매니저 접근가능 
+		@GetMapping("manager/reports")
+		public String reports() {
+			return "<h1>reports</h1>";
+		}
+	
 
 //	@GetMapping("/user")
 //	public @ResponseBody String user() {
@@ -86,16 +97,24 @@ public class IndexController {
 		return "board";
 	}
 
-
-	@PostMapping("/joinProc")
-	public String joinProc(User user) {
-		System.out.println("회원가입 진행 : " + user);
-		String rawPassword = user.getPassword();
-		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-		user.setPassword(encPassword);
+//
+//	@PostMapping("/joinProc")
+//	public String joinProc(User user) {
+//		System.out.println("회원가입 진행 : " + user);
+//		String rawPassword = user.getPassword();
+//		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+//		user.setPassword(encPassword);
+//		user.setRole("ROLE_USER");
+//		userRepository.save(user);
+//		return "redirect:/";
+//
+//	}
+	@PostMapping("join")
+	public String join(@RequestBody User user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setRole("ROLE_USER");
 		userRepository.save(user);
-		return "redirect:/";
-
+		return "회원가입완료";
 	}
+	
 }

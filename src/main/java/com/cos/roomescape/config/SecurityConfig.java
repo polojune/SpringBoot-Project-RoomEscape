@@ -7,8 +7,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.cos.roomescape.config.jwt.JwtAuthenticationFilter;
 import com.cos.roomescape.config.oauth.PrincipalOauth2UserService;
 
 
@@ -28,13 +30,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	 @Override
     protected void configure(HttpSecurity http) throws Exception {
           
-    	  http.csrf().disable(); //form 태그 시 post 요청시 csrf 토큰을 만들어야 서버에서 허가를 해준다.
+    	  http.csrf().disable() //form 태그 시 post 요청시 csrf 토큰을 만들어야 서버에서 허가를 해준다.
+    	  .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     	  http.authorizeRequests()
 	          .antMatchers("/user/**").authenticated()
-	          .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+	          .antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER')or('ROLE_ADMIN') or('ROLE_USER')")
+	          .antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')")
 	          .anyRequest().permitAll()
 	          
           .and()
+              .addFilter(new JwtAuthenticationFilter(authenticationManager()))
           	  .formLogin()
           	  .loginPage("/login")
           	  .loginProcessingUrl("/loginProc")

@@ -14,13 +14,15 @@ spring:
     username: roomescape
     password: room1234
 
+
        
 
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp   
-    
+      
+  
 
   security:
     oauth2:

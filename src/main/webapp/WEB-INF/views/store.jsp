@@ -758,7 +758,8 @@
 												class="value">50</span><span class="value">개</span></div>
 										
 										<div class="pic">
-										     <img src="/resources/static/images${store.storeImg}"/>
+										      <!--<img src="@{'/images/' + ${store.storeImg}}"/>-->
+										     <img src="<spring:url value='images/${store.storeImg}'/>"/>
 											<a href="/store/${store.id }"></a></div>
 									</div>
 								</div>
