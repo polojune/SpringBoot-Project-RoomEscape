@@ -19,7 +19,7 @@ import com.cos.roomescape.config.auth.PrincipalDetails;
 import com.cos.roomescape.model.User;
 import com.cos.roomescape.repository.UserRepository;
 
-@RestController
+@Controller
 @RequestMapping("api/v1")
 public class IndexController {
 

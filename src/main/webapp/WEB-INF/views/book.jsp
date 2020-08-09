@@ -100,7 +100,7 @@
 				<div class="calender">
 					<div id="v-cal">
 						<div class="vcal-header">
-							<button class="vcal-btn" data-calendar-toggle="previous">
+							<button class="vcal-btn" data-calendar-toggle="previous"><!-- 아래 svg는 각각 <-, -> 화살표임 -->
 								<svg height="24" version="1.1" viewbox="0 0 24 24" width="24"
 									xmlns="http://www.w3.org/2000/svg">
 									<path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
@@ -133,6 +133,7 @@
 						<div class="vcal-body" data-calendar-area="month"></div>
 					</div>
 
+					<!-- 달력 컨트롤에서 날짜를 선택하면 선택한 값이 아래 태그 안에 들어간다 -->
 					<p class="demo-picked"><span data-calendar-label="picked"></span>
 					</p>
 				</div>
@@ -345,19 +346,25 @@
 			//시간 기본 선택
 			if (getParameterByName('type') == "select") {
 				setTimeout(function () {
+					// children() 결과가 여러 개인데 html()이 붙으면 맨 앞 것 즉 오늘자 날짜의 숫자만 반환되는 듯!
 					$date = $(".vcal-date[data-calendar-status='active']").children().html();
+					console.log("$(window).on('load'): date: ", $date);
+					console.log("$(window).on('load'): active: ", $(".vcal-date[data-calendar-status='active']").children().html());
+					// .data() 앞까지 코드가 여러개 객체 반환하지만 그 첫번째에만 .data(...)가 적용된다고. js코드의 createDay에서
+					// 각 div마다 data-calendar-date에 this.date값을 저장해 놓음
 					$datetime_string = $(".vcal-date[data-calendar-status='active']").data("calendar-date");
+					console.log("$(window).on('load'): datetime_string: ", $datetime_string);
 				}, 500);
 
-				//지역 기본 선택
+				//지역 기본 선택. $('.loc[data-loc="전국"]').children()까지 하면 span 태그 하나가 유일한 걸로 좁혀짐
 				$('.loc[data-loc="전국"]').children().addClass('active');
 				$loc = "all";
 			} else if (getParameterByName('type') == "store_direct") {
 				setTimeout(function () {
-					$date = $(".vcal-date[data-calendar-status='active']").children().html();
+					$date = $(".vcal-date[data-calendar-status='active']").children().html();	// 맨 앞의 오늘자 날짜 숫자 반환
 					$datetime_string = $(".vcal-date[data-calendar-status='active']").data("calendar-date");
 					$loc = "";
-					$store_id = "";
+					$store_id = "";	// store_id를 안 가져오는 이유는?
 				}, 500);
 			} else if (getParameterByName('type') == "theme_direct") {
 				setTimeout(function () {
@@ -375,6 +382,9 @@
 
 	<script>
 		function search_allow_time($theme_id, $datetime_string) {
+			// 백틱이 안되는 건지..
+			console.log(`search_allow_time: theme_id: ${$theme_id} datetime_string: ${$datetime_string}`);
+			console.log("search_allow_time:datetime_string:", $datetime_string);
 			$.ajax({
 				type: "POST",
 				url: "../bbs/book.filter.php",
@@ -405,7 +415,9 @@
 			$("#book_btn").hide();
 
 			$loc = $(this).data("loc");
-
+			console.log('$(".loc").click: this:', this);
+			console.log('$(".loc").click: $(this).data("loc"): ', $(this).data("loc"));
+			
 			$(".loc").children().removeClass("active");
 			$(this).children().addClass("active");
 
