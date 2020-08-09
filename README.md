@@ -66,6 +66,16 @@ CREATE TABLE theme(
 ```
 
 ```sql
+CREATE TABLE schedule (
+	id int auto_increment primary key,
+    themeId int,
+    startTime timestamp,
+    available boolean,
+ foreign key (themeId) references theme (id) on delete set null 
+) engine=InnoDB default charset=utf8;
+```
+
+```sql
 
 insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('포인트나인','포인트나인','서울강남구역삼동','www.aa.co.kr',0.0,0.0,now());
 insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('더큐 이스케이프','더큐 이스케이프','대전 서구','www.b.co.kr',0.1,0.2,now());
@@ -74,4 +84,14 @@ insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('�
 insert into store(intro,name,info,homepage,mapLong,mapLat,createDate) values('시그널헌터','시그널헌터','경기 화성시','www.e.co.kr',0.5,0.5,now());
 
 
+```
+
+```sql
+insert into theme(intro,name,genre,level,rating,storeId,createDate) values('비밀의 숲','비밀의 숲','미스테리','5','8','2',now());
+
+insert into schedule(themeId,startTime,available) values('1', '2020-08-15 15:00:00', true);
+insert into schedule(themeId,startTime,available) values('1', '2020-08-15 16:00:00', true);
+insert into schedule(themeId,startTime,available) values('1', '2020-08-15 17:00:00', true);
+insert into schedule(themeId,startTime,available) values('1', '2020-08-15 18:00:00', true);
+insert into schedule(themeId,startTime,available) values('1', '2020-08-15 19:00:00', true);
 ```
