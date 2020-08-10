@@ -33,7 +33,8 @@ CREATE TABLE store(
 	id int auto_increment primary key,
     intro varchar(50) not null,
     name varchar(50) not null , 
-    info varchar(100), 
+    info varchar(100),
+    rating int,
     homepage varchar(100),
     storeImg varchar(200),
     location varchar(20),
@@ -78,11 +79,11 @@ CREATE TABLE schedule (
 
 ```sql
 
-insert into store(intro,name,info,homepage,storeImg,location,mapLong,mapLat,createDate) values('포인트나인','포인트나인','서울강남구역삼동','www.aa.co.kr','images/store/1.png','강남',0.0,0.0,now());
-insert into store(intro,name,info,homepage,storeImg,location,mapLong,mapLat,createDate) values('더큐 이스케이프','더큐 이스케이프','대전 서구','www.b.co.kr','images/store/3.png','대전',0.1,0.2,now());
-insert into store(intro,name,info,homepage,storeImg,location,mapLong,mapLat,createDate) values('코드네임블랙','코드네임블랙','부산 남포동','www.c.co.kr','images/store/4.png','부산',0.3,0.3,now());
-insert into store(intro,name,info,homepage,storeImg,location,mapLong,mapLat,createDate) values('솔버','솔버','서울광진구','www.d.co.kr','images/store/5.png','서울',0.4,0.4,now());
-insert into store(intro,name,info,homepage,storeImg,location,mapLong,mapLat,createDate) values('시그널헌터','시그널헌터','경기 화성시','www.e.co.kr','images/store/6.png','서울',0.5,0.5,now());
+insert into store(intro,name,info,rating,homepage,mapLong,mapLat,createDate) values('포인트나인','포인트나인','서울강남구역삼동',8,'www.aa.co.kr',0.0,0.0,now());
+insert into store(intro,name,info,rating,homepage,mapLong,mapLat,createDate) values('더큐 이스케이프','더큐 이스케이프','대전 서구',6,'www.b.co.kr',0.1,0.2,now());
+insert into store(intro,name,info,rating,homepage,mapLong,mapLat,createDate) values('코드네임블랙','코드네임블랙','부산 남포동',9,'www.c.co.kr',0.3,0.3,now());
+insert into store(intro,name,info,rating,homepage,mapLong,mapLat,createDate) values('솔버','솔버','서울광진구',7,'www.d.co.kr',0.4,0.4,now());
+insert into store(intro,name,info,rating,homepage,mapLong,mapLat,createDate) values('시그널헌터','시그널헌터','경기 화성시',9,'www.e.co.kr',0.5,0.5,now());
 
 
 ```
