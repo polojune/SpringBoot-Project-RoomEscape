@@ -18,7 +18,7 @@ public class StoreService {
 	private StoreRepository storeRepository; // DI
 
 	@Transactional(readOnly = true)
-	public List<Store> 목록보기() {
+	public List<Store> 가게보기() {
         
 	  return storeRepository.findAll();
 

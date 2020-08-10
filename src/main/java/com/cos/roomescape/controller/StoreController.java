@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.tomcat.jni.FileInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +15,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cos.roomescape.model.Store;
+import com.cos.roomescape.repository.StoreRepository;
+import com.cos.roomescape.service.StoreService;
 
 @Controller
 public class StoreController {
-    
-//       @GetMapping("/store") 
-//	   public String getStores(Model )
+       
+	   @Autowired 
+	   private StoreService storeService;
+	   @Autowired 
+	   private StoreRepository storeRepository;
+	
+       @GetMapping("/store") 
+	   public String getStores(Model model) {
+    	    model.addAttribute("stores",storeService.가게보기());
+    	    return "/store";
+       }
 	
 
 	
