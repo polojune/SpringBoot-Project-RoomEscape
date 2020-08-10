@@ -16,6 +16,7 @@ public class Store {
       private String intro;
       private String name;
       private String info; 
+      private int  rating;
       private String homepage;
       private String location;
       private Double mapLong;

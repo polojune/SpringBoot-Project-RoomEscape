@@ -751,15 +751,16 @@
 										<div class="name"><span class="value font_fit_div"><a
 													href="/store/${store.id }">${store.name }</a></span></div>
 										<div class="desc"><span class="value">${store.intro }</span></div>
-										<div class="star review"><span class="value"><img
-													src="/images/star/3star.png"
-													alt=""></span><span class="value">4.0</span><span
+										<div class="star review"><span class="value">
+										<img src="/images/star/${store.rating/2}star.png"
+													
+													alt=""></span><span class="value">${store.rating/2}</span><span
 												class="pipe">|</span><span class="value">리뷰</span><span
 												class="value">50</span><span class="value">개</span></div>
 										
 										<div class="pic">
 										      <!--<img src="@{'/images/' + ${store.storeImg}}"/>-->
-										     <img src='${store.storeImg}'/>
+										     <img src="${store.storeImg}"/>
 											<a href="/store/${store.id }"></a></div>
 									</div>
 								</div>
