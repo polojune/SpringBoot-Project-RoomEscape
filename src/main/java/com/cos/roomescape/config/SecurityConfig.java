@@ -17,7 +17,7 @@ import com.cos.roomescape.repository.UserRepository;
 
 
 @Configuration //IoC 빈(bean)을 등록
-@EnableWebSecurity //필터 체인 관리 시작 어노테이션
+@EnableWebSecurity // 시큐리티 활성화 -> 기본 스프링 필터체인에 등록
 @EnableGlobalMethodSecurity(prePostEnabled = true) //특정 주소 접근시 권한 및 인증을 미리 체크 
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
@@ -39,8 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	  .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     	  http.authorizeRequests()
     	      //.antMatchers("/user/**").authenticated()
-    	      .antMatchers("/api/v1/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-	          .antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER')or('ROLE_ADMIN') or('ROLE_USER')")
+    	      .antMatchers("/api/v1/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")	          
+	       	  .antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	          .antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')")
 	          .anyRequest().permitAll()
 	          
