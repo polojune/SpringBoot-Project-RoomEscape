@@ -56,15 +56,17 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		//Tip:인증 provider의 디폴트 서비스는 UserDetailsService타입 
 		//Tip:인증 provider의 디폴트 암호화 방식은 BCryPasswordEncoder
 		//결론은 인증 provider에게 알려줄 필요가 없다.
-		System.out.println("aa");
-		System.out.println(authenticationToken.getCredentials());
+		
+        //System.out.println("aa");
 		Authentication authentication = authenticationManager.authenticate(authenticationToken);
-		System.out.println("bb");
+		
          System.out.println("Authentication :" + authentication.getCredentials());
 		PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();
-		System.out.println("Authentication: "+ principalDetails.getUsername());
+		//System.out.println("Authentication: "+ principalDetails.getUsername());
 		System.out.println("Authentication: "+ principalDetails.getUser());
-		System.out.println("Authentication: "+ principalDetails.getAuthorities());
+		System.out.println("Authentication : "+principalDetails.getUser().getUsername());
+		System.out.println("Authentication :" +principalDetails.getUser().getRole());
+		//System.out.println("Authentication: "+ principalDetails.getAuthorities());
 		return authentication;
 
 	}
@@ -78,12 +80,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		
 		String jwtToken = JWT.create()
 				.withSubject(principalDetails.getUsername())
-				.withExpiresAt(new Date(System.currentTimeMillis()+864000000))
+				.withExpiresAt(new Date(System.currentTimeMillis()+JwtProperties.EXPIRATION_TIME))
 				.withClaim("id", principalDetails.getUser().getId())
 				.withClaim("username", principalDetails.getUser().getUsername())
-				.sign(Algorithm.HMAC512("홍길동".getBytes()));
+				.sign(Algorithm.HMAC512(JwtProperties.SECRET));
 		
-		response.addHeader("Authorization", "Bearer "+ jwtToken);
+		response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+ jwtToken);
 	
 	}
 

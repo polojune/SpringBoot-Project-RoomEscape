@@ -3,7 +3,7 @@ package com.cos.roomescape.controller;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cos.roomescape.config.auth.PrincipalDetails;
 import com.cos.roomescape.model.User;
 import com.cos.roomescape.repository.UserRepository;
-
-@Controller
+@RestController
+//@Controller
 @RequestMapping("api/v1")
 public class IndexController {
 
@@ -29,6 +29,18 @@ public class IndexController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+	@GetMapping("user")
+	public String user(Authentication authentication) {
+	    PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+		System.out.println("principal:" + principal.getUser().getId());
+		System.out.println("principal:" + principal.getUser().getUsername());
+		System.out.println("principal:" + principal.getUser().getPassword());
+		System.out.println("principal:" + principal.getUser().getRole());
+		
+		return "<h1>user</h1>";
+	}
+	 
+	
 	@GetMapping({ "", "/" })
 	public @ResponseBody String home() {
 		return "인덱스 페이지";
@@ -63,19 +75,19 @@ public class IndexController {
 //	public @ResponseBody String user() {
 //		return "유저 페이지";
 //	}
-	@GetMapping("/user")
-	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principal) {
-		System.out.println("Principal : " + principal);
-		System.out.println("OAuth2 : " + principal.getUser().getProvider());
-		// iterator 순차 출력 해보기
-		Iterator<? extends GrantedAuthority> iter = principal.getAuthorities().iterator();
-		while (iter.hasNext()) {
-			GrantedAuthority auth = iter.next();
-			System.out.println(auth.getAuthority());
-		}
-
-		return "유저 페이지입니다.";
-	}
+//	@GetMapping("/user")
+//	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principal) {
+//		System.out.println("Principal : " + principal);
+//		System.out.println("OAuth2 : " + principal.getUser().getProvider());
+//		// iterator 순차 출력 해보기
+//		Iterator<? extends GrantedAuthority> iter = principal.getAuthorities().iterator();
+//		while (iter.hasNext()) {
+//			GrantedAuthority auth = iter.next();
+//			System.out.println(auth.getAuthority());
+//		}
+//
+//		return "유저 페이지입니다.";
+//	}
 
 	@GetMapping("/admin")
 	public @ResponseBody String admin() {

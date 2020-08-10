@@ -32,7 +32,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 	
 	//일반 시큐리티 로그인시 사용
 	public PrincipalDetails(User user) {
-		super();
+		//super();
 		this.user = user;
 	}
 	 //OAuth2.0 로그인시 사용
