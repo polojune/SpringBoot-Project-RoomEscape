@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cos.roomescape.config.auth.PrincipalDetails;
 import com.cos.roomescape.model.User;
 import com.cos.roomescape.repository.UserRepository;
-@RestController
-//@Controller
-@RequestMapping("api/v1")
+//@RestController
+@Controller
+//@RequestMapping("api/v1")
 public class IndexController {
 
 	@Autowired

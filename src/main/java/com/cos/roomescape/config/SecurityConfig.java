@@ -45,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	          .anyRequest().permitAll()
 	          
           .and()
-              .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-              .addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
+              //.addFilter(new JwtAuthenticationFilter(authenticationManager()))
+              //.addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
           	  .formLogin()
           	  .loginPage("/login")
           	  .loginProcessingUrl("/loginProc")

@@ -18,27 +18,31 @@ import com.cos.roomescape.model.Store;
 @Controller
 public class StoreController {
     
-     //@PostMapping("/store")
-	  @GetMapping("/store")
-	public String store(Model model) {
-		Store store1 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
-		Store store2 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
-		Store store3 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
-		Store store4 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
-		Store store5 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").build();
-		
-		List<Store> stores = new ArrayList<>();
-		stores.add(store1);
-		stores.add(store2);
-		stores.add(store3);
-		stores.add(store4);
-		stores.add(store5);
-		
-		model.addAttribute("stores", stores);
+//       @GetMapping("/store") 
+//	   public String getStores(Model )
+	
 
-		
-		return "store";
-	}
+	
+	//  @GetMapping("/store")
+//	public String store(Model model) {
+//		Store store1 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").storeImg("images/1.png").build();
+//		Store store2 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").storeImg("images/3.png").build();
+//		Store store3 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").storeImg("images/4.png").build();
+//		Store store4 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").storeImg("images/5.png").build();
+//		Store store5 = Store.builder().name("시그널 헌터").info("시그널 헌터 홈대점").intro("시그널 헌터 홍대점").storeImg("images/6.png").build();
+//		
+//		List<Store> stores = new ArrayList<>();
+//		stores.add(store1);
+//		stores.add(store2);
+//		stores.add(store3);
+//		stores.add(store4);
+//		stores.add(store5);
+//		
+//		model.addAttribute("stores", stores);
+//
+//		
+//		return "store";
+//	}
 	  
 	@GetMapping("/storeDetail")
 	public String storeDetail() {
