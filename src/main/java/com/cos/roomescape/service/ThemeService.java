@@ -21,7 +21,7 @@ public class ThemeService {
 	private ThemeRepository themeRepository; // DI
 
 	@Transactional(readOnly = true)
-	public List<Theme> 목록보기() {
+	public List<Theme> 테마보기() {
         
 	  return themeRepository.findAll();
 	  
