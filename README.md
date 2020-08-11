@@ -87,6 +87,15 @@ insert into store(intro,name,info,rating,homepage,storeImg,mapLong,mapLat,create
 
 
 ```
+```sql
+insert into theme(name,intro,genre,level,timeLimit,rating,storeId,themeImg,createDate) values('올드보이','올드보이','범죄',4,'60분',7,1,'/images/theme/1.png',now());
+insert into theme(name,intro,genre,level,timeLimit,rating,storeId,themeImg,createDate) values('의뢰인','의뢰인','추리',3,'70분',6,2,'/images/theme/2.png',now());
+insert into theme(name,intro,genre,level,timeLimit,rating,storeId,themeImg,createDate) values('잔혹동화','잔혹동화','범죄',4,'60분',7,3,'/images/theme/3.png',now());
+insert into theme(name,intro,genre,level,timeLimit,rating,storeId,themeImg,createDate) values('터널','터널','추리',5,'80분',7,4,'/images/theme/4.png',now());
+insert into theme(name,intro,genre,level,timeLimit,rating,storeId,themeImg,createDate) values('파커4','파커4','스릴러',4,'70분',8,5,'/images/theme/5.png',now());
+
+```
+
 
 ```sql
 insert into theme(intro,name,genre,level,rating,storeId,createDate) values('비밀의 숲','비밀의 숲','미스테리','5','8','2',now());

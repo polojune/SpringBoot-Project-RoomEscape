@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cos.roomescape.repository.ThemeRepository;
 import com.cos.roomescape.service.ThemeService;
 
 @Controller
@@ -13,18 +14,21 @@ import com.cos.roomescape.service.ThemeService;
 public class ThemeController {
     
 	@Autowired
+	private ThemeRepository themeRepository;
+	
+	@Autowired
 	private ThemeService themeService;
 	
-	@GetMapping("/theme")
-	public String theme() {
-		return "theme";
-	}
-   
+//	@GetMapping("/theme")
+//	public String theme() {
+//		return "theme";
+//	}
+//   
 
-	@GetMapping("/themes")
+	@GetMapping("/theme")
 	public String getThemes(Model model) {
-		model.addAttribute("themes",themeService.목록보기());
-		return "theme";
+		model.addAttribute("themes",themeService.테마보기());
+		return "/theme";
 	}
 	
 	

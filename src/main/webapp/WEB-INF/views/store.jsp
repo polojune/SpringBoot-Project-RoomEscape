@@ -760,8 +760,8 @@
 										
 										<div class="pic">
 										      <!--<img src="@{'/images/' + ${store.storeImg}}"/>-->
-										     <img src="${store.storeImg}"/>
-											<a href="/store/${store.id }"></a></div>
+										     
+											<a href="/store/${store.id }"><img src="${store.storeImg}"/></a></div>
 									</div>
 								</div>
 							</div>
