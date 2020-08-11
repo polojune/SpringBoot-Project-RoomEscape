@@ -1190,14 +1190,71 @@
 						</div>
 					</div>
 				</div>
-
+   
 				<div class="fixing_wid fixing_wid_960">
 					<div class="search_btn_box">
 						<button type="button" id="search_btn">검색</button>
 					</div>
 				</div>
 			</div>
+             
+             <div class="clearfix"></div>
 
+		<div class="container_inner section section_result">
+			<div class="fixing_wid fixing_wid_960">
+				<div id="theme_list_row" class="row">
+				
+				<c:forEach var="theme" items="${themes}">
+				
+					<div class="col">
+							    <div class="content">
+							 
+							        <div class="pic_box">
+							            <a href="">
+							                <img src="${theme.themeImg}" width="230" height="280" />
+							            </a>
+							        </div>
+							        <div class="info_box">
+							            
+							            <div class="theme_name">
+							                <p><span><a href="">${theme.name}</a></span></p>
+							            </div>
+							            <div class="more_info">
+							                <div class="rank">
+							                    <div class="theme_rank">
+							                        <p><span class="tag">평점</span>
+							                        <span class="value_img"><img src="/images/star/${theme.rating/2}star.png"
+													 alt=""></span>
+							                        <span class="value_text">${theme.rating/2}</span></p>
+							                    </div>
+							                    <div class="clearfix"></div>
+							                </div>
+							                <div class="clearfix"></div>
+							                <div class="difficulty">
+							                    <div class="theme_difficulty">
+							                        <p><span class="tag">난이도</span>
+							                        <span class="value"><img src="/images/difficulty/${theme.level}difficulty.png" alt=""></span></p>
+							                    </div>
+							                    <div class="clearfix"></div>
+							                </div>
+							                <div class="clearfix"></div>
+							            
+							            </div>
+							
+							            
+							        </div>
+							    </div>
+							</div>
+					</c:forEach>
+
+                  </div>
+                  </div>
+				</div>
+             
+             
+             
+             
+             
 			<div class="container_inner section section_result">
 				<div class="fixing_wid fixing_wid_960">
 					<div id="theme_list_row" class="row"></div>
@@ -1215,6 +1272,7 @@
 
 
 <%@ include file="include/footer.jsp"%>
+
 
 
 
