@@ -8,11 +8,10 @@
     VALUES(#{username},#{password},#{email},#{role},now(),#{provider},#{providerId})
   </insert>-->
   
-<!--    <select id="login" resultType="com.cos.roomescape.model.User"> 
-     SELECT id,username,email,role,createDate,provider,providerId FROM user WHERE username=#{username} 
-      AND password = #{password} 
+  <select id="findById" resultType="com.cos.roomescape.dto.StoreDetailRespDto"> 
+     select 
   
-  </select>-->
+  </select>
  
   <select id="findAll" resultType="com.cos.roomescape.model.Store">
       SELECT * FROM store ORDER BY id DESC

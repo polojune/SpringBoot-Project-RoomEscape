@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.roomescape.dto.StoreDetailRespDto;
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.repository.StoreRepository;
 
@@ -21,8 +22,13 @@ public class StoreService {
 	public List<Store> 가게보기() {
         
 	  return storeRepository.findAll();
+	  
 
 	}
+	@Transactional(readOnly = true)
+	public StoreDetailRespDto 상세보기(int id) {
+		return storeRepository.findById(id);
+	}
 	
-
+	
 }

@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.service.StoreService;
 
-@Controller
+@RestController
 public class StoreController {
        
 	   @Autowired 
@@ -27,9 +28,12 @@ public class StoreController {
 	   private StoreRepository storeRepository;
 	
        @GetMapping("/store") 
-	   public String getStores(Model model) {
-    	    model.addAttribute("stores",storeService.가게보기());
-    	    return "/store";
+	   public List<Store> getStores(Model model) {
+    	    List<Store> stores = storeService.가게보기();
+    	    model.addAttribute("stores", stores);
+    	    
+    	    return stores;
+    	    // return "store";
        }
 	
 
@@ -55,9 +59,10 @@ public class StoreController {
 //		return "store";
 //	}
 	  
-	@GetMapping("/storeDetail")
-	public String storeDetail() {
-		return "storeDetail";
+	@GetMapping("/store/{id}")
+	public String storeDetail(@PathVariable int id, Model model) {
+		model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
+		return "store/Detail";
 
 	}
 
