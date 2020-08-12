@@ -54,12 +54,12 @@
 				setTimeout(function () {
 					// children() 결과가 여러 개인데 html()이 붙으면 맨 앞 것 즉 오늘자 날짜의 숫자만 반환되는 듯!
 					$date = $(".vcal-date[data-calendar-status='active']").children().html();
-					console.log("$(window).on('load'): date: ", $date);
-					console.log("$(window).on('load'): active: ", $(".vcal-date[data-calendar-status='active']").children().html());
+					// console.log("$(window).on('load'): date: ", $date);
+					// console.log("$(window).on('load'): active: ", $(".vcal-date[data-calendar-status='active']").children().html());
 					// .data() 앞까지 코드가 여러개 객체 반환하지만 그 첫번째에만 .data(...)가 적용된다고. js코드의 createDay에서
 					// 각 div마다 data-calendar-date에 this.date값을 저장해 놓음
 					$datetime_string = $(".vcal-date[data-calendar-status='active']").data("calendar-date");
-					console.log("$(window).on('load'): datetime_string: ", $datetime_string);
+					// console.log("$(window).on('load'): datetime_string: ", $datetime_string);
 					
 					$("span[data-calendar-label='picked']").text($datetime_string);
 				}, 500);

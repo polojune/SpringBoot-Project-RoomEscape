@@ -75,6 +75,22 @@ CREATE TABLE schedule (
     available boolean,
  foreign key (themeId) references theme (id) on delete set null 
 ) engine=InnoDB default charset=utf8;
+
+
+
+CREATE TABLE review(
+	id int auto_increment primary key,
+    userId int not null,
+    storeId int,
+    themeId int,
+    content varchar(500),
+    rating int,
+    createDate timestamp,
+    foreign key (storeId) references store (id) on delete set null,
+    foreign key (themeId) references theme (id) on delete set null 
+) engine=InnoDB default charset=utf8;
+
+
 ```
 
 ```sql
@@ -105,4 +121,8 @@ insert into schedule(themeId,startTime,available) values('1', '2020-08-15 16:00:
 insert into schedule(themeId,startTime,available) values('1', '2020-08-15 17:00:00', true);
 insert into schedule(themeId,startTime,available) values('1', '2020-08-15 18:00:00', true);
 insert into schedule(themeId,startTime,available) values('1', '2020-08-15 19:00:00', true);
+```
+
+```sql
+insert into review (userId,storeId,content,rating,createDate) values(3,7,"너무 좋았습니다",7,now());
 ```
