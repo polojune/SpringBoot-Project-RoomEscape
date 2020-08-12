@@ -1,5 +1,7 @@
 package com.cos.roomescape.dto;
 
+import java.util.List;
+
 import com.cos.roomescape.model.Review;
 
 import lombok.AllArgsConstructor;
@@ -16,7 +18,7 @@ public class StoreDetailRespDto {
         private String name; 
         private String intro;
         private int rating;
-        private ThemeRespDto[] themes;
+        private List<ThemeRespDto> themes;
         private String info; 
         private Double mapLong;
         private Double mapLat;

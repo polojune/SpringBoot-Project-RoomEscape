@@ -7,5 +7,5 @@ import com.cos.roomescape.model.Store;
 
 public interface StoreRepository {
 	 public List<Store> findAll();
-	 public StoreDetailRespDto findById(int id);
+	 public Store findById(int id);
 }

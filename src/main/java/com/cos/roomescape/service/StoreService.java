@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.cos.roomescape.dto.StoreDetailRespDto;
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.repository.StoreRepository;
+import com.cos.roomescape.repository.ThemeRepository;
 
 //Controller,Repository, Configuration,Service,Component
 //RestController,Bean
@@ -27,7 +28,15 @@ public class StoreService {
 	}
 	@Transactional(readOnly = true)
 	public StoreDetailRespDto 상세보기(int id) {
-		return storeRepository.findById(id);
+		StoreDetailRespDto dto = new StoreDetailRespDto();
+		Store store = storeRepository.findById(id);
+//		List<Theme> themes = ThemeRepository.findByStoreId(storeId);
+//		
+//		dto.setStore(store);
+//		dto.setThemes(themes);
+		
+		
+		return dto;
 	}
 	
 	
