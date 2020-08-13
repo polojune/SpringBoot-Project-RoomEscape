@@ -470,16 +470,7 @@
 <body class="theme detail" cz-shortcut-listen="true">
 
 
-
-
-
-<%@ include file="include/nav.jsp"%>
-
-
-
-
-
-	<div id="review_form_pop_up_back_opacity" class="review_form_pop_up_back_opacity" style="display:none;"></div>
+<div id="review_form_pop_up_back_opacity" class="review_form_pop_up_back_opacity" style="display:none;"></div>
 	<div id="review_form_pop_up_wrap" class="review_form_pop_up_wrap" style="display:none;">
 		<div class="review_form_pop_up_wrap_inner">
 			<form id="reviewPopupFrm" class="reviewPopupFrm">
@@ -755,6 +746,17 @@
 			</form>
 		</div>
 	</div>
+
+
+
+
+<%@ include file="include/nav.jsp"%>
+
+
+
+
+
+	
 	<script src="/js/theme.review.input.form.js?ver=171736"></script>
 	<script>
 		function onlyNumber(obj) {
@@ -2031,7 +2033,7 @@
 
 	<script type="text/javascript" src="/js/app/theme/roomescape.ajax.theme.review.recommend.js?ver=171736"></script>
 	<script type="text/javascript" src="/js/app/theme/roomescape.ajax.theme.review.report.js?ver=171736"></script>
-
+</div>
 </body>
 
 </html>
