@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.roomescape.dto.ReviewRespDto;
 import com.cos.roomescape.dto.StoreDetailRespDto;
+import com.cos.roomescape.dto.ThemeRespDto;
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.model.Theme;
 import com.cos.roomescape.repository.ReviewRepository;
@@ -23,10 +24,10 @@ public class StoreService {
 	private StoreRepository storeRepository; // DI
 	@Autowired
 	private ThemeRepository themeRepository;
-	private int storeId;
+
 	@Autowired
 	private ReviewRepository reviewRepository;
-	private int id;
+	
 
 	@Transactional(readOnly = true)
 	public List<Store> 가게보기() {
@@ -36,15 +37,15 @@ public class StoreService {
 
 	}
 	@Transactional(readOnly = true)
-	public StoreDetailRespDto 상세보기(int id ) {
+	public StoreDetailRespDto 상세보기(int storeId ) {
 		StoreDetailRespDto dto = new StoreDetailRespDto();
-		Store store = storeRepository.findById(id);
-		List<Theme> themes =themeRepository.findByStoreId(storeId);
-		ReviewRespDto reviewDto = reviewRepository.findByUserId(id);
+		Store store = storeRepository.findById(storeId);
+		List<ThemeRespDto> themes =themeRepository.findByStoreId(storeId);
+		List<ReviewRespDto> reviewDto = reviewRepository.findByUserId(storeId);
 		
-//		dto.setStore(store);
-//		dto.setThemes(themes);
-		
+		dto.setStore(store);
+		dto.setThemes(themes);
+		dto.setReviews(reviewDto);;
 		
 		return dto;
 	}

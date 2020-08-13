@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cos.roomescape.dto.StoreDetailRespDto;
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.service.StoreService;
@@ -59,10 +60,12 @@ public class StoreController {
 //		return "store";
 //	}
 	  
-	@GetMapping("/store/{id}")
-	public String storeDetail(@PathVariable int id, Model model) {
-		model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
-		return "store/Detail";
+	//@GetMapping("/store/{id}")
+	@GetMapping("/store/Detail")
+	public StoreDetailRespDto storeDetail(Model model) {
+		int id = 2;
+		//model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
+		return storeService.상세보기(id);
 
 	}
 

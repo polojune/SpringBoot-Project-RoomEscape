@@ -18,6 +18,11 @@
       SELECT * FROM theme ORDER BY id DESC
           
   </select>
-   
-  
+    
+    
+  <select id="findByStoreId" resultType="com.cos.roomescape.dto.ThemeRespDto">
+      SELECT * FROM theme WHERE id =#{storeId}
+          
+  </select>
+      
 </mapper>

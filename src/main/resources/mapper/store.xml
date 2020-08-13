@@ -8,8 +8,8 @@
     VALUES(#{username},#{password},#{email},#{role},now(),#{provider},#{providerId})
   </insert>-->
   
-  <select id="findById" resultType="com.cos.roomescape.dto.StoreDetailRespDto"> 
-     select 
+  <select id="findById" resultType="com.cos.roomescape.model.Store"> 
+     SELECT * FROM store WHERE id=#{id}
   
   </select>
  

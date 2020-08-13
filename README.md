@@ -125,4 +125,8 @@ insert into schedule(themeId,startTime,available) values('1', '2020-08-15 19:00:
 
 ```sql
 insert into review (userId,storeId,content,rating,createDate) values(3,7,"너무 좋았습니다",7,now());
+insert into review (userId,storeId,content,rating,createDate) values(1,5,"너무 좋았습니다",7,now());
+insert into review (userId,storeId,content,rating,createDate) values(2,4,"너무 별로에요",4,now());
+insert into review (userId,storeId,content,rating,createDate) values(4,3,"좋았습니다",8,now());
+insert into review (userId,storeId,content,rating,createDate) values(5,2,"좋아요",6,now());
 ```
