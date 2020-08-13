@@ -866,7 +866,7 @@
 			});
 		});
 	</script>
-	<div class="container">
+
 
 
 
@@ -1883,7 +1883,7 @@
 
 
 
-	</div>
+
 
 	<script>
 		var $fontFitDiv = $('.font_fit_div');

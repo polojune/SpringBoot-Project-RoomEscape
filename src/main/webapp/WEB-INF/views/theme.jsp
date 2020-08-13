@@ -1210,7 +1210,7 @@
 							    <div class="content">
 							 
 							        <div class="pic_box">
-							            <a href="">
+							            <a href="/theme/${theme.id}">
 							                <img src="${theme.themeImg}" width="230" height="280" />
 							            </a>
 							        </div>

@@ -108,16 +108,16 @@
 						<div class="fixing_wid">
 							<div class="def_info_inner">
 								<div class="def_info_title">
-									<span>머더파커 건대2호점</span>
+									<span>${storeDetailRespDto.store.intro}</span>
 								</div>
 
 								<div class="def_info_desc">
-									<span>머더파커 건대2호점</span>
+									<span>${storeDetailRespDto.store.intro}</span>
 								</div>
 
 								<div class="star_n_users">
 									<span class="tag img">
-										<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png?ver=171736" alt="1">
+										<img src="/images/star/${storeDetailRespDto.store.rating/2}star.png" alt="1">
 									</span>
 								</div>
 							</div>
@@ -214,6 +214,7 @@
 		<div class="container_inner section section_det_info">
 			<div class="fixing_wid">
 				<div class="det_info_inner intro">
+				
 					<div class="preface">
 						<h2>소개</h2>
 					</div>
@@ -221,7 +222,7 @@
 					<div class="desc">
 						<p>
 							<span>
-								머더파커 건대2호점
+									<span>${storeDetailRespDto.store.intro}</span>
 							</span>
 						</p>
 					</div>
@@ -235,150 +236,36 @@
 					</div>
 
 					<div class="theme_list">
+				
 						<div class="theme">
+					
+						 <c:forEach var="themeDto" items="${storeDetailRespDto.themes}" > 
 							<div class="theme_inner">
-								<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/theme/3306.jpg);"><a href="/theme/detail.php?theme=3306"></a></div>
+								<div class="pic" ><img src="${themeDto.themeImg}"width="210" height="200"/>  <a href="/theme/detail.php?theme=3310"></a></div>
 
 								<div class="info">
 									<div class="name font_fit_div" style="font-size: 13.4297px; line-height: 26.8594px;">
 										<p>
-											<span><a href="/theme/detail.php?theme=3306">동창회</a></span>
+											<span><a href="/theme/detail.php?theme=3310">${themeDto.name}</a></span>
 										</p>
 									</div>
 
 									<div class="genre_n_star">
-										<span class="text genre">?</span>
+									
 
-										<span class="text pipe">|</span>
-
-										<span class="text tag">평점</span>
+									<span class="text tag">평점</span>
 
 										<span class="img">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/4.5star.png?ver=" alt="">
+											<img src="/images/star/${themeDto.rating/2}star.png" alt="">
 										</span>
 
 										<span class="text value">
-											4.5
+											${themeDto.rating}
 										</span>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="theme">
-							<div class="theme_inner">
-								<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/theme/3307.jpg);"><a href="/theme/detail.php?theme=3307"></a></div>
-
-								<div class="info">
-									<div class="name font_fit_div" style="font-size: 13.4297px; line-height: 26.8594px;">
-										<p>
-											<span><a href="/theme/detail.php?theme=3307">이상한 하루</a></span>
-										</p>
-									</div>
-
-									<div class="genre_n_star">
-										<span class="text genre">?</span>
-
-										<span class="text pipe">|</span>
-
-										<span class="text tag">평점</span>
-
-										<span class="img">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/3.5star.png?ver=" alt="">
-										</span>
-
-										<span class="text value">
-											3.6
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="theme">
-							<div class="theme_inner">
-								<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/theme/3308.jpg);"><a href="/theme/detail.php?theme=3308"></a></div>
-
-								<div class="info">
-									<div class="name font_fit_div" style="font-size: 13.4297px; line-height: 26.8594px;">
-										<p>
-											<span><a href="/theme/detail.php?theme=3308">ROO3</a></span>
-										</p>
-									</div>
-
-									<div class="genre_n_star">
-										<span class="text genre">?</span>
-
-										<span class="text pipe">|</span>
-
-										<span class="text tag">평점</span>
-
-										<span class="img">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/3.5star.png?ver=" alt="">
-										</span>
-
-										<span class="text value">
-											3.8
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="theme">
-							<div class="theme_inner">
-								<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/theme/3309.jpg);"><a href="/theme/detail.php?theme=3309"></a></div>
-
-								<div class="info">
-									<div class="name font_fit_div" style="font-size: 13.4297px; line-height: 26.8594px;">
-										<p>
-											<span><a href="/theme/detail.php?theme=3309">동물병원</a></span>
-										</p>
-									</div>
-
-									<div class="genre_n_star">
-										<span class="text genre">?</span>
-
-										<span class="text pipe">|</span>
-
-										<span class="text tag">평점</span>
-
-										<span class="img">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/3.5star.png?ver=" alt="">
-										</span>
-
-										<span class="text value">
-											3.9
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="theme">
-							<div class="theme_inner">
-								<div class="pic" style="background-image:url(http://www.yologuys.com/Escape_img/theme/3310.jpg);"><a href="/theme/detail.php?theme=3310"></a></div>
-
-								<div class="info">
-									<div class="name font_fit_div" style="font-size: 13.4297px; line-height: 26.8594px;">
-										<p>
-											<span><a href="/theme/detail.php?theme=3310">5010</a></span>
-										</p>
-									</div>
-
-									<div class="genre_n_star">
-										<span class="text genre">?</span>
-
-										<span class="text pipe">|</span>
-
-										<span class="text tag">평점</span>
-
-										<span class="img">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/4star.png?ver=" alt="">
-										</span>
-
-										<span class="text value">
-											4.4
-										</span>
-									</div>
-								</div>
-							</div>
+						</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -424,7 +311,7 @@
 
 						<div class="address">
 							<span class="tag"><img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/loc.jpg" alt=""></span>
-							<span class="text value">서울 광진구 동일로22길 68</span>
+							<span class="text value">${storeDetailRespDto.store.info}</span>
 						</div>
 					</div>
 				</div>
@@ -454,7 +341,7 @@
 							리뷰
 						</h2>
 					</div>
-
+                 
 					<div class="review_input_box">
 								<div class="review_input_box_caption">
 									<div class="total_star">
@@ -495,9 +382,6 @@
 														</span>
 													</div>
 
-													<div class="datetime">
-														<span id="datetime" class="text">20200803</span>
-													</div>
 												</div>
 
 												<div class="rating_star no_login_no_review_event">
@@ -514,173 +398,15 @@
 									</form>
 								</div>
 							</div>
-
-							<div class="memb_review_box">
-								<div class="memb_review">
-									<div class="review_top">
-										<div class="review_writer_or_star">
-											<div class="writer">
-												<span class="name text">Shairene</span>
-											</div>
-										</div>
-
-										<div class="review_write_datetime">
-											<span class="datetime text">20200803</span>
-										</div>
-
-										<div class="star">
-											<span class="value_img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png" alt="">
-											</span>
-											<span class="text">5</span>
-											<span class="tag">점</span>
-										</div>
-									</div>
-
-									<div class="review_bottom">
-										<p>
-											<span>
-												건대최고의매장
-											</span>
-										</p>
-									</div>
-								</div>
-
+                   
 							</div>
+						 <c:forEach var="reviewDto" items="${storeDetailRespDto.reviews}">	
 							<div class="memb_review_box">
 								<div class="memb_review">
 									<div class="review_top">
 										<div class="review_writer_or_star">
 											<div class="writer">
-												<span class="name text">Laserbeam</span>
-											</div>
-										</div>
-
-										<div class="review_write_datetime">
-											<span class="datetime text">20200803</span>
-										</div>
-
-										<div class="star">
-											<span class="value_img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png" alt="">
-											</span>
-											<span class="text">5</span>
-											<span class="tag">점</span>
-										</div>
-									</div>
-
-									<div class="review_bottom">
-										<p>
-											<span>
-												넘조아용
-											</span>
-										</p>
-									</div>
-								</div>
-
-							</div>
-							<div class="memb_review_box">
-								<div class="memb_review">
-									<div class="review_top">
-										<div class="review_writer_or_star">
-											<div class="writer">
-												<span class="name text">안드레이</span>
-											</div>
-										</div>
-
-										<div class="review_write_datetime">
-											<span class="datetime text">20200802</span>
-										</div>
-
-										<div class="star">
-											<span class="value_img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png" alt="">
-											</span>
-											<span class="text">5</span>
-											<span class="tag">점</span>
-										</div>
-									</div>
-
-									<div class="review_bottom">
-										<p>
-											<span>
-												친절하시고 매장분위기가 좋습니다. 1호점보다 더 좋은걸 같습니다(개취
-											</span>
-										</p>
-									</div>
-								</div>
-
-							</div>
-							<div class="memb_review_box">
-								<div class="memb_review">
-									<div class="review_top">
-										<div class="review_writer_or_star">
-											<div class="writer">
-												<span class="name text">찐방생아</span>
-											</div>
-										</div>
-
-										<div class="review_write_datetime">
-											<span class="datetime text">20200802</span>
-										</div>
-
-										<div class="star">
-											<span class="value_img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png" alt="">
-											</span>
-											<span class="text">5</span>
-											<span class="tag">점</span>
-										</div>
-									</div>
-
-									<div class="review_bottom">
-										<p>
-											<span>
-												매우친절하세요
-											</span>
-										</p>
-									</div>
-								</div>
-
-							</div>
-							<div class="memb_review_box">
-								<div class="memb_review">
-									<div class="review_top">
-										<div class="review_writer_or_star">
-											<div class="writer">
-												<span class="name text">양지</span>
-											</div>
-										</div>
-
-										<div class="review_write_datetime">
-											<span class="datetime text">20200802</span>
-										</div>
-
-										<div class="star">
-											<span class="value_img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png" alt="">
-											</span>
-											<span class="text">5</span>
-											<span class="tag">점</span>
-										</div>
-									</div>
-
-									<div class="review_bottom">
-										<p>
-											<span>
-												친절하십니다.
-											</span>
-										</p>
-									</div>
-								</div>
-
-							</div>
-							<div class="memb_review_box">
-								<div class="memb_review">
-									<div class="review_top">
-										<div class="review_writer_or_star">
-											<div class="writer">
-												<span class="name text">ㄹㅍㄹ</span>
+												<span class="name text">${reviewDto.username}</span>
 											</div>
 										</div>
 
@@ -690,9 +416,9 @@
 
 										<div class="star">
 											<span class="value_img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/store/detail/5star.png" alt="">
+												<img src="/images/star/${reviewDto.rating/2}star.png" alt="">
 											</span>
-											<span class="text">5</span>
+											<span class="text">${reviewDto.rating}</span>
 											<span class="tag">점</span>
 										</div>
 									</div>
@@ -700,17 +426,19 @@
 									<div class="review_bottom">
 										<p>
 											<span>
-												최고로 친절하세요
+												${reviewDto.content}
 											</span>
 										</p>
 									</div>
 								</div>
 
 							</div>
+					   </c:forEach>
+							
 				</div>
 			</div>
-		</div>
-	</div>
+		
+	
 
 	<script>
 		function isEmpty(value) { 
