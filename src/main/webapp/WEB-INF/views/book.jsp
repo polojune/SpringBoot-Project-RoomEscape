@@ -228,36 +228,11 @@
 					</div>
 
 					<div id="store_list" class="store_list">
-						<div class="store" data-store="116">
+					<!-- store 리스트가 오는 자리임 -->
+					<!-- 	<div class="store" data-store="116">
 							<span>솔버 1호점</span>
-						</div>
-						<div class="store" data-store="117">
-							<span>솔버 2호점</span>
-						</div>
-						<div class="store" data-store="119">
-							<span>덤앤더머 대학로점</span>
-						</div>
-						<div class="store" data-store="321">
-							<span>비밀의화원 홍대점</span>
-						</div>
-						<div class="store" data-store="335">
-							<span>비밀의화원 강남점</span>
-						</div>
-						<div class="store" data-store="413">
-							<span>덤앤더머 홍대점</span>
-						</div>
-						<div class="store" data-store="448">
-							<span>비밀의화원 서면점</span>
-						</div>
-						<div class="store" data-store="465">
-							<span>비밀의화원 혜화점</span>
-						</div>
-						<div class="store" data-store="529">
-							<span>비밀의화원 대구 동성로점</span>
-						</div>
-						<div class="store" data-store="647">
-							<span>비밀의화원 미드나잇점</span>
-						</div>
+							</div>
+					 -->
 
 					</div>
 				</div>

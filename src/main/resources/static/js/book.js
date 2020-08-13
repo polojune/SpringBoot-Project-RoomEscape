@@ -135,13 +135,14 @@
 			/** 매장 출력 **/
 			$.ajax({
 				type: "POST",
-				url: "../bbs/book.filter.php",
+				url: "/book/list",
 				data: {
-					"filter_type": "store",
+					"list_type": "store",
 					"loc": $loc
 				},
 				dataType: "json",
-				cache: false,
+				cache: false })
+			.
 				success: function (data) {
 					//$result = JSON.parse(data);
 					$result = eval(data);
