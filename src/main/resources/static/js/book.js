@@ -142,8 +142,7 @@
 				},
 				dataType: "json",
 				cache: false })
-			.
-				success: function (data) {
+			.done(function (data) {
 					//$result = JSON.parse(data);
 					$result = eval(data);
 
@@ -158,7 +157,8 @@
 
 						$("#store_list").append($result.element);
 					}
-				}
+				})
+				
 			});
 		});
 

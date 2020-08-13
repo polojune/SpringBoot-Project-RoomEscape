@@ -885,7 +885,7 @@
 
 		<div class="container_inner section_detail section_detail_def_info">
 			<div class="ratio_box def_info_ratio_box">
-				<div class="def_info_ratio_box_inner">
+				<div class="def_info_ratio_box_inner" style="padding-top: 830px;">
 					<div class="content">
 						<div class="back"
 							style="background-image:url(http://www.yologuys.com/Escape_img/theme/3297.jpg);"></div>
