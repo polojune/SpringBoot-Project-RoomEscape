@@ -20,7 +20,8 @@ import com.cos.roomescape.model.Store;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.service.StoreService;
 
-@RestController
+//@RestController
+@Controller
 public class StoreController {
        
 	   @Autowired 
@@ -60,13 +61,21 @@ public class StoreController {
 //		return "store";
 //	}
 	  
-	//@GetMapping("/store/{id}")
-	@GetMapping("/store/Detail")
-	public StoreDetailRespDto storeDetail(Model model) {
-		int id = 2;
-		//model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
-		return storeService.상세보기(id);
+	@GetMapping("/store/{id}")
+	//@GetMapping("/storeDetail")
+	public String storeDetail(@PathVariable int id, Model model) {
+//		int id = 2;
+		model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
+		return "/storeDetail";
 
 	}
+	//@GetMapping("/store/{id}")
+//	@GetMapping("/store/Details")
+//	public String storeDetails(Model model) {
+//		
+//		//model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
+//		return "/storeDetail";
+//
+//	}
 
 }
