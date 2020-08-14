@@ -136,9 +136,9 @@
 			/** 매장 출력 **/
 			$.ajax({
 				type: "POST",
-				url: "/book/list",
+				url: "/book/stores",
 				data: {
-					"list_type": "store",
+					//"list_type": "store",
 					"loc": $loc
 				},
 				dataType: "json",
