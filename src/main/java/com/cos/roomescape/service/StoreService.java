@@ -41,7 +41,7 @@ public class StoreService {
 		StoreDetailRespDto dto = new StoreDetailRespDto();
 		Store store = storeRepository.findById(storeId);
 		List<ThemeRespDto> themes =themeRepository.findByStoreId(storeId);
-		List<ReviewRespDto> reviewDto = reviewRepository.findByUserId(storeId);
+		List<ReviewRespDto> reviewDto = reviewRepository.findByStoreId(storeId);
 		
 		dto.setStore(store);
 		dto.setThemes(themes);

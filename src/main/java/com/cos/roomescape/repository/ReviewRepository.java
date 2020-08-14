@@ -8,5 +8,8 @@ import com.cos.roomescape.dto.ReviewRespDto;
 
 public interface ReviewRepository {
       
-	public List<ReviewRespDto> findByUserId(int id);
+	public List<ReviewRespDto> findByStoreId(int id);
+	public List<ReviewRespDto> findByThemeId(int id);
+	
+	
 }

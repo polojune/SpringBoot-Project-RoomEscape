@@ -4,13 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cos.roomescape.repository.ReviewRepository">
 
-  <select id="findByUserId" resultType="com.cos.roomescape.dto.ReviewRespDto"> 
+  <select id="findByStoreId" resultType="com.cos.roomescape.dto.ReviewRespDto"> 
      SELECT r.id,u.username,r.content,r.rating
      FROM review r inner join user u 
      ON r.userId = u.id   
-     WHERE r.id = #{id}
+     WHERE r.storeId = #{id}
   
   </select>
- 
+   <select id="findByThemeId" resultType="com.cos.roomescape.dto.ReviewRespDto"> 
+     SELECT r.id,u.username,r.content,r.rating
+     FROM review r inner join user u 
+     ON r.userId = u.id   
+     WHERE r.themeId = #{id}
+  
+  </select>
   
 </mapper>

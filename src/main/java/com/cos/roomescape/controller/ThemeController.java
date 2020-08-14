@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.roomescape.model.Theme;
@@ -36,10 +37,19 @@ public class ThemeController {
 	}
 	
 	
-	@GetMapping("/themeDetail")
-	public String themeDetail() {
+	@GetMapping("/theme/{id}")
+	public String themeDetail(@PathVariable int id, Model model) {
+		model.addAttribute("themeDetailRespDto", themeService.상세보기(id));
 		return "themeDetail";
 
 	}
 	
+	
+	
+//	@GetMapping("/themeDetail")
+//	public String themeDetail() {
+//		return "themeDetail";
+//
+//	}
+//	
 }

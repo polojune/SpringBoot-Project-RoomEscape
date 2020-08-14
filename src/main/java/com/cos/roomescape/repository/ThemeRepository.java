@@ -8,4 +8,5 @@ import com.cos.roomescape.model.Theme;
 public interface ThemeRepository {
 	public List<Theme> findAll();
 	public List<ThemeRespDto> findByStoreId(int storeId);
+	public Theme findById(int themeId); 
 }

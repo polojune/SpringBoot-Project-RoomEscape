@@ -21,7 +21,7 @@
     
     
   <select id="findByStoreId" resultType="com.cos.roomescape.dto.ThemeRespDto">
-      SELECT * FROM theme WHERE id =#{storeId}
+      SELECT * FROM theme WHERE storeId =#{storeId}
           
   </select>
       

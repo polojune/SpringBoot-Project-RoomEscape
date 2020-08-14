@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.roomescape.dto.ReviewRespDto;
+import com.cos.roomescape.dto.ThemeDetailRespDto;
+import com.cos.roomescape.dto.ThemeRespDto;
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.model.Theme;
 import com.cos.roomescape.model.User;
+import com.cos.roomescape.repository.ReviewRepository;
 import com.cos.roomescape.repository.ThemeRepository;
 import com.cos.roomescape.repository.UserRepository;
 
@@ -19,16 +23,27 @@ import com.cos.roomescape.repository.UserRepository;
 public class ThemeService {
 	@Autowired
 	private ThemeRepository themeRepository; // DI
-
+    @Autowired
+    private ReviewRepository reviewRepository;
+	
 	@Transactional(readOnly = true)
 	public List<Theme> 테마보기() {
         
 	  return themeRepository.findAll();
 	  
 	}
-//	@Transactional(readOnly = true)
-//	public User 로그인(User user) {
-//
-//		return userRepository.login(user);
-//	}
+   
+	@Transactional(readOnly = true)
+	public ThemeDetailRespDto 상세보기(int themeId) {
+		 ThemeDetailRespDto themeDto = new ThemeDetailRespDto();
+		 Theme theme = themeRepository.findById(themeId); 
+		 List<ThemeRespDto> themes = themeRepository.findByStoreId(theme.getStoreId());
+		 List<ReviewRespDto> reviewDto = reviewRepository.findByThemeId(themeId);
+		 
+		 themeDto.setTheme(theme);
+		 themeDto.setThemes(themes);
+		 themeDto.setReviews(reviewDto);
+		 
+		 return themeDto;
+	}
 }

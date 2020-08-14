@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class ThemeRespDto {
       private String name; 
       private String themeImg;
+      private String genre;
       private int rating;
 }

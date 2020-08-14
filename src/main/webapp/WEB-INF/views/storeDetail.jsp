@@ -252,7 +252,7 @@
 
 									<div class="genre_n_star">
 									
-
+                                    <span class="text genre">${themeDto.genre}</span>
 									<span class="text tag">평점</span>
 
 										<span class="img">
