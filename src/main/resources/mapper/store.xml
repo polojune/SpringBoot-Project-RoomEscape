@@ -18,6 +18,13 @@
     
        
   </select>
+  
+  <select id="findByLocation" resultType="com.cos.roomescape.dto.ReserveStoreRespDto">
+		SELECT id,name FROM store WHERE location = #{location}
+  </select>
+  <select id="findByAllLocation" resultType="com.cos.roomescape.dto.ReserveStoreRespDto">
+		SELECT id,name FROM store
+  </select>
    
      <select id="findByStoreId" resultType="String">
       

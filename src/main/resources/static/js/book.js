@@ -136,20 +136,22 @@
 			/** 매장 출력 **/
 			$.ajax({
 				type: "POST",
-				url: "/book/list",
+				url: "/reserve/stores",
 				data: {
-					"list_type": "store",
+					//"list_type": "store",
 					"loc": $loc
 				},
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',	// 표시 안해도 default임
 				dataType: "json",
 				cache: false })
-			.done(function (data) {
+			.done(function (result) {
 					//$result = JSON.parse(data);
-					$result = eval(data);
+					
 
-					console.log($result);
+					console.log("book.js ajax : ", result);
+					
 
-					if ($result.result == "fail") {
+					if (result.result == "fail") {
 						alert($result.msg);
 					} else {
 						$("#store_list").empty();
