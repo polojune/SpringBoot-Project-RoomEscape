@@ -1,3 +1,5 @@
+import java.util.List;
+
 import com.cos.roomescape.dto.ReserveStoreRespDto;
 import com.cos.roomescape.model.Store;
 
