@@ -19,5 +19,13 @@
        
   </select>
    
+     <select id="findByStoreId" resultType="String">
+      
+			select s.name
+			from store s inner join theme t
+			on t.storeId = s.id
+			where t.id = #{id}
+       
+  </select>
   
 </mapper>

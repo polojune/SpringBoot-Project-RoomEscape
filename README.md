@@ -129,4 +129,10 @@ insert into review (userId,storeId,content,rating,createDate) values(1,5,"너무
 insert into review (userId,storeId,content,rating,createDate) values(2,4,"너무 별로에요",4,now());
 insert into review (userId,storeId,content,rating,createDate) values(4,3,"좋았습니다",8,now());
 insert into review (userId,storeId,content,rating,createDate) values(5,2,"좋아요",6,now());
+
+insert into review (userId,themeId,content,rating,createDate) values(5,2,"좋아요",7,now());
+insert into review (userId,themeId,content,rating,createDate) values(3,1,"별로에요",6,now());
+insert into review (userId,themeId,content,rating,createDate) values(2,3,"너무좋아요",9,now());
+insert into review (userId,themeId,content,rating,createDate) values(4,5,"좋아요",8,now());
+insert into review (userId,themeId,content,rating,createDate) values(5,4,"재미있었어요",9,now());
 ```

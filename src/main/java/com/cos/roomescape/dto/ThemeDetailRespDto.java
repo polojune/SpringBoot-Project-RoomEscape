@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class ThemeDetailRespDto {
         private int id; 
         private Theme theme;
+        private String storeName;
         private List<ThemeRespDto> themes;
       
         private List<ReviewRespDto> reviews;
