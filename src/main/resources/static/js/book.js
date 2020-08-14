@@ -121,6 +121,7 @@
 				}
 			});
 		}
+		
 
 		$(".loc").click(function () {
 			$("#book_btn").hide();
@@ -157,10 +158,10 @@
 
 						$("#store_list").append($result.element);
 					}
-				})
+			})
 				
-			});
 		});
+//		});
 
 
 		$('.store_list').on('click', '.store', function () {
