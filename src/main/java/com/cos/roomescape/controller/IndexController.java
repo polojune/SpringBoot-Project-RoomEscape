@@ -109,7 +109,7 @@ public class IndexController {
 		return "board";
 	}
 
-//
+
 //	@PostMapping("/joinProc")
 //	public String joinProc(User user) {
 //		System.out.println("회원가입 진행 : " + user);

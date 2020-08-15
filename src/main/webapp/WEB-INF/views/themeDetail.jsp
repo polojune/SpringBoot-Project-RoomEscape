@@ -897,21 +897,21 @@
 								<div class="def_info_text_box_inner">
 									<div class="def_info_text_box_inner_1">
 										<div class="def_info_text_row def_info_theme_loc">
-											<p><span>플레이 이스케이프 원주점</span></p>
+											<p><span>${themeDetailRespDto.storeName}</span></p>
 										</div>
 
 										<div class="def_info_text_row def_info_theme_name">
-											<p><span>금잔화</span></p>
+											<p><span>${themeDetailRespDto.theme.name}</span></p>
 										</div>
 
 										<div class="def_info_text_row def_info_theme_rank">
 											<p>
 												<span>
-													<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/3.5star.png"
+													<img src="/images/star/${themeDetailRespDto.theme.rating/2}star.png" 
 														alt="1">
 												</span>
 
-												<span class="text">3.9</span>
+												<span class="text">${themeDetailRespDto.theme.rating/2}</span>
 											</p>
 										</div>
 									</div>
@@ -920,7 +920,7 @@
 										<div class="def_info_text_row def_info_theme_time">
 											<p>
 												<span class="tag">제한시간</span>
-												<span class="value">60분</span>
+												<span class="value">${themeDetailRespDto.theme.timeLimit}</span>
 											</p>
 										</div>
 
@@ -932,7 +932,7 @@
 													</span>
 
 													<span class="value">
-														감성
+														${themeDetailRespDto.theme.genre}
 													</span>
 												</p>
 											</div>
@@ -946,57 +946,16 @@
 													</span>
 
 													<span>
-														<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/3_difficulty_white.png?ver=171736"
+														<img src="/images/difficulty/${themeDetailRespDto.theme.level}difficulty.png"
 															alt="3">
 													</span>
 												</p>
 											</div>
 
-											<div class="def_info_text_cell def_info_theme_device">
-												<p>
-													<span class="tag">
-														유형
-													</span>
-
-													<span>
-														<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/rock_on.png"
-															alt="">
-														<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/device_off.png"
-															alt="">
-														<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/both_off.png"
-															alt="">
-
-
-													</span>
-												</p>
-											</div>
+										
 										</div>
 
-										<div class="def_info_text_row def_info_theme_activity">
-											<p>
-												<span class="tag">활동성</span>
-												<span>
-													<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/many_off.png"
-														alt="">
-													<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/normal_off.png"
-														alt="">
-													<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/low_on.png"
-														alt="">
-												</span>
-											</p>
-										</div>
 
-										<div class="def_info_text_row def_info_theme_allow_user">
-											<p>
-												<span class="tag">추천인원</span>
-												<span>
-													<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/2_user.jpg"
-														alt="">
-													<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/3_user.jpg"
-														alt="">
-												</span>
-											</p>
-										</div>
 									</div>
 
 									<div class="def_info_text_box_inner_3">
@@ -1114,34 +1073,13 @@
 
 							<div class="desc">
 								<p>
-									<span>사랑하는 나의 아이에게...</span>
+									<span>${themeDto.theme.intro}</span>
 								</p>
 							</div>
 						</div>
 					</div>
 
-					<div class="intro_in_more_info">
-						<div class="intro_in_more_info_category">
-							<div class="preface">
-								<h2>비하인드 스토리</h2>
-							</div>
-
-							<div class="desc theme_producer">
-								<p><span>제작자 익명</span></p>
-							</div>
-
-							<div class="desc theme_comment">
-								<p><span>7월 25일 내외로 가이드가 적은 초기버전이 운영가능하게 조치중입니다.<br>
-										(최소 1일전 홈페이지 예약으로 이름 옆에 (오리지널)이라고 적어 주셔야 초기버전으로 플레이 가능합니다.<br>
-										<br>
-										공식홈페이지 난이도 기준 : 현재버전 4 / 초기버전 5<br>
-										전국방탈출 난이도 기준 : 현재버전 3 / 초기버전 4<br>
-										<br>
-										감사합니다.</span></p>
-							</div>
-						</div>
-
-					</div>
+				
 
 					<div id="review" class="review_in_more_info">
 						<div class="preface">
@@ -1216,87 +1154,48 @@
 							</div>
 						</div>
 
-						<div class="theme_review_sort">
-							<a href="https://www.roomescape.co.kr/theme/detail.php?theme=3297&amp;sort=desc">
-								<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/desc_on.png"
-									alt="">
-							</a>
-
-							<a href="https://www.roomescape.co.kr/theme/detail.php?theme=3297&amp;sort=record">
-								<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/record_off.png"
-									alt="">
-							</a>
-
-							<a href="https://www.roomescape.co.kr/theme/detail.php?theme=3297&amp;sort=review">
-								<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/review_off.png"
-									alt="">
-							</a>
-
-							<a href="https://www.roomescape.co.kr/theme/detail.php?theme=3297&amp;sort=recommend">
-								<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/recommend_sort_off.png"
-									alt="">
-							</a>
-						</div>
-
+ 					<c:forEach var="reviewDto" items="${themeDetailRespDto.reviews}"> 
 						<div class="memb_review_box default">
-
+                        
 							<div class="memb_reivew">
 								<div class="review_top">
 									<div class="review_writer_or_star">
 										<div class="writer">
-											<span class="penticle img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal1.png?ver=171736"
-													alt="">
-											</span>
+											
 
 											<span class="name text">
 												<a
-													href="https://www.roomescape.co.kr/mypage/search_member.php?sort=ascup&amp;search=레어킴">레어킴</a>
+													href="">${reviewDto.username}</a>
 											</span>
 
-											<span class="level img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/difficulty_hard.png?ver=171736"
-													alt="">
-											</span>
 
-											<span class="experi img">
-												<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/experi_1.png"
-													alt=""><span>성공</span>
-											</span>
 										</div>
 									</div>
 
 									<div class="star">
 										<span class="pic">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/4star.png"
+											<img src="/images/star/${reviewDto.rating/2}star.png"
 												alt="1">
 										</span>
-										<span class="text">4.0</span>
+										<span class="text">${reviewDto.rating/2}</span>
 										<span class="tag">점</span>
 									</div>
 
-									<div class="review_write_datetime">
-										<span class="datetime text">20200721</span>
-										<span class="pipe">| 남은시간 : </span>
-										<span class="result_time text">00분01초</span>
-
-									</div>
+									
 								</div>
 
 								<div class="review_bottom">
 									<p>
 										<span>
-											테스터 플레이<br>
-											방린이인데 좋은 기회로 테스터하고 왔습니다. 문제 난이도는 꽤 있는 편이었는데 너프될 거를 생각하면 보통보다 살짝 어려운 수준일듯 합니다
-											테마자체는 생각한 것보다 많이 괜찮아서 이게 왜 강원도에 있지.. 라는 아쉬움이 많이 들었네요. 재밌게 플레이하고 왔습니다. 제 기준에선
-											꽃길이었습니다. 문제를 정말 신경써서 만든 티가 많이 나서 좋았습니다
+											${reviewDto.content}
 										</span>
 									</p>
 								</div>
 							</div>
 
-							<div class="reivew_agent">
-
+							</div class="reivew_agent">
+							
+                   </c:forEach> 
 								<div class="review_recommend_btn">
 
 									<button type="button" class="review_recommend" data-review-user="2367"
@@ -1334,26 +1233,27 @@
 							이 업체의 다른 테마
 						</h2>
 					</div>
-
+                  
+              		 <c:forEach var="themeDto" items="${themeDetailRespDto.themes}" > 
 					<div class="orther_theme_in_more_info">
 						<div class="orther_theme_in_more_info_inner">
 							<div class="content">
-								<div class="pic"
-									style="background-image:url(http://www.yologuys.com/Escape_img/theme/1256.jpg);"><a
-										href="/theme/detail.php?theme=1256"></a></div>
+								<div class="pic">
+									<img src="${themeDto.themeImg}"/><a href=""></a></div>
+										
 
 								<div class="info">
 									<p>
 										<span class="text">
-											<a href="/theme/detail.php?theme=1256">
-												귀곡산장
+											<a href="">
+												${themeDto.name}
 											</a>
 										</span>
 									</p>
 
 									<p>
 										<span class="text">
-											스릴러
+											${themeDto.genre}
 										</span>
 
 										<span clss="pipe">|</span>
@@ -1361,18 +1261,18 @@
 										<span class="tag">평점</span>
 
 										<span class="img">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/def_info/2.5star.png"
+											<img src="/images/star/${themeDto.rating/2}star.png"
 												alt="1">
 										</span>
 										<span class="star_text">
-											2.6
+											${themeDto.rating/2}
 										</span>
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+					</c:forEach>
 				</div>
 			</div>
 		</div>
