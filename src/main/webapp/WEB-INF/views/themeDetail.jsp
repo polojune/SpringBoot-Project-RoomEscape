@@ -1012,8 +1012,8 @@
 							<div class="def_info_pic_box">
 								<div class="def_info_pic_box_ratio">
 									<div class="def_info_pic_box_ratio_inner">
-										<div class="def_info_pic"
-											style="background-image:url(http://www.yologuys.com/Escape_img/theme/3297.jpg;">
+										<div class="def_info_pic">
+											<<img src="${themeDetailRespDto.theme.themeImg}"/>
 										</div>
 									</div>
 								</div>
@@ -1073,7 +1073,7 @@
 
 							<div class="desc">
 								<p>
-									<span>${themeDto.theme.intro}</span>
+									<span>${themeDetailRespDto.theme.intro}</span>
 								</p>
 							</div>
 						</div>
@@ -1194,7 +1194,7 @@
 							</div>
 
 							</div class="reivew_agent">
-							
+		
                    </c:forEach> 
 								<div class="review_recommend_btn">
 
@@ -1239,7 +1239,7 @@
 						<div class="orther_theme_in_more_info_inner">
 							<div class="content">
 								<div class="pic">
-									<img src="${themeDto.themeImg}"/><a href=""></a></div>
+									<img src="${themeDto.themeImg}" width="200" height="230" /><a href=""></a></div>
 										
 
 								<div class="info">
