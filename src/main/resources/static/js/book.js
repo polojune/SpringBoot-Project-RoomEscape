@@ -136,14 +136,15 @@
 			/** 매장 출력 **/
 			$.ajax({
 				type: "POST",
-				url: "/reserve/stores",
+				url: "/reserve/storelist",
 				data: {
 					//"list_type": "store",
 					"loc": $loc
 				},
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',	// 표시 안해도 default임
 				dataType: "json",
-				cache: false })
+				cache: false
+			})
 			.done(function (result) {
 					//$result = JSON.parse(data);
 					
@@ -151,14 +152,17 @@
 					console.log("book.js ajax : ", result);
 					
 
-					if (result.result == "fail") {
-						alert($result.msg);
+					if (result.length == 0) {
+						alert("선택한 지역에 store가 존재하지 않음");
 					} else {
 						$("#store_list").empty();
 						$("#theme_list").empty();
 						$("#time_list").empty();
 
-						$("#store_list").append($result.element);
+						for (k=0; k<result.length; k++) {
+							$("#store_list").append(`<div class="store" data-store="${result[k].id}">
+							<span>${result[k].name}</span></div>`);
+						}
 					}
 			})
 				
@@ -174,30 +178,33 @@
 
 			$store_id = $(this).data("store");
 
+			console.log("store_id: ", $store_id);
+			
 			/** 매장 내의 테마 출력 **/
 			$.ajax({
 				type: "POST",
-				url: "../bbs/book.filter.php",
+				url: "/reserve/themelist",
 				data: {
-					"filter_type": "theme",
-					"store_id": $store_id
+					// "filter_type": "theme",
+					"storeId": $store_id
 				},
 				dataType: "json",
-				cache: false,
-				success: function (data) {
-					$result = eval(data);
-
-					if ($result.result == 'fail') {
-						alert($result.msg);
-					} else {
-						$("#theme_list").empty();
-						$("#time_list").empty();
-
-						$("#theme_list").append($result.element);
+				cache: false
+			})
+			.done(function (result) {
+				
+				if (result.length == 0) {
+					alert("storeId에 해당하는 테마가 존재하지 않습니다.");
+				} else {
+					$("#theme_list").empty();
+					$("#time_list").empty();
+					for (j=0; j<result.length; j++) {
+						$("#theme_list").append(`<div class="theme" data-theme="${result[j].id}"><span class>${result[j].name}</span></div>`);
 					}
 				}
-			});
+			})
 		});
+
 
 		$('.theme_list').on('click', '.theme', function () {
 			$("#book_btn").hide();

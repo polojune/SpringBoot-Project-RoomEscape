@@ -16,17 +16,17 @@
  
   <select id="findAll" resultType="com.cos.roomescape.model.Theme">
       SELECT * FROM theme ORDER BY id DESC
-          
   </select>
     
   <select id="findById" resultType="com.cos.roomescape.model.Theme"> 
-     SELECT * FROM Theme WHERE id=#{id}
-  
+     SELECT * FROM Theme WHERE id = #{id}
   </select>  
     
   <select id="findByStoreId" resultType="com.cos.roomescape.dto.ThemeRespDto">
-      SELECT * FROM theme WHERE storeId =#{storeId}
-          
+      SELECT * FROM theme WHERE storeId = #{storeId}
+  </select>
+  <select id="findThemeByStoreId" resultType="com.cos.roomescape.dto.ReserveThemeRespDto">
+  	SELECT id, name FROM theme WHERE storeId = #{storeId}
   </select>
       
 </mapper>
