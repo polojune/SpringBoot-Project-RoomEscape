@@ -947,7 +947,7 @@
 
 													<span>
 														<img src="/images/difficulty/${themeDetailRespDto.theme.level}difficulty.png"
-															alt="3">
+															alt=""> 
 													</span>
 												</p>
 											</div>
@@ -1013,7 +1013,7 @@
 								<div class="def_info_pic_box_ratio">
 									<div class="def_info_pic_box_ratio_inner">
 										<div class="def_info_pic">
-											<<img src="${themeDetailRespDto.theme.themeImg}"/>
+											<img src="${themeDetailRespDto.theme.themeImg}"/>
 										</div>
 									</div>
 								</div>
@@ -1196,37 +1196,15 @@
 							</div class="reivew_agent">
 		
                    </c:forEach> 
-								<div class="review_recommend_btn">
-
-									<button type="button" class="review_recommend" data-review-user="2367"
-										data-review-request="down" data-review-id="148406">
-										<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/recommend_off.png?ver=171736"
-											alt="">
-										<span class="value">0</span>
-									</button>
-
-
-									<div class="review_report_btn">
-										<button type="button" class="review_report" data-reivew-user="2367"
-											data-review-id="148406">
-											<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/report.png?ver=171736"
-												alt="">
-										</button>
-										<!-- <span class="value">0</span> -->
-									</div>
-								</div>
+								
 
 								<div class="clearfix"></div>
 							</div>
 						</div>
 
-
-					
-
-
 					</div>
 				</div>
-
+             
 				<div class="more_info_right">
 					<div class="title">
 						<h2>
@@ -1436,7 +1414,7 @@
 
 	<script type="text/javascript" src="/js/app/theme/roomescape.ajax.theme.review.recommend.js?ver=171736"></script>
 	<script type="text/javascript" src="/js/app/theme/roomescape.ajax.theme.review.report.js?ver=171736"></script>
-</div>
+
 </body>
 
 </html>

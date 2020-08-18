@@ -20,8 +20,8 @@ import com.cos.roomescape.model.Store;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.service.StoreService;
 
-//@RestController
-@Controller
+@RestController
+//@Controller
 public class StoreController {
        
 	   @Autowired 
