@@ -92,34 +92,34 @@
 
 //	<script>
 		function search_allow_time($theme_id, $datetime_string) {
-			// 백틱이 안되는 건지..
+			
 			console.log(`search_allow_time: theme_id: ${$theme_id} datetime_string: ${$datetime_string}`);
 			console.log("search_allow_time:datetime_string:", $datetime_string);
 			$.ajax({
 				type: "POST",
-				url: "/book/"+$theme_id+"/times",
+				url: "/reserve/theme/"+$theme_id+"/times",
 				data: {
 					//"filter_type": "time",
-					"theme_id": $theme_id,
+					//"theme_id": $theme_id,
 					"datetime_string": $datetime_string
 				},
-				contentType: "application/json; charset=utf-8",
+				// contentType: "application/json; charset=utf-8",
 				dataType: "json",
-				cache: false,
-				success: function (data) {
-					$result = eval(data);
+				cache: false
+			})
+			.done(function (result) {
 
-					console.log($result.result);
-					console.log($result.other);
+//				console.log($result.result);
+//				console.log($result.other);
 
-					if ($result.result == 'fail') {
-						alert($result.msg);
-					} else {
-						$("#time_list").empty();
-						$("#time_list").append($result.element);
-					}
+				if (result.length == 0) {
+					alert("해당날짜에 시간표가 입력되어 있지 않습니다.");
+				} else {
+					$("#time_list").empty();
+					$("#time_list").append($result.element);
 				}
-			});
+			})
+
 		}
 		
 
