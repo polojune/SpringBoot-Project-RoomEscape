@@ -75,18 +75,16 @@
 <%@ include file="include/nav.jsp"%>
 
 
-
-	<div class="sub_banner">
-		<div class="banner_title" style="background-image:url('https://www.roomescape.co.kr/_template/assets/img/board/free_sub_banner_back.jpg?ver=');">
-			<a href="https://www.roomescape.co.kr/board/list.php?board=free">
-				<img src="https://www.roomescape.co.kr/_template/assets/img/board/free_sub_banner_text.png?ver=" alt="">
-			</a>
-		</div>
-
-		<div class="banner_title m" style="background-image:url('https://www.roomescape.co.kr/_template/assets/img/board/m_free_sub_banner_back.jpg?ver=');"><a href="https://www.roomescape.co.kr/board/list.php?board=free"></a></div>
+<div class="sub_banner">
+	<div class="banner_title" style="background-image:url('https://www.roomescape.co.kr/_template/assets/img/board/notice_sub_banner_back.jpg?ver=');">
+	    <a href="https://www.roomescape.co.kr/board/list.php?board=notice">
+	        <img src="https://www.roomescape.co.kr/_template/assets/img/board/notice_sub_banner_text.png?ver=" alt="">
+	    </a>
 	</div>
-
-
+	
+		<div class="banner_title m" style="background-image:url('https://www.roomescape.co.kr/_template/assets/img/board/m_notice_sub_banner_back.jpg?ver=');">
+		<a href="https://www.roomescape.co.kr/board/list.php?board=notice"></a></div>
+</div>
 		<div class="board_inner inner_1_depth">
 			<div class="board_inner inner_2_depth">
 			
