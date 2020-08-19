@@ -58,9 +58,16 @@ public class IndexController {
 		return "book";
 	}
 
+	
+	
 	@GetMapping("/map")
 	public String map() {
 		return "map";
+	}
+	
+	@GetMapping("/freeSaveForm")
+	public String freeSaveForm() {
+		return "freeSaveForm";
 	}
 	
 	
@@ -109,6 +116,10 @@ public class IndexController {
 		return "board";
 	}
 
+	@GetMapping("/notice")
+	public String notice() {
+		return "notice";
+	}
 
 //	@PostMapping("/joinProc")
 //	public String joinProc(User user) {

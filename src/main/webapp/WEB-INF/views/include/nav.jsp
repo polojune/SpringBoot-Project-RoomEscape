@@ -170,8 +170,8 @@
 			<li><a href="https://www.roomescape.co.kr/theme/main.php"><span>테마</span></a></li>
 			<li><a href="https://www.roomescape.co.kr/book/index.php?type=select"><span>예약</span></a></li>
 			<li><a href="https://www.roomescape.co.kr/info/"><span>지도</span></a></li>
-			<li><a href="https://www.roomescape.co.kr/board/list.php?board=free"><span>커뮤니티</span></a></li>
-
+		
+           
 		</ul>
 	</nav>
 </div>
@@ -190,7 +190,54 @@
 				<li><a href="https://www.roomescape.co.kr/theme/main.php">테마</a></li>
 				<li><a href="https://www.roomescape.co.kr/info/">지도</a></li>
 				<li><a href="https://www.roomescape.co.kr/book/index.php?type=select">예약</a></li>
-				<li><a href="https://www.roomescape.co.kr/board/list.php?board=free">커뮤니티</a></li>
+			     
+			     <style>
+.dropbtn {
+  background-color: black;
+  color: rgb(156,154,154);
+  height:5;
+  font-size: 16px;
+  font-weight:bold;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 80px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+
+
+<div class="dropdown">
+  <button class="dropbtn">커뮤니티</button>
+  <div class="dropdown-content">
+    <a href="http://localhost:8080/notice">공지사항</a>
+    <a href="http://localhost:8080/board">자유게시판</a>
+  
+  </div>
+</div>
 				
 			</ul>
 		</nav>
