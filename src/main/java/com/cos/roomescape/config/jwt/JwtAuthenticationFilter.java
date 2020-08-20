@@ -57,7 +57,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		//Tip:인증 provider의 디폴트 암호화 방식은 BCryPasswordEncoder
 		//결론은 인증 provider에게 알려줄 필요가 없다.
 		
-        //System.out.println("aa");
+//        System.out.println("aa");
 		Authentication authentication = authenticationManager.authenticate(authenticationToken);
 		
          System.out.println("Authentication :" + authentication.getCredentials());

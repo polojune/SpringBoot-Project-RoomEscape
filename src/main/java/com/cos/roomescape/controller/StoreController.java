@@ -37,7 +37,16 @@ public class StoreController {
     	    return stores;
     	    // return "store";
        }
-	
+       
+//       @GetMapping("/store") 
+//	   public String getStores(Model model) {
+//    	    List<Store> stores = storeService.가게보기();
+//    	    model.addAttribute("stores", stores);
+//    	    
+//    	    //return stores;
+//    	     return "store";
+//       }
+//	
 
 	
 	//  @GetMapping("/store")

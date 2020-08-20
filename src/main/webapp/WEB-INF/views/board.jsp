@@ -206,7 +206,8 @@
 				</div>
 
 				<div class="board_btn">
-						<button type="button" id="login_layer_pop_event" class="btn_write">글쓰기</button>
+					<!-- 	<button type="button" id="login_layer_pop_event" class="btn_write">글쓰기</button> -->
+						<a href="http://localhost:8080/freeSaveForm">글쓰기 </a>
 						<script>
 							$("#login_layer_pop_event").click(function() {
 								$("body").css("overflow","hidden");

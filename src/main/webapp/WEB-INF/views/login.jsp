@@ -15,6 +15,7 @@
 <form action="/loginProc" method="POST">
 	<input type="text" name="username" />
 	<input type="password" name="password" />
+
 	<button>로그인</button>
 </form>
    <br />

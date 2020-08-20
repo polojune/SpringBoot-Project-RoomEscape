@@ -23,23 +23,6 @@ import com.cos.roomescape.repository.UserRepository;
 //@RequestMapping("api/v1")
 public class IndexController {
 
-	@Autowired
-	private UserRepository userRepository;
-
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	@GetMapping("user")
-	public String user(Authentication authentication) {
-	    PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-		System.out.println("principal:" + principal.getUser().getId());
-		System.out.println("principal:" + principal.getUser().getUsername());
-		System.out.println("principal:" + principal.getUser().getPassword());
-		System.out.println("principal:" + principal.getUser().getRole());
-		
-		return "<h1>user</h1>";
-	}
-	 
 	
 	@GetMapping({ "", "/" })
 	public @ResponseBody String home() {
@@ -96,20 +79,7 @@ public class IndexController {
 //		return "유저 페이지입니다.";
 //	}
 
-	@GetMapping("/admin")
-	public @ResponseBody String admin() {
-		return "관리자 페이지";
-	}
 
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
-
-	@GetMapping("/join")
-	public String join() {
-		return "join";
-	}
 
 	@GetMapping("/board")
 	public String board() {
@@ -121,23 +91,5 @@ public class IndexController {
 		return "notice";
 	}
 
-//	@PostMapping("/joinProc")
-//	public String joinProc(User user) {
-//		System.out.println("회원가입 진행 : " + user);
-//		String rawPassword = user.getPassword();
-//		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-//		user.setPassword(encPassword);
-//		user.setRole("ROLE_USER");
-//		userRepository.save(user);
-//		return "redirect:/";
-//
-//	}
-	@PostMapping("join")
-	public String join(@RequestBody User user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setRole("ROLE_USER");
-		userRepository.save(user);
-		return "회원가입완료";
-	}
 	
 }

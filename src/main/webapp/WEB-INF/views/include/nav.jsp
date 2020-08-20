@@ -294,6 +294,6 @@
 		},function() {
 			$('.logout_btn_mouse_leave').show();
 			$('.logout_btn_mouse_over').hide();
-		});
+		})
 	</script>
 </header>

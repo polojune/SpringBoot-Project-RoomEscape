@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	      .antMatchers("/api/v1/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")	          
 	       	  .antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
 	          .antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')")
+	          //.antMatchers("/freeSaveForm").authenticated()
 	          .anyRequest().permitAll()
 	          
           .and()
@@ -50,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
           	  .formLogin()
           	  .loginPage("/login")
           	  .loginProcessingUrl("/loginProc")
-          	  .defaultSuccessUrl("/")
+          	  
+          	  .defaultSuccessUrl("/store")
     	  .and()
     	      .oauth2Login()
     	      .loginPage("/login")

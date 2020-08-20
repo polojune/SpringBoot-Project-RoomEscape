@@ -8,11 +8,12 @@
     VALUES(#{username},#{password},#{email},#{role},now(),#{provider},#{providerId})
   </insert>
   
-<!--    <select id="login" resultType="com.cos.roomescape.model.User"> 
-     SELECT id,username,email,role,createDate,provider,providerId FROM user WHERE username=#{username} 
-      AND password = #{password} 
+ <select id="login" resultType="com.cos.roomescape.model.User"> 
+     SELECT id,username,password,email,role,createDate,provider,providerId FROM user WHERE username=#{username}
+    
+  </select>
   
-  </select>-->
+       <!--   AND password = #{password}  -->
   
   <select id="findByProviderAndProviderId" resultType="com.cos.roomescape.model.User">
       SELECT * FROM user WHERE provider=#{provider}

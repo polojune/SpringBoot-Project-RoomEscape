@@ -67,7 +67,7 @@ public class ReserveController {
 		LocalDate date = LocalDate.parse(datetime_string.substring(0, 15), formatter);
 		System.out.println("LocalDate: " + date);
 		
-		scheduleService.해당날짜시간표가져오기(date);
+		//scheduleService.해당날짜시간표가져오기(date);
 		
 //		List<ReserveThemeRespDto> reserveDtos = null;
 //
