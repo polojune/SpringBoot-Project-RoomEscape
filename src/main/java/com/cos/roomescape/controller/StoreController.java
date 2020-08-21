@@ -32,6 +32,16 @@ public class StoreController {
        @GetMapping("/store") 
 	   public List<Store> getStores(Model model) {
     	    List<Store> stores = storeService.가게보기();
+    	    
+    	    String basePath = "http://localhost:8080";
+    	    
+    	    for (Store store : stores) {
+    	    	// System.out.println(store.getStoreImg());
+    	    	String oldPath = store.getStoreImg();
+    	    	String newPath = basePath + oldPath;
+    	    	store.setStoreImg(newPath);
+    	    }
+    	    
     	    model.addAttribute("stores", stores);
     	    
     	    return stores;
