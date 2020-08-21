@@ -99,22 +99,22 @@
   <div class="board_panel">  
 
 
-    <form id="boardFrm" class="boardFrm" method="post" action="https://www.roomescape.co.kr/bbs/board.write.ok.php">
+    <form id="boardFrm" class="boardFrm" method="post" action="/boardProc">
 
         <input type="hidden" name="getBoard" value="free">
 
 
 
 
-        <input type="text" class="input input_text" id="subject" name="subject" placeholder="제목">
+        <input type="text" class="input input_text" id="subject" name="title" placeholder="제목">
 
-        <div class="clearfix"></div>
-
-
+      
 
 
 
-        <input type="hidden" id="current_milli_second" name="current_milli_second" value="">
+
+
+        <input type="hidden" name="userId" value="${1}">
 
 
         <style>
@@ -391,7 +391,7 @@
         </div>
 
         <div class="boardFrm_btn">
-            <button type="button" id="boardFrm_submit" class="boardFrm_submit">게시글 등록</button>
+            <button type="submit" id="board_submit" class="boardFrm_submit">게시글 등록</button>
         </div>
     </form>
 </div>
