@@ -109,7 +109,7 @@
 			})
 			.done(function (result) {
 
-//				console.log($result.result);
+				console.log(result);
 //				console.log($result.other);
 
 				if (result.length == 0) {
