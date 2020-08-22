@@ -47,11 +47,7 @@ public class IndexController {
 	public String map() {
 		return "map";
 	}
-	
-	@GetMapping("/freeSaveForm")
-	public String freeSaveForm() {
-		return "freeSaveForm";
-	}
+
 	
 	
 	    //매니저 접근가능 

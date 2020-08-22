@@ -129,12 +129,28 @@
               <div class="clearfix"></div>
             </div>
             <div class="board_btn_box">
+						
+					
+            <div class="board_btn_box_inner left">
+	              <a href="/board/update/${boardRespDto.id}" class="board_btn">수정</a>
+	         <button type="button" onclick="del(${boardRespDto.id})" class="board_btn" >삭제</button>
+           </div>
+     <!--  -->  <script>
+	         function del(id) {
+				var chk = confirm("정말 삭제하시겠습니까?");
+				if (chk) {
+					location.href='/delete/'+id;
+				  }
+			}	
+          </script>   
+            
+            
+            <div class="board_btn_box">
               <div class="board_btn_box_inner right">
                 <button type="button" class="board_btn login_layer_pop_event">
                   글쓰기
                 </button>
-                <a
-                  href="https://www.roomescape.co.kr/board/list.php?board=free"
+                <a  href="/boards"
                   class="board_btn"
                   >목록</a
                 >

@@ -21,9 +21,23 @@
       where b.id = #{id} 
    
  </select>
+   <select id="findOne" resultType="com.cos.roomescape.model.Board">
+   	  
+            select title, content
+	      	from board 
+			where id=#{id}
+        
+ </select>
  
- 
-
+  
+   <delete id="delete">
+      DELETE FROM board WHERE id=#{id}
+   </delete>
+     
+    <update id="update">
+      UPDATE board SET title=#{title},content = #{content}
+      WHERE id = #{id}
+   </update>
 
 
  </mapper>  

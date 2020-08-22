@@ -35,5 +35,26 @@ public class BoardService {
 		  return boardRepository.findById(id);
 
 		}
+		
+		
+		@Transactional
+		public void 글삭제(int id) {
+	        
+			boardRepository.delete(id);
+	         
+		}
+		
+		@Transactional
+		public Board 글가져오기(int id) {
+			
+			return boardRepository.findOne(id);
+		}
+		@Transactional
+		public void 글수정(Board board) {
+	        
+			boardRepository.update(board);
+	         
+		}
+		
 	
 }

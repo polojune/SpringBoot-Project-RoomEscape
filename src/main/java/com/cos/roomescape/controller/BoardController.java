@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.cos.roomescape.dto.BoardRespDto;
 import com.cos.roomescape.dto.CommonRespDto;
@@ -26,6 +28,13 @@ public class BoardController {
 	 @Autowired
 	 private BoardRepository boardRepository;
 	 
+	 @GetMapping("/freeSaveForm")
+	 public String boardSaveForm() {
+		 return "freeSaveForm";
+	 }
+	 
+	 
+	 
 	@PostMapping("/boardProc")
 	 public String boardProc(Board board) {
 		 boardService.글쓰기(board);
@@ -37,7 +46,7 @@ public class BoardController {
 		 List<BoardRespDto> boards = boardService.목록보기();
 		 model.addAttribute("boardRespDtos",boards);
 		
-		 System.out.println("boardRespDtos" + boards);
+		 //System.out.println("boardRespDtos" + boards);
 		 return "board";
 	 }
 	 
@@ -51,5 +60,37 @@ public class BoardController {
 		model.addAttribute("boardRespDto",boardService.상세보기(id));
 		return "boardDetail";
 	 }
+	 
+	 @GetMapping("/delete/{id}") 
+	 public String deleteProc(@PathVariable("id") int id) {
+		 
+		  boardService.글삭제(id);
+		  System.out.println("deleteProc:"+id);
+		  return "redirect:/boards";
+	 }
+	 
+	 @GetMapping("/board/update/{id}") 
+	 public String edit(@PathVariable int id, Model model){
+		 
+		 Board board = boardService.글가져오기(id);
+		// System.out.println(board.getContent());
+		 
+		 model.addAttribute("board", board);
+		  return "boardUpdate";
+	 }
+	 
+	 @PutMapping("/board/{id}") 
+	 public @ResponseBody CommonRespDto<?> update(@RequestBody Board board){
+		  
+		    boardService.글수정(board);
+		  return new CommonRespDto<String>(1,"글수정 성공");
+	 }
+	 
+//	 @GetMapping("/board/edit/{id}") 
+//	 public String update( Board board){
+//		 Board board = boardService. 
+//		 boardService.글수정(board);
+//		  return new CommonRespDto<String>(1,"글수정 성공");
+//	 }
 	 
 }
