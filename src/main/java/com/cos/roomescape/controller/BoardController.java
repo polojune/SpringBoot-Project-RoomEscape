@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.roomescape.dto.BoardRespDto;
 import com.cos.roomescape.dto.CommonRespDto;
@@ -19,7 +19,7 @@ import com.cos.roomescape.model.Board;
 import com.cos.roomescape.repository.BoardRepository;
 import com.cos.roomescape.service.BoardService;
 
-@Controller
+@RestController
 public class BoardController {
 	 
 	 @Autowired
@@ -42,12 +42,12 @@ public class BoardController {
 	 }
 	
 	 @GetMapping("/boards")
-	 public String getBoards(Model model){
+	 public List<BoardRespDto> getBoards(){
 		 List<BoardRespDto> boards = boardService.목록보기();
-		 model.addAttribute("boardRespDtos",boards);
+		 // model.addAttribute("boardRespDtos",boards);
 		
 		 //System.out.println("boardRespDtos" + boards);
-		 return "board";
+		 return boards;
 	 }
 	 
 	 @GetMapping("/boardDetail")
@@ -56,9 +56,10 @@ public class BoardController {
 		 return "boardDetail";
 	 }
 	 @GetMapping("/board/{id}")
-	 public String getBoard(@PathVariable int id,Model model) {
-		model.addAttribute("boardRespDto",boardService.상세보기(id));
-		return "boardDetail";
+	 public BoardRespDto getBoard(@PathVariable int id) {
+		BoardRespDto boardRespDto =  boardService.상세보기(id);
+
+		return boardRespDto;
 	 }
 	 
 	 @GetMapping("/delete/{id}") 

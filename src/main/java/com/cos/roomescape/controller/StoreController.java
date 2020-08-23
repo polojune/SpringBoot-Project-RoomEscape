@@ -79,10 +79,10 @@ public class StoreController {
 	  
 	@GetMapping("/store/{id}")
 	//@GetMapping("/storeDetail")
-	public String storeDetail(@PathVariable int id, Model model) {
+	public StoreDetailRespDto storeDetail(@PathVariable int id) {
 		
-		model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
-		return "/storeDetail";
+		StoreDetailRespDto storeDetailRespDto = storeService.상세보기(id);
+		return storeDetailRespDto;
 
 	}
 	//@GetMapping("/store/{id}")
