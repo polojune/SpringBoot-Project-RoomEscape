@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.roomescape.dto.NoticeRespDto;
 import com.cos.roomescape.model.Notice;
 import com.cos.roomescape.service.NoticeService;
 
-@Controller
+@RestController
 public class NoticeController {
       
 	 @Autowired

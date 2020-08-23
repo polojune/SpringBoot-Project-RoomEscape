@@ -21,7 +21,6 @@ import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.service.StoreService;
 
 @RestController
-//@Controller
 public class StoreController {
        
 	   @Autowired 
@@ -30,7 +29,7 @@ public class StoreController {
 	   private StoreRepository storeRepository;
 	
        @GetMapping("/store") 
-	   public List<Store> getStores(Model model) {
+	   public List<Store> getStores() {
     	    List<Store> stores = storeService.가게보기();
     	    
     	    String basePath = "http://localhost:8080";
@@ -42,10 +41,8 @@ public class StoreController {
     	    	store.setStoreImg(newPath);
     	    }
     	    
-    	    model.addAttribute("stores", stores);
     	    
     	    return stores;
-    	    // return "store";
        }
        
 //       @GetMapping("/store") 

@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cos.roomescape.dto.ThemeDetailRespDto;
 import com.cos.roomescape.model.Theme;
 import com.cos.roomescape.repository.ThemeRepository;
 import com.cos.roomescape.service.ThemeService;
 
-@Controller
+@RestController
 
 public class ThemeController {
     
@@ -30,17 +31,17 @@ public class ThemeController {
 //   
 
 	@GetMapping("/theme")
-	public List<Theme> getThemes(Model model) {
+	public List<Theme> getThemes() {
 		List<Theme> themes = themeService.테마보기();
-		model.addAttribute("themes",themes);
+		
 		return themes;
 	}
 	
 	
 	@GetMapping("/theme/{id}")
-	public String themeDetail(@PathVariable int id, Model model) {
-		model.addAttribute("themeDetailRespDto", themeService.상세보기(id));
-		return "themeDetail";
+	public ThemeDetailRespDto themeDetail(@PathVariable int id) {
+		ThemeDetailRespDto themeDetailRespDto = themeService.상세보기(id);
+		return themeDetailRespDto;
 
 	}
 	
