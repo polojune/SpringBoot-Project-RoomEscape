@@ -23,7 +23,7 @@
  </select>
    <select id="findOne" resultType="com.cos.roomescape.model.Board">
    	  
-            select title, content
+            select id, title, content
 	      	from board 
 			where id=#{id}
         

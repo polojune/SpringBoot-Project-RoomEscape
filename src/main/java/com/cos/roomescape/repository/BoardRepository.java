@@ -10,6 +10,6 @@ public interface BoardRepository {
     public List<BoardRespDto> findAll();
     public BoardRespDto findById(int id);
     public void delete(int id);
-    public void update(Board board);
+    public int update(Board board);
     public Board findOne(int id);
 }
