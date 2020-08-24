@@ -57,6 +57,11 @@ public class BoardController {
 	 }
 	 @GetMapping("/board/{id}")
 	 public String getBoard(@PathVariable int id,Model model) {
+		 
+		 BoardRespDto boardRespDto = boardService.상세보기(id);
+		 
+		 System.out.println(boardRespDto.getId());
+		 
 		model.addAttribute("boardRespDto",boardService.상세보기(id));
 		return "boardDetail";
 	 }
@@ -70,10 +75,10 @@ public class BoardController {
 	 }
 	 
 	 @GetMapping("/board/update/{id}") 
-	 public String edit(@PathVariable int id, Model model){
+	 public String edit(@PathVariable(name = "id") int id, Model model){
 		 
 		 Board board = boardService.글가져오기(id);
-		// System.out.println(board.getContent());
+		 System.out.println(board.getId());
 		 
 		 model.addAttribute("board", board);
 		  return "boardUpdate";
@@ -81,8 +86,17 @@ public class BoardController {
 	 
 	 @PutMapping("/board/{id}") 
 	 public @ResponseBody CommonRespDto<?> update(@RequestBody Board board){
+		 
+		 System.out.println(board.getId());
+		 System.out.println(board.getTitle());
+		 System.out.println(board.getContent());
 		  
-		    boardService.글수정(board);
+		    int result = boardService.글수정(board);
+		    
+		    if(result != 1) {
+		    	return new CommonRespDto<String>(0,"글수정 실패");
+		    }
+		    
 		  return new CommonRespDto<String>(1,"글수정 성공");
 	 }
 	 

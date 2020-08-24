@@ -50,9 +50,9 @@ public class BoardService {
 			return boardRepository.findOne(id);
 		}
 		@Transactional
-		public void 글수정(Board board) {
+		public int 글수정(Board board) {
 	        
-			boardRepository.update(board);
+			return boardRepository.update(board);
 	         
 		}
 		

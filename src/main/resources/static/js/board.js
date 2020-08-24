@@ -9,13 +9,15 @@ let index = {
 		},
 		
     update:function(){
-    	alert("나클릭됨?");
+    	//alert("나클릭됨?");
 			let data = {
 				id:$("#id").val(),
 				title:$("#title").val(),	 
 				content:$("#content").val()	 
 				 
 			 };
+			
+			alert(data.id);
 			 
 			$.ajax({
 				type:"PUT",
@@ -24,9 +26,14 @@ let index = {
 				contentType:"application/json; charset=utf-8", 
 				dataType:"json"
 			}).done(function(resp){
-			       console.log(resp);
-				   alert("수정 성공"); 
-				   location.href="/board/update/"+data.id;
+					if(resp.statusCode == 0){
+						alert("수정 실패");
+					} else{
+					       console.log(resp);
+						   alert("수정 성공"); 
+						   location.href="/boards";
+					}
+
 			   
 				console.log(resp);
 			//console.log(JSON.parse(resp));
