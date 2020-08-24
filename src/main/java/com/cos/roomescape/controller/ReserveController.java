@@ -63,17 +63,14 @@ public class ReserveController {
 	public @ResponseBody List<ReserveThemeRespDto> getTimeList(@PathVariable int themeId, String datetime_string) {
 		System.out.println("ReserveController: getTimeList(): " + themeId + " " + datetime_string);
 		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE MMM dd yyyy",Locale.ENGLISH);
-		LocalDate date = LocalDate.parse(datetime_string.substring(0, 15), formatter);
-		System.out.println("LocalDate: " + date);
-		
-		//scheduleService.해당날짜시간표가져오기(date);
+
+		List<String> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
 		
 //		List<ReserveThemeRespDto> reserveDtos = null;
 //
 //		reserveDtos = themeRepository.findThemeByStoreId(storeId);
 
-		return null;
+		return scheduleList;
 	}
 
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cos.roomescape.repository.ScheduleRepository">
+	<select id="findByThemeIdAndDate" resultType="String">
+		select id, (startTime) from schedule where themeId = ${themeId} and date(startTime) = ${dateStr}
+	</select>
+
+</mapper>
