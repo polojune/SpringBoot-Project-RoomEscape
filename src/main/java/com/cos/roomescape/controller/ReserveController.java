@@ -58,19 +58,19 @@ public class ReserveController {
 		return reserveDtos;
 	}
 	
-	
+
 	@PostMapping("theme/{themeId}/times")
 	public @ResponseBody List<ReserveThemeRespDto> getTimeList(@PathVariable int themeId, String datetime_string) {
 		System.out.println("ReserveController: getTimeList(): " + themeId + " " + datetime_string);
 		
 
-		List<String> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
-		
-//		List<ReserveThemeRespDto> reserveDtos = null;
-//
-//		reserveDtos = themeRepository.findThemeByStoreId(storeId);
+		//List<ReserveThemeRespDto> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
+				List<ReserveThemeRespDto> reserveDtos = null;
 
-		return scheduleList;
-	}
+		//reserveDtos = themeRepository.findThemeByStoreId(storeId);
 
+		return null;
+	
+
+  }
 }

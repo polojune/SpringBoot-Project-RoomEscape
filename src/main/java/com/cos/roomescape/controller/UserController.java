@@ -79,29 +79,29 @@ public class UserController {
 		return "<h1>user</h1>";
 	}
 
-	@PostMapping("/loginProc")
-	public @ResponseBody CommonRespDto<?> loginProc(User user, HttpSession session) {
-
-		User persistUser = userService.로그인(user);
-		
-		if(persistUser == null) {
-			System.out.println("널");
-			return new CommonRespDto<String>(-1, "로그인 실패");
-		}
-		
-		System.out.println(user.getPassword());
-		System.out.println(persistUser.getPassword());
-		System.out.println(bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword()));
-
-		if (bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword())) {
-			System.out.println("있음");
-			// 세션 등록해야함
-			session.setAttribute("principal", persistUser);
-			return new CommonRespDto<String>(1, "로그인 성공");
-		} else {
-			System.out.println("없음");
-			return new CommonRespDto<String>(-1, "로그인 실패");
-		}
+//	@PostMapping("/loginProc")
+//	public @ResponseBody CommonRespDto<?> loginProc(User user, HttpSession session) {
+//
+//		User persistUser = userService.로그인(user);
+//		
+//		if(persistUser == null) {
+//			System.out.println("널");
+//			return new CommonRespDto<String>(-1, "로그인 실패");
+//		}
+//		
+//		System.out.println(user.getPassword());
+//		System.out.println(persistUser.getPassword());
+//		System.out.println(bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword()));
+//
+//		if (bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword())) {
+//			System.out.println("있음");
+//			// 세션 등록해야함
+//			session.setAttribute("principal", persistUser);
+//			return new CommonRespDto<String>(1, "로그인 성공");
+//		} else {
+//			System.out.println("없음");
+//			return new CommonRespDto<String>(-1, "로그인 실패");
+//		}
 
 //		if (ObjectUtils.isEmpty(persistUser)) {
 //			System.out.println("없음");
@@ -113,7 +113,7 @@ public class UserController {
 //			return new CommonRespDto<String>(1, "로그인 성공");
 //		}
 
-	}
+	//}
 	
 	
 

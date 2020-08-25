@@ -18,7 +18,7 @@ import lombok.Data;
 
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
-	
+	private static final long serialVersionUID = 1L;
 	private User user;
 	private String role;
 	private Map<String, Object> attributes;

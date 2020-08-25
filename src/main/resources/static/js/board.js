@@ -9,7 +9,7 @@ let index = {
 		},
 		
     update:function(){
-    	//alert("나클릭됨?");
+    
 			let data = {
 				id:$("#id").val(),
 				title:$("#title").val(),	 

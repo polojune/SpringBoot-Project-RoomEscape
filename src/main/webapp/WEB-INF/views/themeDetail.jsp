@@ -1118,7 +1118,7 @@
 								</div>
 							</div>
 
-							<div class="reviewFrm_box">
+							<div class="reviewFrm_box" style="height:225">
 								<form id="reviewFrm" class="reviewFrm" name="reviewFrm" method="post">
 
 									<input type="hidden" name="star" value="">
@@ -1128,7 +1128,7 @@
 											<div class="review_info">
 												<div class="writer">
 													<span class="text">
-														로그인 후 이용해주세요.
+														
 													</span>
 												</div>
 
@@ -1137,18 +1137,18 @@
 												</div>
 											</div>
 
-											<div class="rating_star login_layer_event">
+											<div class="rating_star ">
 												<img src="https://www.roomescape.co.kr/_template/assets/img/theme/detail/review/5star.png"
 													alt="">
 											</div>
 										</div>
 
-										<textarea class="review_content login_layer_event"
-											placeholder="로그인 후 이용해주세요."></textarea>
+										<textarea class="review_content"
+											></textarea>
 									</div>
 
 									<div class="reviewFrm_btn_box">
-										<button type="button" class="reviewFrm_submit login_layer_event">후기 등록</button>
+										<button type="button" class="reviewFrm_submit ">후기 등록</button>
 									</div>
 								</form>
 							</div>
