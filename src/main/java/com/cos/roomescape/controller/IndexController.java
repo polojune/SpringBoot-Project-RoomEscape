@@ -1,27 +1,28 @@
 package com.cos.roomescape.controller;
 
-import java.util.Iterator;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cos.roomescape.config.auth.PrincipalDetails;
-import com.cos.roomescape.model.User;
-import com.cos.roomescape.repository.UserRepository;
-//@RestController
-@Controller
-//@RequestMapping("api/v1")
+import com.cos.roomescape.dto.IndexRespDto;
+import com.cos.roomescape.model.Store;
+import com.cos.roomescape.model.Theme;
+import com.cos.roomescape.service.StoreService;
+import com.cos.roomescape.service.ThemeService;
+
+
+@RestController
 public class IndexController {
+	
+	@Autowired
+	private StoreService storeService;
+	@Autowired
+	private ThemeService themeService;
 
 	
 	@GetMapping({ "", "/" })
@@ -30,8 +31,16 @@ public class IndexController {
 	}
 
 	@GetMapping("/index")
-	public String index() {
-		return "index";
+	public IndexRespDto index() {
+		IndexRespDto indexRespDto = new IndexRespDto();
+		
+		List<Store> stores = storeService.가게보기();
+		List<Theme> themes = themeService.테마보기();
+		
+		indexRespDto.setStores(stores);
+		indexRespDto.setThemes(themes);
+		
+		return indexRespDto;
 	}
 
 

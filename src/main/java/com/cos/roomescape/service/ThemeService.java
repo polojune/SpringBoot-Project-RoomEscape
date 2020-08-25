@@ -33,8 +33,17 @@ public class ThemeService {
 	@Transactional(readOnly = true)
 	public List<Theme> 테마보기() {
         
-	  return themeRepository.findAll();
+		List<Theme> themes = themeRepository.findAll();
+		String basePath = "http://localhost:8080";
+	    
+	    for (Theme theme : themes) {
+	    	// System.out.println(theme.getThemeImg());
+	    	String oldPath = theme.getThemeImg();
+	    	String newPath = basePath + oldPath;
+	    	theme.setThemeImg(newPath);
+	    }
 	  
+	    return themes;
 	}
    
 	@Transactional(readOnly = true)

@@ -32,15 +32,6 @@ public class StoreController {
 	   public List<Store> getStores() {
     	    List<Store> stores = storeService.가게보기();
     	    
-    	    String basePath = "http://localhost:8080";
-    	    
-    	    for (Store store : stores) {
-    	    	// System.out.println(store.getStoreImg());
-    	    	String oldPath = store.getStoreImg();
-    	    	String newPath = basePath + oldPath;
-    	    	store.setStoreImg(newPath);
-    	    }
-    	    
     	    
     	    return stores;
        }

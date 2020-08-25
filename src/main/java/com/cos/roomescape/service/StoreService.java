@@ -31,11 +31,21 @@ public class StoreService {
 
 	@Transactional(readOnly = true)
 	public List<Store> 가게보기() {
-        
-	  return storeRepository.findAll();
-	  
-
+        List<Store> stores = storeRepository.findAll();
+	    
+        String basePath = "http://localhost:8080";
+	    
+	    for (Store store : stores) {
+	    	// System.out.println(store.getStoreImg());
+	    	String oldPath = store.getStoreImg();
+	    	String newPath = basePath + oldPath;
+	    	store.setStoreImg(newPath);
+	    }
+	    
+	    return stores;
 	}
+	
+	
 	@Transactional(readOnly = true)
 	public StoreDetailRespDto 상세보기(int storeId ) {
 		StoreDetailRespDto dto = new StoreDetailRespDto();
