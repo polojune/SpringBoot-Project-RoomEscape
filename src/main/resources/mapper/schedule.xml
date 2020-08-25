@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cos.roomescape.repository.ScheduleRepository">
-	<select id="findByThemeIdAndDate" resultType="String">
-		select id, (startTime) from schedule where themeId = ${themeId} and date(startTime) = ${dateStr}
+	<select id="findByThemeIdAndDate" resultType="com.cos.roomescape.dto.ReserveThemeRespDto">
+		select id, substr(startTime,11,6) from schedule where themeId = ${themeId} and date(startTime) = ${dateStr}
 	</select>
 
 </mapper>
