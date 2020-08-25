@@ -93,6 +93,10 @@
 //	<script>
 		function search_allow_time($theme_id, $datetime_string) {
 			
+			if ($datetime_string == null || $datetime_string.length === 0) {
+				$datetime_string = new Date();
+			}
+			
 			console.log(`search_allow_time: theme_id: ${$theme_id} datetime_string: ${$datetime_string}`);
 			console.log("search_allow_time:datetime_string:", $datetime_string);
 			$.ajax({

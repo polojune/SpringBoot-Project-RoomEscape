@@ -24,10 +24,10 @@ import com.cos.roomescape.repository.UserRepository;
 public class IndexController {
 
 	
-	@GetMapping({ "", "/" })
-	public @ResponseBody String home() {
-		return "인덱스 페이지";
-	}
+//	@GetMapping({ "", "/" })
+//	public @ResponseBody String home() {
+//		return "인덱스 페이지";
+//	}
 
 	@GetMapping("/index")
 	public String index() {
@@ -48,10 +48,12 @@ public class IndexController {
 		return "map";
 	}
 	
-	@GetMapping("/freeSaveForm")
-	public String freeSaveForm() {
-		return "freeSaveForm";
+	
+	@GetMapping("/home")
+	public String home() {
+		return "home";
 	}
+
 	
 	
 	    //매니저 접근가능 

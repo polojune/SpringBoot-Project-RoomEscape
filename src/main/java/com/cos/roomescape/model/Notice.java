@@ -7,13 +7,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FreeBoard {
+public class Notice {
       private int id; 
       private int userId;
       private String title;      

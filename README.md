@@ -90,6 +90,25 @@ CREATE TABLE review(
     foreign key (themeId) references theme (id) on delete set null 
 ) engine=InnoDB default charset=utf8;
 
+CREATE TABLE board(
+	id int auto_increment primary key,
+    title varchar(100) not null,
+    content longtext,
+    userId int,
+    createDate timestamp,
+    foreign key (userId) references user (id) on delete set null
+) engine=InnoDB default charset=utf8;
+
+CREATE TABLE notice(
+	id int auto_increment primary key,
+    title varchar(100) not null,
+    content longtext,
+    userId int,
+    createDate timestamp,
+    foreign key (userId) references user (id) on delete set null
+) engine=InnoDB default charset=utf8;
+
+
 
 ```
 
@@ -135,4 +154,10 @@ insert into review (userId,themeId,content,rating,createDate) values(3,1,"별로
 insert into review (userId,themeId,content,rating,createDate) values(2,3,"너무좋아요",9,now());
 insert into review (userId,themeId,content,rating,createDate) values(4,5,"좋아요",8,now());
 insert into review (userId,themeId,content,rating,createDate) values(5,4,"재미있었어요",9,now());
+
+
+insert into board(title,count,content,userId,createDate) values("게시판이용안내",100,"게시판에 대하여",2,now());
+insert into board(title,count,content,userId,createDate) values("건대2호점 후기",70,"건대후기 대하여",1,now());
+insert into board(title,count,content,userId,createDate) values("너에게가는길 후기",50,"너에게가는길 대하여",4,now());
+insert into board(title,count,content,userId,createDate) values("홍대 큐브이스케이프 전테마 후기",45,"홍대 큐브이스케이프",7,now());
 ```

@@ -1,5 +1,7 @@
 package com.cos.roomescape.config.auth;
 
+import javax.mail.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,7 +22,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 		System.out.println("PrincipalService: 진입");
 		System.out.println(username);
 		User user = userRepository.findByUsername(username);
-	
+	    
 		return new PrincipalDetails(user);
 	}
          
