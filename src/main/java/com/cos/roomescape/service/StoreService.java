@@ -1,5 +1,7 @@
 package com.cos.roomescape.service;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +34,18 @@ public class StoreService {
 	@Transactional(readOnly = true)
 	public List<Store> 가게보기() {
         List<Store> stores = storeRepository.findAll();
-	    
-        String basePath = "http://localhost:8080";
+        
+        String ip = "";
+		try {
+			ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		System.out.println("ip주소: " + ip);
+		
+		// String basePath = "http://localhost:8080";
+		String basePath = "http://" + ip + ":8080";
+
 	    
 	    for (Store store : stores) {
 	    	// System.out.println(store.getStoreImg());

@@ -32,6 +32,8 @@ public class IndexController {
 
 	@GetMapping("/index")
 	public IndexRespDto index() {
+
+		
 		IndexRespDto indexRespDto = new IndexRespDto();
 		
 		List<Store> stores = storeService.가게보기();

@@ -1,5 +1,7 @@
 package com.cos.roomescape.service;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,18 @@ public class ThemeService {
 	public List<Theme> 테마보기() {
         
 		List<Theme> themes = themeRepository.findAll();
-		String basePath = "http://localhost:8080";
-	    
+		
+		String ip = "";
+		try {
+			ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		System.out.println("ip주소: " + ip);
+		
+		// String basePath = "http://localhost:8080";
+		String basePath = "http://" + ip + ":8080";	// 192.168.0.xx 와 같은 ip주소로 변환함. 안드로이드 picasso 라이브러리가
+													// localhost의 이미지를 못 가져오고 ip주소로만 가져올 수
 	    for (Theme theme : themes) {
 	    	// System.out.println(theme.getThemeImg());
 	    	String oldPath = theme.getThemeImg();
