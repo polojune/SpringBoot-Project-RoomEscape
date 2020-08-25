@@ -33,6 +33,7 @@ public class StoreController {
 	   public List<Store> getStores(Model model) {
     	    List<Store> stores = storeService.가게보기();
     	    
+    	    // db에서 불러온 경로값은 상대경로인데 이를 절대경로로 바꿈
     	    String basePath = "http://localhost:8080";
     	    
     	    for (Store store : stores) {

@@ -64,8 +64,16 @@ public class ReserveController {
 		System.out.println("ReserveController: getTimeList(): " + themeId + " " + datetime_string);
 		
 
+
 		//List<ReserveThemeRespDto> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
 				List<ReserveThemeRespDto> reserveDtos = null;
+
+		List<ReserveThemeRespDto> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
+		
+//		List<ReserveThemeRespDto> reserveDtos = null;
+//
+//		reserveDtos = themeRepository.findThemeByStoreId(storeId);
+
 
 		//reserveDtos = themeRepository.findThemeByStoreId(storeId);
 
