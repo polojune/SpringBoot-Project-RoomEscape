@@ -60,9 +60,9 @@ public class BoardController {
 		 
 		 BoardRespDto boardRespDto = boardService.상세보기(id);
 		 
-		 System.out.println(boardRespDto.getId());
+		 System.out.println("BoardController:"+boardRespDto);
 		 
-		model.addAttribute("boardRespDto",boardService.상세보기(id));
+		model.addAttribute("boardRespDto",boardRespDto);
 		return "boardDetail";
 	 }
 	 

@@ -11,18 +11,20 @@
  <select id="findAll" resultType="com.cos.roomescape.dto.NoticeRespDto">
    	  select notice.id, u.username, title, notice.createDate,count
         from notice inner join user u 
-       where u.id = board.userId      	  
+       where u.id = notice.userId      	  
  </select>
  
    <select id="findById" resultType="com.cos.roomescape.dto.NoticeRespDto">
-   	  select b.id,b.title,b.content,u.username,b.count  
-      from board b  inner join user u  
-      on b.userId = u.id 
-      where b.id = #{id} 
+   	  select n.id,n.title,n.content,u.username,n.count  
+      from notice n  inner join user u  
+      on n.userId = u.id 
+      where n.id = #{id} 
    
  </select>
  
- 
+    <delete id="delete">
+      DELETE FROM notice WHERE id=#{id}
+   </delete>
 
 
 

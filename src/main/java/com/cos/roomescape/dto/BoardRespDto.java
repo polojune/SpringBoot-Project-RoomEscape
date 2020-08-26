@@ -1,8 +1,7 @@
 package com.cos.roomescape.dto;
 
 import java.sql.Timestamp;
-
-
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +19,6 @@ public class BoardRespDto {
        private String content;
        private int count; 
        private Timestamp createDate;
+       private List<CommentRespDto> commentRespDtos;
        
 }

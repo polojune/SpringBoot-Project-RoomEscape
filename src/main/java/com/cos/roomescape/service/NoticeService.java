@@ -38,5 +38,13 @@ public class NoticeService {
 		  return noticeRepository.findById(id);
 
 		}
+		
+			
+		@Transactional
+		public void 글삭제(int id) {
+	        
+			noticeRepository.delete(id);
+	         
+		}
 	
 }

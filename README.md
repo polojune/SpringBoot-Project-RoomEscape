@@ -109,6 +109,17 @@ CREATE TABLE notice(
 ) engine=InnoDB default charset=utf8;
 
 
+CREATE TABLE comment(
+	id int auto_increment primary key,
+    userId int,
+    boardId int,
+    content varchar(300) not null,
+    createDate timestamp,
+    foreign key (userId) references user (id) on delete set null,
+    foreign key (boardId) references board (id) on delete cascade
+) engine=InnoDB default charset=utf8;
+
+
 
 ```
 
@@ -160,4 +171,10 @@ insert into board(title,count,content,userId,createDate) values("게시판이용
 insert into board(title,count,content,userId,createDate) values("건대2호점 후기",70,"건대후기 대하여",1,now());
 insert into board(title,count,content,userId,createDate) values("너에게가는길 후기",50,"너에게가는길 대하여",4,now());
 insert into board(title,count,content,userId,createDate) values("홍대 큐브이스케이프 전테마 후기",45,"홍대 큐브이스케이프",7,now());
+
+insert into notice(title,count,content,userId,createDate) values("게시판이용안내",100,"게시판에 대하여",3,now());
+insert into notice(title,count,content,userId,createDate) values("자유게시판이용안내",110,"자유게시판",3,now());
+
+
 ```
+

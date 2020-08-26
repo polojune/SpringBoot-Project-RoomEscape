@@ -123,24 +123,25 @@
 							</thead>
 
 							<tbody>
+							   <c:forEach var="noticeRespDto" items="${noticeRespDtos}">
 								<tr class="notice">
 									<td class="value numb" style="color:#121212;font-weight:900;">
-										공지
+										${noticeRespDto.id}
 									</td>
 
 
-									<td class="value subject"><a href="https://www.roomescape.co.kr/board/view.php?board=free&amp;id=2" style="color:#121212;">자유게시판 이용 안내</a><span class="comment_cnt">[0]</span></td>
+									<td class="value title"><a href="/notice/${noticeRespDto.id}" style="color:#121212;">${noticeRespDto.title}</a></td>
 
 									<td class="value name">
 
-										<span>전국방탈출</span>
+										<span>${noticeRespDto.username}</span>
 
 											<img class="ceo" src="https://www.roomescape.co.kr/_template/assets/img/board/manager.png?ver=171736" alt="">
 									</td>
-									<td class="value date">2019-07-24</td>
-									<td class="value view">422</td>
+									<td class="value date">${noticeRespDto.createDate}</td>
+									<td class="value view">${noticeRespDto.count}</td>
 								</tr>
-
+                             </c:forEach>
 							
 
 							</tbody>

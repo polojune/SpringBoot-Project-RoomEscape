@@ -126,7 +126,7 @@
                 margin-bottom: 20px;
             }
         </style>
-
+        
         <textarea id="content" name="content"  style="display: none;">${board.content}</textarea>
         
 

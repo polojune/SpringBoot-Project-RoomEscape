@@ -8,14 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import com.cos.roomescape.dto.BoardRespDto;
+import com.cos.roomescape.dto.CommentRespDto;
 import com.cos.roomescape.model.Board;
 import com.cos.roomescape.repository.BoardRepository;
+import com.cos.roomescape.repository.CommentRepository;
 
 @Service
 public class BoardService {
      
 	  @Autowired
 	  private BoardRepository boardRepository; 
+	  
+	  @Autowired
+	  private CommentRepository commentRepository;
 	  
 	  @Transactional 
 	  public void 글쓰기(Board board) {
@@ -31,8 +36,10 @@ public class BoardService {
 		
 		@Transactional(readOnly = true)
 		public BoardRespDto 상세보기(int id) {
-	        
-		  return boardRepository.findById(id);
+			BoardRespDto boardRespDto =boardRepository.findById(id);
+		    List<CommentRespDto> commentRespDtos = commentRepository.findByBoardId(id);
+		    boardRespDto.setCommentRespDtos(commentRespDtos);
+		    return boardRespDto;
 
 		}
 		

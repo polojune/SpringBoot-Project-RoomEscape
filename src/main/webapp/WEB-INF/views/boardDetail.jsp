@@ -164,22 +164,43 @@
               </div>
               <div class="comment_write">
                 <textarea
-                  class="comment_box login_layer_pop_event"
-                  placeholder="로그인 이후 쓰기가 가능합니다."
+                  class="comment_box "
+                       
                   type="textarea"
-                ></textarea>
+               id="content" >       </textarea>
+                <input type="hidden" id="id"  value="${boardRespDto.id}">
                 <div class="comment_input_btn_box">
                   <p><span id="counter">1000</span><span>자</span></p>
-                  <button
-                    type="button"
-                    class="comment_input_btn login_layer_pop_event"
-                  >
-                    입력
+                  <button  type="button" id="btn-reply" class="comment_input_btn ">
+                                                입력
                   </button>
                 </div>
                 <div class="clearfix"></div>
               </div>
               <div class="clearfix"></div>
+              
+              <c:forEach var="commentRespDto"   items="${boardRespDto.commentRespDtos}">
+              <div class="comment" id="${commentRespDto.id}">
+	          <div class="comment_info">
+						<div class="comment_name">
+							<span>
+							<img src="https://www.roomescape.co.kr/_template/assets/img/board/medal8.png" alt="">
+							</span>
+							<span class="comments_writer_nickname">${commentRespDto.username}</span>
+						</div>
+					</div>
+					<div class="comment_content">
+						<span>${commentRespDto.content}<span>
+						</span></span>
+					</div>
+					<div class="comment_write_datetime">
+						<span>${commentRespDto.createDate}</span>
+						<span>
+						</span>
+					</div>
+				</div>
+               </c:forEach> 
+               
             </div>
           </div>
         </div>
@@ -306,6 +327,8 @@
         }
       });
     </script>
+    
+    <script src="/js/comment.js"></script>
    <%@ include file="include/footer.jsp"%> 
     
   </body>
