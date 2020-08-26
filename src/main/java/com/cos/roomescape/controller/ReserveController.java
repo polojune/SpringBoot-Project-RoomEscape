@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cos.roomescape.dto.ReserveStoreRespDto;
 import com.cos.roomescape.dto.ReserveThemeRespDto;
+import com.cos.roomescape.dto.ReserveTimeRespDto;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.repository.ThemeRepository;
 import com.cos.roomescape.service.ScheduleService;
@@ -60,15 +61,15 @@ public class ReserveController {
 	
 
 	@PostMapping("theme/{themeId}/times")
-	public @ResponseBody List<ReserveThemeRespDto> getTimeList(@PathVariable int themeId, String datetime_string) {
-		System.out.println("ReserveController: getTimeList(): " + themeId + " " + datetime_string);
+	public @ResponseBody List<ReserveTimeRespDto> getTimeList(@PathVariable int themeId, String datetime_string) {
+		System.out.println("ReserveController: getTimeList(): 테마ID: " + themeId + " " + datetime_string);
 		
 
 
 		//List<ReserveThemeRespDto> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
-				List<ReserveThemeRespDto> reserveDtos = null;
+				List<ReserveTimeRespDto> reserveDtos = null;
 
-		List<ReserveThemeRespDto> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
+		List<ReserveTimeRespDto> scheduleList = scheduleService.특정일시간표가져오기(themeId, datetime_string);
 		
 //		List<ReserveThemeRespDto> reserveDtos = null;
 //
@@ -77,7 +78,7 @@ public class ReserveController {
 
 		//reserveDtos = themeRepository.findThemeByStoreId(storeId);
 
-		return null;
+		return scheduleList;
 	
 
   }

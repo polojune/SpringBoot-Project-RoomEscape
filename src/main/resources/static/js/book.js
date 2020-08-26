@@ -113,14 +113,22 @@
 			})
 			.done(function (result) {
 
-				console.log(result);
-//				console.log($result.other);
+				console.log("result.length: ", result.length);
 
 				if (result.length == 0) {
 					alert("해당날짜에 시간표가 입력되어 있지 않습니다.");
 				} else {
 					$("#time_list").empty();
-					$("#time_list").append($result.element);
+					
+					
+					for (let i=0; i<result.length; i++) {
+						let str;
+						if (result[i].available == true)	str = `<div class="time true" data-reserve-allow="true"><span>${result[i].reserveTime}</span></div>`;
+						else								str = `<div class="time false" data-reserve-allow="false"><span>${result[i].reserveTime}</span></div>`;
+						
+						$("#time_list").append(str);
+					}
+				
 				}
 			})
 
