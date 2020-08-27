@@ -35,7 +35,7 @@
 		<div class="memb_info_find">
 			<a href="https://www.roomescape.co.kr/auth/find_identity.php">아이디 찾기</a>
 			<a href="https://www.roomescape.co.kr/auth/find_account.php">비밀번호 찾기</a>
-			<a href="https://www.roomescape.co.kr/auth/join.php">회원이 아니세요?</a>
+			<a href="/auth/join">회원이 아니세요?</a>
 		</div>
 	</div>
 </div>
@@ -111,7 +111,7 @@
         } 
     }
 
-	$("#login_frm").submit(function(e){
+<!-- 	$("#login_frm").submit(function(e){
 
 		e.preventDefault();
 
@@ -148,7 +148,7 @@
 			 	}
 			}
 		});
-	});
+	});-->
 </script>
 	<div class="container">
 <div id="m_main_menu" class="m_main_menu">
@@ -157,7 +157,7 @@
 			<img src="https://www.roomescape.co.kr/_template/assets/img/m/login.png?ver=171736" alt="">
 		</a>
 
-		<a class="m_join" href="https://www.roomescape.co.kr/auth/join.php">
+		<a class="m_join" href="/auth/join">
 			회원이 아니세요?
 		</a>
 		<img src="https://www.roomescape.co.kr/_template/assets/img/m/m_menu_close_btn.png?ver=171736" alt="">
@@ -166,10 +166,10 @@
 	<nav>
 		<ul>
 			<li><a href="https://www.roomescape.co.kr"><span>홈</span></a></li>
-			<li><a href="https://www.roomescape.co.kr/store/main.php"><span>카페</span></a></li>
-			<li><a href="https://www.roomescape.co.kr/theme/main.php"><span>테마</span></a></li>
-			<li><a href="https://www.roomescape.co.kr/book/index.php?type=select"><span>예약</span></a></li>
-			<li><a href="https://www.roomescape.co.kr/info/"><span>지도</span></a></li>
+			<li><a href="/store"><span>카페</span></a></li>
+			<li><a href="/theme"><span>테마</span></a></li>
+			<li><a href="/reserve"><span>예약</span></a></li>
+			<li><a href="/map"><span>지도</span></a></li>
 		
            
 		</ul>
@@ -186,10 +186,10 @@
 
 		<nav class="main_menu">
 			<ul class="depth1">
-				<li><a href="https://www.roomescape.co.kr/store/main.php">카페</a></li>
-				<li><a href="https://www.roomescape.co.kr/theme/main.php">테마</a></li>
-				<li><a href="https://www.roomescape.co.kr/info/">지도</a></li>
-				<li><a href="https://www.roomescape.co.kr/book/index.php?type=select">예약</a></li>
+				<li><a href="/store">카페</a></li>
+				<li><a href="/theme">테마</a></li>
+				<li><a href="/map">지도</a></li>
+				<li><a href="/book">예약</a></li>
 			     
 			     <style>
 .dropbtn {
@@ -251,7 +251,7 @@
 			</div>
 			
 			<div class="join">
-				<a href="https://www.roomescape.co.kr/auth/join.php">회원이 아니세요?</a>
+				<a href="/auth/join">회원이 아니세요?</a>
 			</div>
 		</div>
 	</div>

@@ -14,7 +14,7 @@
               select c.id,c.content,u.username, c.createDate  
 		      from comment c  inner join user u  
 		      on c.userId = u.id 
-		      where c.boardId = #{id} 
+		      where c.id = #{id} 
      </select>
   
   

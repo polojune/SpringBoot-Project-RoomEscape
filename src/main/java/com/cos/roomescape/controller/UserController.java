@@ -51,7 +51,7 @@ public class UserController {
 //		return "회원가입완료";
 //	}
 
-	@GetMapping("join")
+	@GetMapping("/auth/join")
 	public String join() {
 		return "join";
 	}
