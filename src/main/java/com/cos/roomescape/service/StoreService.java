@@ -16,6 +16,7 @@ import com.cos.roomescape.model.Theme;
 import com.cos.roomescape.repository.ReviewRepository;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.repository.ThemeRepository;
+import com.cos.roomescape.util.IpUtil;
 
 //Controller,Repository, Configuration,Service,Component
 //RestController,Bean
@@ -35,23 +36,12 @@ public class StoreService {
 	public List<Store> 가게보기() {
         List<Store> stores = storeRepository.findAll();
         
-        String ip = "";
-		try {
-			ip = InetAddress.getLocalHost().getHostAddress();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		System.out.println("ip주소: " + ip);
-		
-		// String basePath = "http://localhost:8080";
-		String basePath = "http://" + ip + ":8080";
-
-	    
+        
 	    for (Store store : stores) {
 	    	// System.out.println(store.getStoreImg());
 	    	String oldPath = store.getStoreImg();
 	    	if (oldPath.startsWith("http://")) continue;
-	    	String newPath = basePath + oldPath;
+	    	String newPath = IpUtil.convertAddress(oldPath);
 	    	store.setStoreImg(newPath);
 	    }
 	    
@@ -64,11 +54,19 @@ public class StoreService {
 		StoreDetailRespDto dto = new StoreDetailRespDto();
 		Store store = storeRepository.findById(storeId);
 		List<ThemeRespDto> themes =themeRepository.findByStoreId(storeId);
+		
+		for (ThemeRespDto themeRespDto : themes) {
+			String oldPath = themeRespDto.getThemeImg();
+	    	if (oldPath.startsWith("http://")) continue;
+	    	String newPath = IpUtil.convertAddress(oldPath);
+	    	themeRespDto.setThemeImg(newPath);
+		}
+		
 		List<ReviewRespDto> reviewDto = reviewRepository.findByStoreId(storeId);
 		
 		dto.setStore(store);
 		dto.setThemes(themes);
-		dto.setReviews(reviewDto);;
+		dto.setReviews(reviewDto);
 		
 		return dto;
 	}

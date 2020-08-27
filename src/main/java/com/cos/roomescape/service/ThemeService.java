@@ -19,6 +19,7 @@ import com.cos.roomescape.repository.ReviewRepository;
 import com.cos.roomescape.repository.StoreRepository;
 import com.cos.roomescape.repository.ThemeRepository;
 import com.cos.roomescape.repository.UserRepository;
+import com.cos.roomescape.util.IpUtil;
 
 //Controller,Repository, Configuration,Service,Component
 //RestController,Bean
@@ -37,22 +38,12 @@ public class ThemeService {
         
 		List<Theme> themes = themeRepository.findAll();
 		
-		String ip = "";
-		try {
-			ip = InetAddress.getLocalHost().getHostAddress();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		System.out.println("ip주소: " + ip);
 		
-		// String basePath = "http://localhost:8080";
-		String basePath = "http://" + ip + ":8080";	// 192.168.0.xx 와 같은 ip주소로 변환함. 안드로이드 picasso 라이브러리가
-													// localhost의 이미지를 못 가져오고 ip주소로만 가져올 수
 	    for (Theme theme : themes) {
 	    	// System.out.println(theme.getThemeImg());
 	    	String oldPath = theme.getThemeImg();
 	    	if (oldPath.startsWith("http://")) continue;
-	    	String newPath = basePath + oldPath;
+	    	String newPath = IpUtil.convertAddress(oldPath);
 	    	theme.setThemeImg(newPath);
 	    }
 	  
@@ -68,6 +59,14 @@ public class ThemeService {
 		 System.out.println("storeName" +storeName);
 	     //StoreNameDto storeDto = storeRepository.findByStoreId(theme.getStoreId());	 
 		 List<ThemeRespDto> themes = themeRepository.findByStoreId(theme.getStoreId());
+		 
+		 for (ThemeRespDto themeRespDto : themes) {
+			String oldPath = themeRespDto.getThemeImg();
+		    if (oldPath.startsWith("http://")) continue;
+		    String newPath = IpUtil.convertAddress(oldPath);
+		    themeRespDto.setThemeImg(newPath);
+		 }
+		 
 		 List<ReviewRespDto> reviewDto = reviewRepository.findByThemeId(themeId);
 		 
 		 
@@ -78,4 +77,5 @@ public class ThemeService {
 		 
 		 return themeDto;
 	}
+	
 }
