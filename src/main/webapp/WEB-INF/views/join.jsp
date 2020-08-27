@@ -61,7 +61,7 @@
 
 
 <body>
-     	<form action="/joinProc" method="post" class="was-validated" onsubmit="return validate()" style="width:400px; margin: 0 auto;">
+     	<form action="/joinProc" method="post"  style="width:400px; margin: 0 auto;">
 
 		<div class="form-group">
 			<label for="username">Username:</label>
