@@ -51,6 +51,7 @@ public class ThemeService {
 	    for (Theme theme : themes) {
 	    	// System.out.println(theme.getThemeImg());
 	    	String oldPath = theme.getThemeImg();
+	    	if (oldPath.startsWith("http://")) continue;
 	    	String newPath = basePath + oldPath;
 	    	theme.setThemeImg(newPath);
 	    }
