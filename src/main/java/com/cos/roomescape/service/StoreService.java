@@ -50,6 +50,7 @@ public class StoreService {
 	    for (Store store : stores) {
 	    	// System.out.println(store.getStoreImg());
 	    	String oldPath = store.getStoreImg();
+	    	if (oldPath.startsWith("http://")) continue;
 	    	String newPath = basePath + oldPath;
 	    	store.setStoreImg(newPath);
 	    }
