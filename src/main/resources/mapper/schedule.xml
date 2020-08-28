@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cos.roomescape.repository.ScheduleRepository">
 	<select id="findByThemeIdAndDate" resultType="com.cos.roomescape.dto.ReserveTimeRespDto">
-		select id, substr(startTime,11,6) as reserveTime, available from schedule where themeId = #{themeId} and date(startTime) = #{dateStr}
+		select id, themeId, substr(startTime,11,6) as reserveTime, available from schedule where themeId = #{themeId} and date(startTime) = #{dateStr}
 	</select>
 
 </mapper>

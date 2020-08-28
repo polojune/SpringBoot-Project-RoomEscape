@@ -123,8 +123,8 @@
 					
 					for (let i=0; i<result.length; i++) {
 						let str;
-						if (result[i].available == true)	str = `<div class="time true" data-reserve-allow="true"><span>${result[i].reserveTime}</span></div>`;
-						else								str = `<div class="time false" data-reserve-allow="false"><span>${result[i].reserveTime}</span></div>`;
+						if (result[i].available == true)	str = `<div class="time true" data-reserve-allow="true" data-reserve-time-id="${result[i].id}" data-reserve-theme-id="${result[i].themeId}"><span>${result[i].reserveTime}</span></div>`;
+						else								str = `<div class="time false" data-reserve-allow="false" data-reserve-time-id="${result[i].id} data-reserve-theme-id="${result[i].themeId}"><span>${result[i].reserveTime}</span></div>`;
 						
 						$("#time_list").append(str);
 					}
@@ -285,11 +285,11 @@
 				return false;
 			}
 			if (isEmpty($date) === true) {
-				alert("예약할 날짜를 선택해주세요.");
+				alert("예약할 날짜1를 선택해주세요.");
 				return false;
 			}
 			if (isEmpty($datetime) === true) {
-				alert("예약할 날짜를 선택해주세요.");
+				alert("예약할 날짜2를 선택해주세요.");
 				return false;
 			}
 
