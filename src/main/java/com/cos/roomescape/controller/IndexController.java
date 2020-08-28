@@ -111,14 +111,4 @@ public class IndexController {
 		return "notice";
 	}
 	
-	@PostMapping("join")
-	public String join(@RequestBody User user) {
-		System.out.println("INDEXCONTROLLER");
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setRole("ROLE_USER");
-		userRepository.save(user);
-		return "회원가입완료";
-	}
-
-	
 }
