@@ -1,17 +1,25 @@
 package com.cos.roomescape.controller;
 
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cos.roomescape.config.auth.PrincipalDetails;
 import com.cos.roomescape.dto.IndexRespDto;
 import com.cos.roomescape.model.Store;
 import com.cos.roomescape.model.Theme;
+import com.cos.roomescape.model.User;
+import com.cos.roomescape.repository.UserRepository;
 import com.cos.roomescape.service.StoreService;
 import com.cos.roomescape.service.ThemeService;
 
@@ -23,6 +31,10 @@ public class IndexController {
 	private StoreService storeService;
 	@Autowired
 	private ThemeService themeService;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	
 	@GetMapping({ "", "/" })
@@ -72,6 +84,7 @@ public class IndexController {
 //	public @ResponseBody String user() {
 //		return "유저 페이지";
 //	}
+		
 //	@GetMapping("/user")
 //	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principal) {
 //		System.out.println("Principal : " + principal);
@@ -96,6 +109,15 @@ public class IndexController {
 	@GetMapping("/notice")
 	public String notice() {
 		return "notice";
+	}
+	
+	@PostMapping("join")
+	public String join(@RequestBody User user) {
+		System.out.println("INDEXCONTROLLER");
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setRole("ROLE_USER");
+		userRepository.save(user);
+		return "회원가입완료";
 	}
 
 	

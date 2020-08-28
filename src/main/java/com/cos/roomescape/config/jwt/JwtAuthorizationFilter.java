@@ -32,7 +32,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-          String header = request.getHeader(JwtProperties.HEADER_STRING);
+		
+		System.out.println("JWTAUTHORIZATIONFILTER - DOFILTERINTERNAL");
+          
+
+		String header = request.getHeader(JwtProperties.HEADER_STRING);
           if(header == null || !header.startsWith(JwtProperties.TOKEN_PREFIX)) {
         	  chain.doFilter(request, response);
           }
@@ -47,8 +51,11 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 		 			 .build()
 		 			 .verify(token)
 		 			 .getClaim("username").asString();
+		 	 
+		 	 System.out.println("JwtAuthorizationFilter: if 이전 " + username);
 		 	   if(username !=null) {
 		 		   User user = userRepository.findByUsername(username); 
+		 		  System.out.println("JwtAuthorizationFilter: if 안 " + user);
 		 		   
 		 		   // 인증은 토큰 검증시 끝. 인증을 하기 위해서가 아닌 스프링 시큐리티가 수행해주는 권한 처리를 위해 
 		 		   // 아래와 같이 토큰을 만들어서 Authentication 객체를 강제로 만들고 그걸 세션에 저장!
@@ -59,11 +66,20 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 		 				   principalDetails.getAuthorities());
 		 	     //강제로 시큐리티의 세션에 접근하여 값 저장 
 		 		   SecurityContextHolder.getContext().setAuthentication(authentication);
+		 		   
+		 		  System.out.println("JwtAuthorizationFilter: doFilterInternal 끝 " + authentication);
+		 		 System.out.println("JwtAuthorizationFilter: doFilterInternal 끝 " + authentication.getPrincipal());
+		 		 PrincipalDetails pd = (PrincipalDetails)authentication.getPrincipal();
+		 		System.out.println("JwtAuthorizationFilter: doFilterInternal 끝 " + pd.getName() + " // " + pd.getPassword());
+		 		System.out.println("JwtAuthorizationFilter: doFilterInternal 끝 " + pd.getUser().getUsername() + " // " + pd.getPassword());
+		 		 
 		 	   }
-		       chain.doFilter(request, response);
+		 	   
+		       
+		chain.doFilter(request, response);
 		 	 
 		 	  
-		   }
+}
 	  
 //		 	  private Authentication getUsernamePasswordAuthentication(HttpServletRequest request) {
 //		 	        String token = request.getHeader(JwtProperties.HEADER_STRING)

@@ -31,6 +31,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
+		
+		System.out.println("JWTAUTHENTICATIONFILTER - ATTEMPTAUTHENTICATION");
 		// request 에 있는 username과 password를 파싱해서 자바 Object로 받기
 
 		ObjectMapper om = new ObjectMapper();
@@ -60,13 +62,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 //        System.out.println("aa");
 		Authentication authentication = authenticationManager.authenticate(authenticationToken);
 		
-         System.out.println("Authentication :" + authentication.getCredentials());
-		PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();
+//         System.out.println("Authentication :" + authentication.getCredentials());
+//		PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();
 		//System.out.println("Authentication: "+ principalDetails.getUsername());
-		System.out.println("Authentication: "+ principalDetails.getUser());
-		System.out.println("Authentication : "+principalDetails.getUser().getUsername());
-		System.out.println("Authentication :" +principalDetails.getUser().getRole());
+//		System.out.println("Authentication: "+ principalDetails.getUser());
+//		System.out.println("Authentication : "+principalDetails.getUser().getUsername());
+//		System.out.println("Authentication :" +principalDetails.getUser().getRole());
 		//System.out.println("Authentication: "+ principalDetails.getAuthorities());
+		
+		
 		return authentication;
 
 	}
@@ -85,6 +89,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.withClaim("username", principalDetails.getUser().getUsername())
 				.sign(Algorithm.HMAC512(JwtProperties.SECRET));
 		
+		System.out.println("JWTAUTHENTICATIONFILTER - SUCCESSFULAUTHENTICATION");
 		response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+ jwtToken);
 	
 	}

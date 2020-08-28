@@ -69,13 +69,13 @@ public class UserController {
 
 	}
 
-	@GetMapping("user")
+	@GetMapping("/user")
 	public String user(Authentication authentication) {
-		PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
-		System.out.println("principal:" + principal.getUser().getId());
-		System.out.println("principal:" + principal.getUser().getUsername());
-		System.out.println("principal:" + principal.getUser().getPassword());
-		System.out.println("principal:" + principal.getUser().getRole());
+//		PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
+//		System.out.println("principal:" + principal.getUser().getId());
+//		System.out.println("principal:" + principal.getUser().getUsername());
+//		System.out.println("principal:" + principal.getUser().getPassword());
+//		System.out.println("principal:" + principal.getUser().getRole());
 
 		return "<h1>user</h1>";
 	}
