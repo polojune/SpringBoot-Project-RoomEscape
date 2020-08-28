@@ -123,8 +123,8 @@
 					
 					for (let i=0; i<result.length; i++) {
 						let str;
-						if (result[i].available == true)	str = `<div class="time true" data-reserve-allow="true"><span>${result[i].reserveTime}</span></div>`;
-						else								str = `<div class="time false" data-reserve-allow="false"><span>${result[i].reserveTime}</span></div>`;
+						if (result[i].available == true)	str = `<div class="time true" data-reserve-allow="true" data-reserve-time-id="${result[i].id}" data-reserve-theme-id="${result[i].theme_id}"><span>${result[i].reserveTime}</span></div>`;
+						else								str = `<div class="time false" data-reserve-allow="false" data-reserve-time-id="${result[i].id} data-reserve-theme-id="${result[i].theme_id}"><span>${result[i].reserveTime}</span></div>`;
 						
 						$("#time_list").append(str);
 					}
