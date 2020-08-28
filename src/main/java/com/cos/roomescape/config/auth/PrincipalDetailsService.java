@@ -22,7 +22,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 		System.out.println("PrincipalService: 진입");
 		System.out.println(username);
 		User user = userRepository.findByUsername(username);
-	    
+	    System.out.println("PrincipalDetailsService:"+user);
 		return new PrincipalDetails(user);
 	}
          

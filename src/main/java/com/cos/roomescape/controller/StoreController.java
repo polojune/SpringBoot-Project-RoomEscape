@@ -86,6 +86,7 @@ public class StoreController {
 	public String storeDetail(@PathVariable int id, Model model) {
 		
 		model.addAttribute("storeDetailRespDto",storeService.상세보기(id));
+		System.out.println(storeService.상세보기(id));
 		return "/storeDetail";
 
 	}

@@ -51,7 +51,7 @@ public class UserController {
 //		return "회원가입완료";
 //	}
 
-	@GetMapping("/auth/join")
+	@GetMapping("/join")
 	public String join() {
 		return "join";
 	}
@@ -92,7 +92,7 @@ public class UserController {
 //		System.out.println(user.getPassword());
 //		System.out.println(persistUser.getPassword());
 //		System.out.println(bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword()));
-//
+
 //		if (bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword())) {
 //			System.out.println("있음");
 //			// 세션 등록해야함
@@ -114,7 +114,6 @@ public class UserController {
 //		}
 
 	//}
-	
 	
 
 }

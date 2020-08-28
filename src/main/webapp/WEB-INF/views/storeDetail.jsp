@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html lang="ko"><head>
 <meta charset="utf-8">
 
@@ -389,11 +389,14 @@
 												</div>
 											</div>
 
-											<textarea class="review_content " id="review_content" name="review_content" placeholder=""></textarea>
+											<textarea class="review_content " id="content" name="content" placeholder=""></textarea>
 										</div>
-
+                                           <input type="hidden" id="storeId"  value="${storeDetailRespDto.store.id}">
+                                            <sec:authentication property="principalDetails.username" var="user_id" />
+                                            <input type="hidden" id="userId"  value="${user_id}">
+                                           
 							  			<div class="reviewFrm_btn_box">
-							  			    <input type="button" id="reviewFrm_submit" class="reviewFrm_submit " value="후기 등록">
+							  			    <button type="button" id="btn-review" class="reviewFrm_submit " value="">후기 등록</button>
 							  			</div>
 									</form>
 								</div>
@@ -401,6 +404,7 @@
                    
 							</div>
 						 <c:forEach var="reviewDto" items="${storeDetailRespDto.reviews}">	
+						  
 							<div class="memb_review_box">
 								<div class="memb_review">
 									<div class="review_top">
@@ -615,5 +619,7 @@
 			}
 		});
 	</script>
+<script src="/js/review.js"></script>
+</body>
 
-</body></html>
+</html>
