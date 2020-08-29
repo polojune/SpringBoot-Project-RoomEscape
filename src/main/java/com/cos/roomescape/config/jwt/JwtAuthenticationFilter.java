@@ -32,7 +32,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 		// request 에 있는 username과 password를 파싱해서 자바 Object로 받기
-
+         
+		System.out.println("JwtAuthenticationFilter:attemptAuthentication 실행 "  );
 		ObjectMapper om = new ObjectMapper();
 		LoginRequestDto loginRequestDto = null;
 		try {

@@ -92,7 +92,7 @@ public class UserController {
 //		System.out.println(user.getPassword());
 //		System.out.println(persistUser.getPassword());
 //		System.out.println(bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword()));
-
+//
 //		if (bCryptPasswordEncoder.matches(user.getPassword(), persistUser.getPassword())) {
 //			System.out.println("있음");
 //			// 세션 등록해야함
@@ -113,7 +113,7 @@ public class UserController {
 //			return new CommonRespDto<String>(1, "로그인 성공");
 //		}
 
-	//}
+//	}
 	
 
 }
