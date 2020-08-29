@@ -392,9 +392,9 @@
 											<textarea class="review_content " id="content" name="content" placeholder=""></textarea>
 										</div>
                                            <input type="hidden" id="storeId"  value="${storeDetailRespDto.store.id}">
-                                            <sec:authentication property="principalDetails.username" var="user_id" />
+                                            <sec:authentication property="principal" var="user_id" />
                                             <input type="hidden" id="userId"  value="${user_id}">
-                                           
+                                         
 							  			<div class="reviewFrm_btn_box">
 							  			    <button type="button" id="btn-review" class="reviewFrm_submit " value="">후기 등록</button>
 							  			</div>

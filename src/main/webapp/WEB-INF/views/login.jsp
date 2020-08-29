@@ -60,7 +60,7 @@
   
  
 	 
-	  <form action="/loginProc" method="POST" style="width:285px; margin: 0 auto;">
+	  <form action="/login" method="POST" style="width:285px; margin: 0 auto;">
 	  
 		    <div class="form-group" >
 		      <label for="username" >Username:</label>

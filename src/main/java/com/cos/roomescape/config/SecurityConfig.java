@@ -45,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	 @Override
     protected void configure(HttpSecurity http) throws Exception {
           
-    	  http.csrf().disable() //form 태그 시 post 요청시 csrf 토큰을 만들어야 서버에서 허가를 해준다.
-    	  .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    	  http.csrf().disable(); //form 태그 시 post 요청시 csrf 토큰을 만들어야 서버에서 허가를 해준다.
+    	  //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     	  http.authorizeRequests()
     	      .antMatchers("/user/**").authenticated()
     	      .antMatchers("/api/v1/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")	          
@@ -56,8 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	          .anyRequest().permitAll()
 	          
           .and()
-              //.addFilter(new JwtAuthenticationFilter(authenticationManager()))
-              //.addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
+              .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+              .addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
           	  .formLogin()
           	  .loginPage("/login")
           	  .loginProcessingUrl("/loginProc")
