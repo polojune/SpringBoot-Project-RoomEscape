@@ -1,10 +1,15 @@
 package com.cos.roomescape.controller;
 
+import java.util.Date;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
@@ -13,7 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.cos.roomescape.config.auth.PrincipalDetails;
+import com.cos.roomescape.config.jwt.JwtProperties;
 import com.cos.roomescape.dto.CommonRespDto;
 import com.cos.roomescape.model.User;
 import com.cos.roomescape.repository.UserRepository;
@@ -68,7 +76,7 @@ public class UserController {
 
 	}
 
-	@GetMapping("user")
+	@GetMapping("/user")
 	public String user(Authentication authentication) {
 		PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 		System.out.println("principal:" + principal.getUser().getId());
@@ -77,6 +85,28 @@ public class UserController {
 		System.out.println("principal:" + principal.getUser().getRole());
 
 		return "<h1>user</h1>";
+	}
+	
+//	@PostMapping("/loginProc")
+//	public @ResponseBody CommonRespDto<?> loginProc() {
+//		
+//		return new CommonRespDto<String>(HttpStatus.OK.value(),"토큰");
+//	}
+	
+	@GetMapping("/test")
+	public @ResponseBody CommonRespDto<?> test(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		
+		//검증 코드 필요!!
+		
+		
+		String jwtToken = JWT.create()
+				.withSubject(principalDetails.getUsername())
+				.withExpiresAt(new Date(System.currentTimeMillis()+JwtProperties.EXPIRATION_TIME))
+				.withClaim("id", principalDetails.getUser().getId())
+				.withClaim("username", principalDetails.getUser().getUsername())
+				.sign(Algorithm.HMAC512(JwtProperties.SECRET));
+		
+		return new CommonRespDto<String>(HttpStatus.OK.value(),jwtToken);
 	}
 
 //	@PostMapping("/loginProc")

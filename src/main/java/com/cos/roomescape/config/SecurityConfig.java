@@ -49,20 +49,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     	  //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     	  http.authorizeRequests()
     	      .antMatchers("/user/**").authenticated()
-    	      .antMatchers("/api/v1/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")	          
-	       	  .antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-	          .antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')")
+    	      .antMatchers("/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")	          
+	       	  .antMatchers("/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+	          .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 	          //.antMatchers("/freeSaveForm").authenticated()
 	          .anyRequest().permitAll()
 	          
           .and()
-              .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+          		.addFilter(new JwtAuthenticationFilter(authenticationManager()))
               .addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
           	  .formLogin()
           	  .loginPage("/login")
           	  .loginProcessingUrl("/loginProc")
-          	  
-          	  .defaultSuccessUrl("/store")
+          	  .defaultSuccessUrl("/test")
           	  .failureHandler(new AuthenticationFailureHandler() {
 				
 				@Override

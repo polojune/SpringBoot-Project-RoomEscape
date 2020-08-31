@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
@@ -71,7 +73,7 @@
 		      <input type="password" style="width:100%" class="form-control" id="password" placeholder="Enter password" name="password" >
 		    </div>
 		  
-		   <button type="submit" class="btn btn-primary">Submit</button> 
+		   <button type="button" id="btn-login" class="btn btn-primary">Submit</button> 
 	    
 	  </form>
 
@@ -95,6 +97,7 @@
 	<br />
    </div>
    <%@ include file="include/footer.jsp"%> 
+   <script src="/js/login.js"></script> 
     
 </body>
 </html>

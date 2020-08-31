@@ -39,9 +39,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		try {
 			loginRequestDto = om.readValue(request.getInputStream(), LoginRequestDto.class);
 		} catch (Exception e) {
+			
 			// TODO: handle exception
 		}
-
+          
+		System.out.println("loginRequestDto:"+ loginRequestDto);
 		// 유저네임패스워드 토큰 생성
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
 				loginRequestDto.getUsername(), 
